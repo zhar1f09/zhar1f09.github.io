@@ -1,0 +1,759 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+  /* Colors */
+  --bg-color: #0f0f0f;
+  --text-color: #fff;
+  --primary-color: #5865F2; /* Discord blurple */
+  --secondary-color: #00A2FF; /* Roblox blue */
+  --accent-color: #FEE75C;
+  --card-bg: #1a1a1a;
+  --border-color: #333;
+  
+  /* Typography */
+  --font-family: 'Poppins', sans-serif;
+  --font-size-sm: 1.4rem;
+  --font-size-md: 1.6rem;
+  --font-size-lg: 2.2rem;
+  --font-size-xl: 3.2rem;
+  
+  /* Spacing */
+  --section-spacing: 6rem;
+  --card-padding: 2.5rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.8rem;
+  --radius-md: 1.2rem;
+  --radius-lg: 2rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.3);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--card-bg);
+  width: 300px;
+  padding: 3rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  border-right: 1px solid var(--border-color);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.sidebar-info {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.avatar-box {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 2rem;
+  border: 3px solid var(--primary-color);
+}
+
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  color: #aaa;
+  font-size: var(--font-size-sm);
+}
+
+/* Contact List */
+.contacts-list {
+  list-style: none;
+  margin-bottom: 3rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.fab.fa-discord,
+.fas.fa-gamepad {
+  font-size: 1.8rem;
+}
+
+.contact-title {
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+.contact-link {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.contact-link:hover {
+  color: var(--primary-color);
+}
+
+/* Social List */
+.social-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  justify-content: center;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--card-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition-normal);
+  border: 1px solid var(--border-color);
+}
+
+.social-link:hover {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 300px;
+  padding: 3rem;
+  min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.navbar-list {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+}
+
+.navbar-link {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  cursor: pointer;
+  padding: 1rem 0;
+  position: relative;
+  transition: var(--transition-fast);
+}
+
+.navbar-link.active,
+.navbar-link:hover {
+  color: var(--text-color);
+}
+
+.navbar-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+/* Articles (Pages) */
+article[data-page] {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+article[data-page].active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Article Headers */
+.article-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.article-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+}
+
+/* About Section */
+.about-text {
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+  margin-bottom: 4rem;
+}
+
+/* Services */
+.service {
+  margin-bottom: var(--section-spacing);
+}
+
+.service-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: 3rem;
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  list-style: none;
+}
+
+.service-item {
+  background: var(--card-bg);
+  padding: var(--card-padding);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: var(--transition-normal);
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.service-icon-box {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.service-icon-box img {
+  width: 30px;
+  height: 30px;
+}
+
+.service-item-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.service-item-text {
+  color: #aaa;
+  font-size: var(--font-size-sm);
+}
+
+/* Resume Section */
+.timeline {
+  margin-bottom: var(--section-spacing);
+}
+
+.timeline .title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.timeline .icon-box {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+}
+
+.timeline-list {
+  list-style: none;
+  padding-left: 2rem;
+  border-left: 2px solid var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2.4rem;
+  width: 12px;
+  height: 12px;
+  background: var(--primary-color);
+  border-radius: 50%;
+}
+
+.timeline-item-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item span {
+  display: inline-block;
+  background: var(--card-bg);
+  padding: 0.3rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-text {
+  color: #aaa;
+}
+
+/* Skills */
+.skills-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: 3rem;
+}
+
+.skills-list {
+  background: var(--card-bg);
+  padding: var(--card-padding);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  list-style: none;
+}
+
+.skills-item {
+  margin-bottom: 2rem;
+}
+
+.skills-item:last-child {
+  margin-bottom: 0;
+}
+
+.skills-item .title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.skill-progress-bg {
+  width: 100%;
+  height: 8px;
+  background: #333;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  border-radius: 4px;
+  transition: width 1s ease;
+}
+
+/* Portfolio */
+.filter-list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.filter-item button {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: #aaa;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.filter-item button.active,
+.filter-item button:hover {
+  background: var(--primary-color);
+  color: var(--text-color);
+  border-color: var(--primary-color);
+}
+
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 3rem;
+  list-style: none;
+}
+
+.project-item {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: var(--transition-normal);
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+.project-img {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-normal);
+}
+
+.project-item:hover .project-img img {
+  transform: scale(1.05);
+}
+
+.project-item-icon-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition-normal);
+}
+
+.project-item:hover .project-item-icon-box {
+  opacity: 1;
+}
+
+.project-title {
+  padding: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.project-category {
+  padding: 0 1.5rem 1.5rem;
+  color: #aaa;
+  font-size: var(--font-size-sm);
+}
+
+/* Contact Section - Discord/Roblox Cards */
+.discord-roblox-contact {
+  background: var(--card-bg);
+  padding: var(--card-padding);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.contact-platforms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.platform-card {
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.1), rgba(0, 162, 255, 0.1));
+  padding: 3rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  transition: var(--transition-normal);
+}
+
+.platform-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.discord-card {
+  border-top: 4px solid var(--primary-color);
+}
+
+.roblox-card {
+  border-top: 4px solid var(--secondary-color);
+}
+
+.platform-icon {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.discord-card .platform-icon {
+  color: var(--primary-color);
+}
+
+.roblox-card .platform-icon {
+  color: var(--secondary-color);
+}
+
+.platform-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.platform-username {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.platform-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.platform-btn {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--transition-fast);
+  font-size: var(--font-size-sm);
+}
+
+.platform-btn:hover {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.server-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border: none;
+}
+
+.platform-note {
+  color: #aaa;
+  font-size: var(--font-size-sm);
+  font-style: italic;
+}
+
+/* Contact Instructions */
+.instructions-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: 2rem;
+}
+
+.instructions-list {
+  list-style: decimal inside;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.instructions-list li {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.instructions-list strong {
+  color: var(--primary-color);
+}
+
+/* QR Codes */
+.qr-codes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+}
+
+.qr-item {
+  text-align: center;
+}
+
+.qr-item .h5 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.qr-placeholder {
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  color: #666;
+}
+
+.qr-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .sidebar-info_more {
+    display: none;
+  }
+  
+  .info_more-btn.active + .sidebar-info_more {
+    display: block;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-platforms {
+    grid-template-columns: 1fr;
+  }
+  
+  .navbar-list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content,
+  .sidebar {
+    padding: 2rem;
+  }
+  
+  .platform-actions {
+    flex-direction: column;
+  }
+  
+  .platform-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
