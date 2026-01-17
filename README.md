@@ -1,14 +1,15 @@
-# Discord/Roblox Portfolio
+# Red & Black Portfolio
 
-A modified version of the vCard personal portfolio template, customized with Discord and Roblox integration.
+A modern portfolio template with red and black theme, designed for creative professionals.
 
-## 🎯 Features
+## 🎨 Features
 
-- **Education Section Removed** - Clean resume focusing only on experience
-- **Blog Section Removed** - Simplified navigation
-- **Discord Integration** - Direct contact via Discord with server links
-- **Roblox Integration** - Showcase Roblox profile and projects
+- **Red & Black Theme** - Modern, bold color scheme
+- **Organized File Structure** - Separate folders for each category
 - **Responsive Design** - Works on all devices
-- **Modern UI** - Dark theme with accent colors
+- **Portfolio Filtering** - Filter projects by category
+- **Discord & Roblox Integration** - Direct contact options
+- **Skill Progress Bars** - Visual skill representation
+- **Load More Projects** - Scalable project display
 
 ## 📁 File Structure
