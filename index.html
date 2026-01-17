@@ -2,190 +2,508 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zhar1f09 | Roblox Developer</title>
-  <link rel="stylesheet" href="style.css">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Name | Portfolio</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/responsive.css">
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<header id="siteHeader">
-  <div class="header-center">
-    <h1 class="site-name">Zhar1f09</h1>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#prices">Prices</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-      <a class="btn" href="https://discord.com/users/103916006189352294" target="_blank">Hire Me</a>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" data-sidebar>
+    <div class="sidebar-info">
+      <figure class="avatar-box">
+        <img src="./assets/images/my-avatar.png" alt="Your Name" width="80">
+      </figure>
+      <div class="info-content">
+        <h1 class="name" title="Your Name">Your Name</h1>
+        <p class="title">Your Profession</p>
+      </div>
+      <button class="info_more-btn" data-sidebar-btn>
+        <span>Show Contacts</span>
+        <ion-icon name="chevron-down"></ion-icon>
+      </button>
+    </div>
+
+    <div class="sidebar-info_more">
+      <div class="separator"></div>
+      <ul class="contacts-list">
+        <li class="contact-item">
+          <div class="icon-box">
+            <ion-icon name="mail-outline"></ion-icon>
+          </div>
+          <div class="contact-info">
+            <p class="contact-title">Email</p>
+            <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+          </div>
+        </li>
+        <li class="contact-item">
+          <div class="icon-box">
+            <i class="fab fa-discord"></i>
+          </div>
+          <div class="contact-info">
+            <p class="contact-title">Discord</p>
+            <a href="#" class="contact-link">YourUsername#1234</a>
+          </div>
+        </li>
+        <li class="contact-item">
+          <div class="icon-box">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <div class="contact-info">
+            <p class="contact-title">Roblox</p>
+            <a href="https://www.roblox.com/users/your-id" target="_blank" class="contact-link">@YourRobloxName</a>
+          </div>
+        </li>
+        <li class="contact-item">
+          <div class="icon-box">
+            <ion-icon name="location-outline"></ion-icon>
+          </div>
+          <div class="contact-info">
+            <p class="contact-title">Location</p>
+            <address>Your City, Country</address>
+          </div>
+        </li>
+      </ul>
+
+      <div class="separator"></div>
+      
+      <ul class="social-list">
+        <li class="social-item">
+          <a href="https://github.com/yourusername" target="_blank" class="social-link">
+            <ion-icon name="logo-github"></ion-icon>
+          </a>
+        </li>
+        <li class="social-item">
+          <a href="https://discord.gg/yourserver" target="_blank" class="social-link">
+            <i class="fab fa-discord"></i>
+          </a>
+        </li>
+        <li class="social-item">
+          <a href="https://www.roblox.com/users/your-id" target="_blank" class="social-link">
+            <i class="fas fa-gamepad"></i>
+          </a>
+        </li>
+        <li class="social-item">
+          <a href="#" target="_blank" class="social-link">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <ul class="navbar-list">
+        <li class="navbar-item">
+          <button class="navbar-link active" data-nav-link>About</button>
+        </li>
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Resume</button>
+        </li>
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Portfolio</button>
+        </li>
+        <li class="navbar-item">
+          <button class="navbar-link" data-nav-link>Contact</button>
+        </li>
+      </ul>
     </nav>
+
+    <!-- About Section -->
+    <article class="about active" data-page="about">
+      <header>
+        <h2 class="h2 article-title">About me</h2>
+      </header>
+
+      <section class="about-text">
+        <p>
+          I'm [Your Profession] from [Your Location], specializing in [Your Specialties].
+          I enjoy turning complex problems into simple, beautiful, and intuitive solutions.
+        </p>
+        <p>
+          My job is to build your project so that it's functional, user-friendly, and attractive.
+          I aim to communicate your message and identity in the most creative way possible.
+        </p>
+      </section>
+
+      <!-- What I Do -->
+      <section class="service">
+        <h3 class="h3 service-title">What I'm doing</h3>
+        <ul class="service-list">
+          <li class="service-item">
+            <div class="service-icon-box">
+              <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+            </div>
+            <div class="service-content-box">
+              <h4 class="h4 service-item-title">Web Design</h4>
+              <p class="service-item-text">
+                Modern, high-quality design at a professional level.
+              </p>
+            </div>
+          </li>
+
+          <li class="service-item">
+            <div class="service-icon-box">
+              <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+            </div>
+            <div class="service-content-box">
+              <h4 class="h4 service-item-title">Web Development</h4>
+              <p class="service-item-text">
+                High-quality development of websites at a professional level.
+              </p>
+            </div>
+          </li>
+
+          <li class="service-item">
+            <div class="service-icon-box">
+              <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+            </div>
+            <div class="service-content-box">
+              <h4 class="h4 service-item-title">Mobile Apps</h4>
+              <p class="service-item-text">
+                Professional development of applications for iOS and Android.
+              </p>
+            </div>
+          </li>
+
+          <li class="service-item">
+            <div class="service-icon-box">
+              <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+            </div>
+            <div class="service-content-box">
+              <h4 class="h4 service-item-title">Photography</h4>
+              <p class="service-item-text">
+                High-quality photos of any category at a professional level.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Testimonials (Optional - Remove if not needed) -->
+      <section class="testimonials">
+        <h3 class="h3 testimonials-title">Testimonials</h3>
+        <ul class="testimonials-list has-scrollbar">
+          <li class="testimonials-item">
+            <div class="content-card" data-testimonials-item>
+              <figure class="testimonials-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+              </figure>
+              <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
+              <div class="testimonials-text" data-testimonials-text>
+                <p>
+                  [Your Name] was hired to create a corporate identity. We were very pleased with the work done.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li class="testimonials-item">
+            <div class="content-card" data-testimonials-item>
+              <figure class="testimonials-avatar-box">
+                <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+              </figure>
+              <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
+              <div class="testimonials-text" data-testimonials-text>
+                <p>
+                  [Your Name] has a lot of experience and is very concerned about the needs of clients.
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Remove Clients section if not needed -->
+    </article>
+
+    <!-- Resume Section (Education Removed) -->
+    <article class="resume" data-page="resume">
+      <header>
+        <h2 class="h2 article-title">Resume</h2>
+      </header>
+
+      <!-- Experience Only (Education Removed) -->
+      <section class="timeline">
+        <div class="title-wrapper">
+          <div class="icon-box">
+            <ion-icon name="briefcase-outline"></ion-icon>
+          </div>
+          <h3 class="h3">Experience</h3>
+        </div>
+
+        <ol class="timeline-list">
+          <li class="timeline-item">
+            <h4 class="h4 timeline-item-title">Creative director</h4>
+            <span>2015 — Present</span>
+            <p class="timeline-text">
+              Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+            </p>
+          </li>
+
+          <li class="timeline-item">
+            <h4 class="h4 timeline-item-title">Art director</h4>
+            <span>2013 — 2015</span>
+            <p class="timeline-text">
+              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+            </p>
+          </li>
+
+          <li class="timeline-item">
+            <h4 class="h4 timeline-item-title">Web designer</h4>
+            <span>2010 — 2013</span>
+            <p class="timeline-text">
+              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Skills -->
+      <section class="skill">
+        <h3 class="h3 skills-title">My skills</h3>
+        <ul class="skills-list content-card">
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">Web Design</h5>
+              <data value="80">80%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 80%;"></div>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">Graphic Design</h5>
+              <data value="70">70%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 70%;"></div>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">Branding</h5>
+              <data value="90">90%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 90%;"></div>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">WordPress</h5>
+              <data value="50">50%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 50%;"></div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- Portfolio Section -->
+    <article class="portfolio" data-page="portfolio">
+      <header>
+        <h2 class="h2 article-title">Portfolio</h2>
+      </header>
+
+      <section class="projects">
+        <ul class="filter-list">
+          <li class="filter-item">
+            <button class="active" data-filter-btn>All</button>
+          </li>
+          <li class="filter-item">
+            <button data-filter-btn>Web Design</button>
+          </li>
+          <li class="filter-item">
+            <button data-filter-btn>Applications</button>
+          </li>
+          <li class="filter-item">
+            <button data-filter-btn>Web Development</button>
+          </li>
+        </ul>
+
+        <div class="filter-select-box">
+          <button class="filter-select" data-select>
+            <div class="select-value" data-selecct-value>Select category</div>
+            <div class="select-icon">
+              <ion-icon name="chevron-down"></ion-icon>
+            </div>
+          </button>
+
+          <ul class="select-list">
+            <li class="select-item">
+              <button data-select-item>All</button>
+            </li>
+            <li class="select-item">
+              <button data-select-item>Web Design</button>
+            </li>
+            <li class="select-item">
+              <button data-select-item>Applications</button>
+            </li>
+            <li class="select-item">
+              <button data-select-item>Web Development</button>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="project-list">
+          <li class="project-item active" data-filter-item data-category="web development">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+              </figure>
+              <h3 class="project-title">Finance</h3>
+              <p class="project-category">Web Development</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="web design">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/project-2.jpg" alt="orizon" loading="lazy">
+              </figure>
+              <h3 class="project-title">Orizon</h3>
+              <p class="project-category">Web Design</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="web design">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+              </figure>
+              <h3 class="project-title">Fundo</h3>
+              <p class="project-category">Web Design</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="applications">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/project-4.jpg" alt="brawlhalla" loading="lazy">
+              </figure>
+              <h3 class="project-title">Brawlhalla</h3>
+              <p class="project-category">Applications</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- Contact Section (Modified for Discord/Roblox) -->
+    <article class="contact" data-page="contact">
+      <header>
+        <h2 class="h2 article-title">Contact</h2>
+      </header>
+
+      <section class="mapbox" data-mapbox>
+        <figure>
+          <iframe
+            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Your+City,+Your+Country"
+            width="400" height="300" loading="lazy"></iframe>
+        </figure>
+      </section>
+
+      <section class="contact-form">
+        <h3 class="h3 form-title">Get In Touch</h3>
+
+        <div class="discord-roblox-contact">
+          <div class="contact-platforms">
+            <!-- Discord Card -->
+            <div class="platform-card discord-card">
+              <div class="platform-icon">
+                <i class="fab fa-discord"></i>
+              </div>
+              <h4 class="h4 platform-title">Discord</h4>
+              <p class="platform-username">YourUsername#1234</p>
+              <div class="platform-actions">
+                <a href="https://discord.com/users/your-id" class="platform-btn" target="_blank">
+                  <i class="fas fa-user"></i> Direct Message
+                </a>
+                <a href="https://discord.gg/yourservercode" class="platform-btn server-btn" target="_blank">
+                  <i class="fas fa-users"></i> Join Server
+                </a>
+              </div>
+              <p class="platform-note">I'm most active on Discord. Best way to reach me!</p>
+            </div>
+
+            <!-- Roblox Card -->
+            <div class="platform-card roblox-card">
+              <div class="platform-icon">
+                <i class="fas fa-gamepad"></i>
+              </div>
+              <h4 class="h4 platform-title">Roblox</h4>
+              <p class="platform-username">@YourRobloxName</p>
+              <div class="platform-actions">
+                <a href="https://www.roblox.com/users/your-id/profile" class="platform-btn" target="_blank">
+                  <i class="fas fa-id-card"></i> View Profile
+                </a>
+                <a href="https://www.roblox.com/games/your-game" class="platform-btn server-btn" target="_blank">
+                  <i class="fas fa-play"></i> Play Game
+                </a>
+              </div>
+              <p class="platform-note">Check out my Roblox creations and games!</p>
+            </div>
+          </div>
+
+          <div class="contact-instructions">
+            <h4 class="h4 instructions-title">How to Contact Me</h4>
+            <ol class="instructions-list">
+              <li><strong>Discord:</strong> Add me as a friend or join my server for quick responses</li>
+              <li><strong>Roblox:</strong> Friend me on Roblox or message me in-game</li>
+              <li><strong>Response Time:</strong> I typically respond within 24 hours on Discord</li>
+              <li><strong>Collaborations:</strong> Open to Roblox game development projects</li>
+            </ol>
+            
+            <div class="qr-codes">
+              <div class="qr-item">
+                <h5 class="h5">Discord Server QR</h5>
+                <div class="qr-placeholder">
+                  <i class="fas fa-qrcode"></i>
+                  <p>Add Discord Server QR here</p>
+                </div>
+              </div>
+              <div class="qr-item">
+                <h5 class="h5">Roblox Profile QR</h5>
+                <div class="qr-placeholder">
+                  <i class="fas fa-qrcode"></i>
+                  <p>Add Roblox QR here</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
   </div>
-</header>
 
-<!-- Profile section -->
-<section id="profile">
-  <div class="container profile-center">
-    <img class="profile-img" src="Images/profile.png" alt="Profile picture">
-    <div id="profile-info">
-      <span id="time"></span> | <span id="visits"></span>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container about-center">
-    <h2>About Me</h2>
-    <p>Hi, I’m Zhar1f09! I’ve been on Discord for 3 years and have 2 years of design experience. I work in graphics, photography, clothing design, Discord services, modeling, and building. I enjoy contributing to the community by sharing ideas, building projects, and collaborating with others to create meaningful solutions.
-</p>
-  </div>
-</section>
-
-<section id="prices">
-  <div class="container">
-    <h2>Prices</h2>
-    <div class="price-grid">
-      <div class="price-box">
-        <h3>Clothing</h3>
-        <p>Full set: <strong>150 Robux+</strong></p>
-        <p>Half set: <strong>75 Robux+</strong></p>
-      </div>
-      <div class="price-box">
-        <h3>Modeling</h3>
-        <p><strong>250 - 1000 Robux+</strong></p>
-      </div>
-      <div class="price-box">
-        <h3>Building</h3>
-        <p><strong>250 - 1000 Robux+</strong></p>
-      </div>
-      <div class="price-box">
-        <h3>Discord Service</h3>
-        <p>Basic setup: <strong>300 Robux+</strong></p>
-        <p>Advanced setup: <strong>800 Robux+</strong></p>
-      </div>
-      <div class="price-box">
-        <h3>Graphics</h3>
-        <p>Banner: <strong>125 Robux+</strong></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="portfolio">
-  <div class="container">
-    <h2>Portfolio</h2>
-    <div class="tabs" id="tabs"></div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <h2>Contact</h2>
-    <div class="contact-row">
-      <a class="icon-link" href="https://discord.com/users/103916006189352294" target="_blank">Discord</a>
-      <a class="ticket-btn" href="https://discord.gg/Hghmu67jwU" target="_blank">Create a Ticket</a>
-      <a class="icon-link" href="https://www.roblox.com/users/423486876/profile" target="_blank">Roblox</a>
-    </div>
-  </div>
-</section>
-
-<!-- Lightbox -->
-<div class="lb" id="lb">
-  <span class="close" id="lbclose">×</span>
-  <span class="arrow left" id="lbleft">‹</span>
-  <img id="lbimg" alt="Preview">
-  <span class="arrow right" id="lbright">›</span>
-</div>
-
-<script src="imageCategories.js"></script>
-<script>
-// Portfolio tabs
-const tabs=document.getElementById('tabs');
-const grid=document.getElementById('grid');
-const categories=Object.keys(portfolio);
-categories.forEach((cat,i)=>{
-  const b=document.createElement('button');
-  b.className='tab-btn'+(i===0?' active':'');
-  b.textContent=cat;
-  b.onclick=()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(cat)};
-  tabs.appendChild(b);
-});
-
-function render(cat){
-  grid.innerHTML='';
-  const files=portfolio[cat];
-  const visibleCount=Math.min(3,files.length);
-
-  for(let i=0;i<visibleCount;i++){
-    const thumb=document.createElement('div');
-    thumb.className='thumb';
-
-    const img=document.createElement('img');
-    img.src=`Images/${cat}/${files[i]}`;
-    thumb.appendChild(img);
-
-    const label=document.createElement('div');
-    label.className='label';
-    label.textContent=`${cat} ${i+1}`;
-    thumb.appendChild(label);
-
-    grid.appendChild(thumb);
-
-    // Rotate extras if more than 3 images
-    if(files.length>3){
-      let index=i;
-      setInterval(()=>{
-        index=(index+1)%files.length;
-        img.src=`Images/${cat}/${files[index]}`;
-      },1000);
-    }
-  }
-}
-render(categories[0]);
-
-// Lightbox
-const lb=document.getElementById('lb');
-const lbimg=document.getElementById('lbimg');
-const lbclose=document.getElementById('lbclose');
-const lbleft=document.getElementById('lbleft');
-const lbright=document.getElementById('lbright');
-let currentCategory=null;
-let currentIndex=0;
-
-document.addEventListener('click',(e)=>{
-  const img=e.target.closest('.thumb img');
-  if(!img) return;
-  const activeTab=document.querySelector('.tab-btn.active').textContent;
-  currentCategory=activeTab;
-  const files=portfolio[currentCategory];
-  currentIndex=files.findIndex(f=>img.src.includes(f));
-  lbimg.src=img.src;
-  lb.classList.add('show');
-});
-lbclose.addEventListener('click',()=>lb.classList.remove('show'));
-lb.addEventListener('click',(e)=>{if(e.target===lb) lb.classList.remove('show');});
-lbright.addEventListener('click',()=>{
-  if(!currentCategory) return;
-  const files=portfolio[currentCategory];
-  currentIndex=(currentIndex+1)%files.length;
-  lbimg.src=`Images/${currentCategory}/${files[currentIndex]}`;
-});
-lbleft.addEventListener('click',()=>{
-  if(!currentCategory) return;
-  const files=portfolio[currentCategory];
-  currentIndex=(currentIndex-1+files.length)%files.length;
-  lbimg.src=`Images/${currentCategory}/${files[currentIndex]}`;
-});
-
-// Singapore time clock with timezone
-function updateTime(){
-  const now=new Date();
-  const options={timeZone:'Asia/Singapore',hour12:true};
-  const sgTime=now.toLocaleTimeString('en-US',options);
-  document.getElementById('time').textContent=sgTime+" SGT";
-}
-setInterval(updateTime,1000);
-updateTime();
-
-// Visitor counter fixed to 1
-document.getElementById('visits').textContent="Visits: 1";
-</script>
+  <!-- Scripts -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
 </html>
