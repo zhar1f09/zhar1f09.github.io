@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zhar1f09 | Developer Portfolio</title>
+  <title>Zhar1f09 | Roblox Developer Portfolio</title>
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/responsive.css">
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/icons/logo.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -16,11 +16,11 @@
   <aside class="sidebar" data-sidebar>
     <div class="sidebar-info">
       <figure class="avatar-box">
-        <img src="./assets/images/my-avatar.png" alt="Your Name" width="80">
+        <img src="./assets/images/avatar/my-avatar.png" alt="Your Name" width="80">
       </figure>
       <div class="info-content">
         <h1 class="name" title="Your Name">Zhar1f09</h1>
-        <p class="title">Your Profession</p>
+        <p class="title">Creative Professional</p>
       </div>
       <button class="info_more-btn" data-sidebar-btn>
         <span>Show Contacts</span>
@@ -37,7 +37,7 @@
           </div>
           <div class="contact-info">
             <p class="contact-title">Email</p>
-            <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+            <a href="mailto:your.email@example.com" class="contact-link">zharif0611@gmail.com</a>
           </div>
         </li>
         <li class="contact-item">
@@ -46,7 +46,8 @@
           </div>
           <div class="contact-info">
             <p class="contact-title">Discord</p>
-            <a href="#" class="contact-link">YourUsername#1234</a>
+            <span class="contact-link copy-discord" data-username="YourUsername#1234">YourUsername#1234</span>
+            <span class="copy-hint">Click to copy</span>
           </div>
         </li>
         <li class="contact-item">
@@ -56,15 +57,6 @@
           <div class="contact-info">
             <p class="contact-title">Roblox</p>
             <a href="https://www.roblox.com/users/your-id" target="_blank" class="contact-link">@YourRobloxName</a>
-          </div>
-        </li>
-        <li class="contact-item">
-          <div class="icon-box">
-            <ion-icon name="location-outline"></ion-icon>
-          </div>
-          <div class="contact-info">
-            <p class="contact-title">Location</p>
-            <address>Your City, Country</address>
           </div>
         </li>
       </ul>
@@ -88,7 +80,7 @@
           </a>
         </li>
         <li class="social-item">
-          <a href="#" target="_blank" class="social-link">
+          <a href="https://twitter.com/yourusername" target="_blank" class="social-link">
             <ion-icon name="logo-twitter"></ion-icon>
           </a>
         </li>
@@ -105,7 +97,7 @@
           <button class="navbar-link active" data-nav-link>About</button>
         </li>
         <li class="navbar-item">
-          <button class="navbar-link" data-nav-link>Resume</button>
+          <button class="navbar-link" data-nav-link>Skills</button>
         </li>
         <li class="navbar-item">
           <button class="navbar-link" data-nav-link>Portfolio</button>
@@ -119,179 +111,120 @@
     <!-- About Section -->
     <article class="about active" data-page="about">
       <header>
-        <h2 class="h2 article-title">About me</h2>
+        <h2 class="h2 article-title">About Me</h2>
       </header>
 
       <section class="about-text">
         <p>
-          I'm [Your Profession] from [Your Location], specializing in [Your Specialties].
-          I enjoy turning complex problems into simple, beautiful, and intuitive solutions.
+          I'm a creative professional specializing in Graphics, Clothing Design, Discord Services, Photography, Building, and 3D Modeling. Based online, I help clients bring their visions to life with quality and style.
         </p>
         <p>
-          My job is to build your project so that it's functional, user-friendly, and attractive.
-          I aim to communicate your message and identity in the most creative way possible.
+          My work focuses on creating visually stunning and functional designs that stand out. Whether it's custom graphics, Discord server setups, or 3D models, I deliver professional results with attention to detail.
         </p>
       </section>
 
-      <!-- What I Do -->
+      <!-- Services -->
       <section class="service">
-        <h3 class="h3 service-title">What I'm doing</h3>
+        <h3 class="h3 service-title">My Services</h3>
         <ul class="service-list">
           <li class="service-item">
             <div class="service-icon-box">
-              <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+              <img src="./assets/icons/graphics.svg" alt="Graphics icon" width="40">
             </div>
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Web Design</h4>
+              <h4 class="h4 service-item-title">Graphics Design</h4>
               <p class="service-item-text">
-                Modern, high-quality design at a professional level.
+                Professional logo design, banners, social media graphics, and digital artwork.
               </p>
             </div>
           </li>
 
           <li class="service-item">
             <div class="service-icon-box">
-              <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+              <img src="./assets/icons/clothing.svg" alt="Clothing icon" width="40">
             </div>
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Web Development</h4>
+              <h4 class="h4 service-item-title">Clothing Design</h4>
               <p class="service-item-text">
-                High-quality development of websites at a professional level.
+                Custom clothing designs, patterns, and textile artwork for various applications.
               </p>
             </div>
           </li>
 
           <li class="service-item">
             <div class="service-icon-box">
-              <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+              <img src="./assets/icons/discord.svg" alt="Discord icon" width="40">
             </div>
             <div class="service-content-box">
-              <h4 class="h4 service-item-title">Mobile Apps</h4>
+              <h4 class="h4 service-item-title">Discord Services</h4>
               <p class="service-item-text">
-                Professional development of applications for iOS and Android.
+                Server setup, bot configuration, moderation systems, and community management.
               </p>
             </div>
           </li>
 
           <li class="service-item">
             <div class="service-icon-box">
-              <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+              <img src="./assets/icons/photography.svg" alt="Photography icon" width="40">
             </div>
             <div class="service-content-box">
               <h4 class="h4 service-item-title">Photography</h4>
               <p class="service-item-text">
-                High-quality photos of any category at a professional level.
+                Professional photography, photo editing, and visual content creation.
+              </p>
+            </div>
+          </li>
+
+          <li class="service-item">
+            <div class="service-icon-box">
+              <img src="./assets/icons/building.svg" alt="Building icon" width="40">
+            </div>
+            <div class="service-content-box">
+              <h4 class="h4 service-item-title">Building & Architecture</h4>
+              <p class="service-item-text">
+                3D building design, architectural visualization, and construction planning.
+              </p>
+            </div>
+          </li>
+
+          <li class="service-item">
+            <div class="service-icon-box">
+              <img src="./assets/icons/modeling.svg" alt="Modeling icon" width="40">
+            </div>
+            <div class="service-content-box">
+              <h4 class="h4 service-item-title">3D Modeling</h4>
+              <p class="service-item-text">
+                High-quality 3D models, character design, and virtual environment creation.
               </p>
             </div>
           </li>
         </ul>
       </section>
-
-      <!-- Testimonials (Optional - Remove if not needed) -->
-      <section class="testimonials">
-        <h3 class="h3 testimonials-title">Testimonials</h3>
-        <ul class="testimonials-list has-scrollbar">
-          <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-              <figure class="testimonials-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-              </figure>
-              <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-              <div class="testimonials-text" data-testimonials-text>
-                <p>
-                  [Your Name] was hired to create a corporate identity. We were very pleased with the work done.
-                </p>
-              </div>
-            </div>
-          </li>
-          <li class="testimonials-item">
-            <div class="content-card" data-testimonials-item>
-              <figure class="testimonials-avatar-box">
-                <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-              </figure>
-              <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-              <div class="testimonials-text" data-testimonials-text>
-                <p>
-                  [Your Name] has a lot of experience and is very concerned about the needs of clients.
-                </p>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <!-- Remove Clients section if not needed -->
     </article>
 
-    <!-- Resume Section (Education Removed) -->
-    <article class="resume" data-page="resume">
+    <!-- Skills Section -->
+    <article class="skills" data-page="skills">
       <header>
-        <h2 class="h2 article-title">Resume</h2>
+        <h2 class="h2 article-title">My Skills</h2>
       </header>
 
-      <!-- Experience Only (Education Removed) -->
-      <section class="timeline">
-        <div class="title-wrapper">
-          <div class="icon-box">
-            <ion-icon name="briefcase-outline"></ion-icon>
-          </div>
-          <h3 class="h3">Experience</h3>
-        </div>
-
-        <ol class="timeline-list">
-          <li class="timeline-item">
-            <h4 class="h4 timeline-item-title">Creative director</h4>
-            <span>2015 — Present</span>
-            <p class="timeline-text">
-              Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
-            </p>
-          </li>
-
-          <li class="timeline-item">
-            <h4 class="h4 timeline-item-title">Art director</h4>
-            <span>2013 — 2015</span>
-            <p class="timeline-text">
-              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
-            </p>
-          </li>
-
-          <li class="timeline-item">
-            <h4 class="h4 timeline-item-title">Web designer</h4>
-            <span>2010 — 2013</span>
-            <p class="timeline-text">
-              Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
-            </p>
-          </li>
-        </ol>
-      </section>
-
-      <!-- Skills -->
-      <section class="skill">
-        <h3 class="h3 skills-title">My skills</h3>
+      <section class="skills-section">
+        <h3 class="h3 skills-category-title">Creative Skills</h3>
+        
         <ul class="skills-list content-card">
           <li class="skills-item">
             <div class="title-wrapper">
-              <h5 class="h5">Web Design</h5>
-              <data value="80">80%</data>
+              <h5 class="h5">Graphics Design</h5>
+              <data value="95">95%</data>
             </div>
             <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 80%;"></div>
+              <div class="skill-progress-fill" style="width: 95%;"></div>
             </div>
           </li>
 
           <li class="skills-item">
             <div class="title-wrapper">
-              <h5 class="h5">Graphic Design</h5>
-              <data value="70">70%</data>
-            </div>
-            <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 70%;"></div>
-            </div>
-          </li>
-
-          <li class="skills-item">
-            <div class="title-wrapper">
-              <h5 class="h5">Branding</h5>
+              <h5 class="h5">Clothing Design</h5>
               <data value="90">90%</data>
             </div>
             <div class="skill-progress-bg">
@@ -301,14 +234,82 @@
 
           <li class="skills-item">
             <div class="title-wrapper">
-              <h5 class="h5">WordPress</h5>
-              <data value="50">50%</data>
+              <h5 class="h5">Discord Services</h5>
+              <data value="92">92%</data>
             </div>
             <div class="skill-progress-bg">
-              <div class="skill-progress-fill" style="width: 50%;"></div>
+              <div class="skill-progress-fill" style="width: 92%;"></div>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">Photography</h5>
+              <data value="88">88%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 88%;"></div>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">Building & Architecture</h5>
+              <data value="85">85%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 85%;"></div>
+            </div>
+          </li>
+
+          <li class="skills-item">
+            <div class="title-wrapper">
+              <h5 class="h5">3D Modeling</h5>
+              <data value="87">87%</data>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 87%;"></div>
             </div>
           </li>
         </ul>
+      </section>
+
+      <section class="skills-section">
+        <h3 class="h3 skills-category-title">Tools & Software</h3>
+        
+        <div class="tools-grid">
+          <div class="tool-item">
+            <div class="tool-icon">
+              <i class="fab fa-adobe"></i>
+            </div>
+            <h5 class="h5">Adobe Creative Suite</h5>
+            <p>Photoshop, Illustrator, After Effects</p>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h5 class="h5">3D Software</h5>
+            <p>Blender, Maya, 3DS Max</p>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-icon">
+              <i class="fab fa-discord"></i>
+            </div>
+            <h5 class="h5">Discord Tools</h5>
+            <p>Bot Development, Server Management</p>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-icon">
+              <i class="fas fa-camera"></i>
+            </div>
+            <h5 class="h5">Photography Tools</h5>
+            <p>Lightroom, Capture One, DaVinci</p>
+          </div>
+        </div>
       </section>
     </article>
 
@@ -324,13 +325,22 @@
             <button class="active" data-filter-btn>All</button>
           </li>
           <li class="filter-item">
-            <button data-filter-btn>Web Design</button>
+            <button data-filter-btn>Graphics</button>
           </li>
           <li class="filter-item">
-            <button data-filter-btn>Applications</button>
+            <button data-filter-btn>Clothing</button>
           </li>
           <li class="filter-item">
-            <button data-filter-btn>Web Development</button>
+            <button data-filter-btn>Discord</button>
+          </li>
+          <li class="filter-item">
+            <button data-filter-btn>Photography</button>
+          </li>
+          <li class="filter-item">
+            <button data-filter-btn>Building</button>
+          </li>
+          <li class="filter-item">
+            <button data-filter-btn>Modeling</button>
           </li>
         </ul>
 
@@ -347,86 +357,280 @@
               <button data-select-item>All</button>
             </li>
             <li class="select-item">
-              <button data-select-item>Web Design</button>
+              <button data-select-item>Graphics</button>
             </li>
             <li class="select-item">
-              <button data-select-item>Applications</button>
+              <button data-select-item>Clothing</button>
             </li>
             <li class="select-item">
-              <button data-select-item>Web Development</button>
+              <button data-select-item>Discord</button>
+            </li>
+            <li class="select-item">
+              <button data-select-item>Photography</button>
+            </li>
+            <li class="select-item">
+              <button data-select-item>Building</button>
+            </li>
+            <li class="select-item">
+              <button data-select-item>Modeling</button>
             </li>
           </ul>
         </div>
 
         <ul class="project-list">
-          <li class="project-item active" data-filter-item data-category="web development">
+          <!-- Graphics Projects -->
+          <li class="project-item active" data-filter-item data-category="graphics">
             <a href="#">
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                <img src="./assets/images/graphics/graphics1.jpg" alt="Graphics Project 1" loading="lazy">
               </figure>
-              <h3 class="project-title">Finance</h3>
-              <p class="project-category">Web Development</p>
+              <h3 class="project-title">Modern Logo Design</h3>
+              <p class="project-category">Graphics</p>
             </a>
           </li>
 
-          <li class="project-item active" data-filter-item data-category="web design">
+          <li class="project-item active" data-filter-item data-category="graphics">
             <a href="#">
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="./assets/images/project-2.jpg" alt="orizon" loading="lazy">
+                <img src="./assets/images/graphics/graphics2.jpg" alt="Graphics Project 2" loading="lazy">
               </figure>
-              <h3 class="project-title">Orizon</h3>
-              <p class="project-category">Web Design</p>
+              <h3 class="project-title">Brand Identity</h3>
+              <p class="project-category">Graphics</p>
             </a>
           </li>
 
-          <li class="project-item active" data-filter-item data-category="web design">
+          <li class="project-item active" data-filter-item data-category="graphics">
             <a href="#">
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                <img src="./assets/images/graphics/graphics3.jpg" alt="Graphics Project 3" loading="lazy">
               </figure>
-              <h3 class="project-title">Fundo</h3>
-              <p class="project-category">Web Design</p>
+              <h3 class="project-title">Digital Illustration</h3>
+              <p class="project-category">Graphics</p>
             </a>
           </li>
 
-          <li class="project-item active" data-filter-item data-category="applications">
+          <!-- Clothing Projects -->
+          <li class="project-item active" data-filter-item data-category="clothing">
             <a href="#">
               <figure class="project-img">
                 <div class="project-item-icon-box">
                   <ion-icon name="eye-outline"></ion-icon>
                 </div>
-                <img src="./assets/images/project-4.jpg" alt="brawlhalla" loading="lazy">
+                <img src="./assets/images/clothing/clothing1.jpg" alt="Clothing Design 1" loading="lazy">
               </figure>
-              <h3 class="project-title">Brawlhalla</h3>
-              <p class="project-category">Applications</p>
+              <h3 class="project-title">Streetwear Collection</h3>
+              <p class="project-category">Clothing</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="clothing">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/clothing/clothing2.jpg" alt="Clothing Design 2" loading="lazy">
+              </figure>
+              <h3 class="project-title">Pattern Design</h3>
+              <p class="project-category">Clothing</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="clothing">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/clothing/clothing3.jpg" alt="Clothing Design 3" loading="lazy">
+              </figure>
+              <h3 class="project-title">Textile Artwork</h3>
+              <p class="project-category">Clothing</p>
+            </a>
+          </li>
+
+          <!-- Discord Projects -->
+          <li class="project-item active" data-filter-item data-category="discord">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/discord/discord1.jpg" alt="Discord Server 1" loading="lazy">
+              </figure>
+              <h3 class="project-title">Gaming Community</h3>
+              <p class="project-category">Discord</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="discord">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/discord/discord2.jpg" alt="Discord Server 2" loading="lazy">
+              </figure>
+              <h3 class="project-title">Custom Bot Setup</h3>
+              <p class="project-category">Discord</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="discord">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/discord/discord3.jpg" alt="Discord Server 3" loading="lazy">
+              </figure>
+              <h3 class="project-title">Moderation System</h3>
+              <p class="project-category">Discord</p>
+            </a>
+          </li>
+
+          <!-- Photography Projects -->
+          <li class="project-item active" data-filter-item data-category="photography">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/photography/photo1.jpg" alt="Photography 1" loading="lazy">
+              </figure>
+              <h3 class="project-title">Urban Photography</h3>
+              <p class="project-category">Photography</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="photography">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/photography/photo2.jpg" alt="Photography 2" loading="lazy">
+              </figure>
+              <h3 class="project-title">Portrait Series</h3>
+              <p class="project-category">Photography</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="photography">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/photography/photo3.jpg" alt="Photography 3" loading="lazy">
+              </figure>
+              <h3 class="project-title">Landscape Collection</h3>
+              <p class="project-category">Photography</p>
+            </a>
+          </li>
+
+          <!-- Building Projects -->
+          <li class="project-item active" data-filter-item data-category="building">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/building/building1.jpg" alt="Building Project 1" loading="lazy">
+              </figure>
+              <h3 class="project-title">Modern House Design</h3>
+              <p class="project-category">Building</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="building">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/building/building2.jpg" alt="Building Project 2" loading="lazy">
+              </figure>
+              <h3 class="project-title">Commercial Building</h3>
+              <p class="project-category">Building</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="building">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/building/building3.jpg" alt="Building Project 3" loading="lazy">
+              </figure>
+              <h3 class="project-title">Interior Design</h3>
+              <p class="project-category">Building</p>
+            </a>
+          </li>
+
+          <!-- Modeling Projects -->
+          <li class="project-item active" data-filter-item data-category="modeling">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/modeling/modeling1.jpg" alt="3D Model 1" loading="lazy">
+              </figure>
+              <h3 class="project-title">Character Design</h3>
+              <p class="project-category">Modeling</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="modeling">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/modeling/modeling2.jpg" alt="3D Model 2" loading="lazy">
+              </figure>
+              <h3 class="project-title">Vehicle Model</h3>
+              <p class="project-category">Modeling</p>
+            </a>
+          </li>
+
+          <li class="project-item active" data-filter-item data-category="modeling">
+            <a href="#">
+              <figure class="project-img">
+                <div class="project-item-icon-box">
+                  <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <img src="./assets/images/modeling/modeling3.jpg" alt="3D Model 3" loading="lazy">
+              </figure>
+              <h3 class="project-title">Environment Design</h3>
+              <p class="project-category">Modeling</p>
             </a>
           </li>
         </ul>
+
+        <!-- Load More Button -->
+        <div class="load-more">
+          <button class="load-more-btn" id="loadMoreBtn">Load More Projects</button>
+        </div>
       </section>
     </article>
 
-    <!-- Contact Section (Modified for Discord/Roblox) -->
+    <!-- Contact Section -->
     <article class="contact" data-page="contact">
       <header>
-        <h2 class="h2 article-title">Contact</h2>
+        <h2 class="h2 article-title">Contact Me</h2>
       </header>
-
-      <section class="mapbox" data-mapbox>
-        <figure>
-          <iframe
-            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=Your+City,+Your+Country"
-            width="400" height="300" loading="lazy"></iframe>
-        </figure>
-      </section>
 
       <section class="contact-form">
         <h3 class="h3 form-title">Get In Touch</h3>
@@ -441,14 +645,17 @@
               <h4 class="h4 platform-title">Discord</h4>
               <p class="platform-username">YourUsername#1234</p>
               <div class="platform-actions">
-                <a href="https://discord.com/users/your-id" class="platform-btn" target="_blank">
-                  <i class="fas fa-user"></i> Direct Message
-                </a>
+                <button class="platform-btn copy-discord-btn" data-username="YourUsername#1234">
+                  <i class="fas fa-copy"></i> Copy Username
+                </button>
                 <a href="https://discord.gg/yourservercode" class="platform-btn server-btn" target="_blank">
-                  <i class="fas fa-users"></i> Join Server
+                  <i class="fas fa-users"></i> Join My Server
                 </a>
               </div>
-              <p class="platform-note">I'm most active on Discord. Best way to reach me!</p>
+              <div class="response-time">
+                <i class="fas fa-clock"></i>
+                <span>Response Time: Usually within 24 hours</span>
+              </div>
             </div>
 
             <!-- Roblox Card -->
@@ -463,35 +670,39 @@
                   <i class="fas fa-id-card"></i> View Profile
                 </a>
                 <a href="https://www.roblox.com/games/your-game" class="platform-btn server-btn" target="_blank">
-                  <i class="fas fa-play"></i> Play Game
+                  <i class="fas fa-play"></i> Play My Game
                 </a>
               </div>
-              <p class="platform-note">Check out my Roblox creations and games!</p>
+              <div class="response-time">
+                <i class="fas fa-clock"></i>
+                <span>In-game messages work best</span>
+              </div>
             </div>
           </div>
 
           <div class="contact-instructions">
             <h4 class="h4 instructions-title">How to Contact Me</h4>
             <ol class="instructions-list">
-              <li><strong>Discord:</strong> Add me as a friend or join my server for quick responses</li>
-              <li><strong>Roblox:</strong> Friend me on Roblox or message me in-game</li>
-              <li><strong>Response Time:</strong> I typically respond within 24 hours on Discord</li>
-              <li><strong>Collaborations:</strong> Open to Roblox game development projects</li>
+              <li><strong>Discord Direct Messages:</strong> Best for quick responses and project discussions</li>
+              <li><strong>Discord Server:</strong> Join for community support and updates</li>
+              <li><strong>Roblox Messages:</strong> For game-related inquiries and collaborations</li>
+              <li><strong>Email:</strong> For formal inquiries and documentation</li>
             </ol>
             
-            <div class="qr-codes">
-              <div class="qr-item">
-                <h5 class="h5">Discord Server QR</h5>
-                <div class="qr-placeholder">
-                  <i class="fas fa-qrcode"></i>
-                  <p>Add Discord Server QR here</p>
+            <div class="availability">
+              <h5 class="h5">My Availability</h5>
+              <div class="availability-grid">
+                <div class="availability-item">
+                  <div class="day">Mon - Fri</div>
+                  <div class="time">9:00 AM - 6:00 PM</div>
                 </div>
-              </div>
-              <div class="qr-item">
-                <h5 class="h5">Roblox Profile QR</h5>
-                <div class="qr-placeholder">
-                  <i class="fas fa-qrcode"></i>
-                  <p>Add Roblox QR here</p>
+                <div class="availability-item">
+                  <div class="day">Saturday</div>
+                  <div class="time">10:00 AM - 4:00 PM</div>
+                </div>
+                <div class="availability-item">
+                  <div class="day">Sunday</div>
+                  <div class="time">Limited Availability</div>
                 </div>
               </div>
             </div>
