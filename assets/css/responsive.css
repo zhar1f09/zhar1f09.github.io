@@ -1,120 +1,149 @@
 /* Responsive Design */
-@media (max-width: 1200px) {
+
+/* Tablet and Below */
+@media (max-width: 992px) {
   .main-content {
-    margin-left: 0;
     padding: 2rem;
   }
   
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    z-index: 1000;
-    transition: left 0.3s ease;
-  }
-  
-  .sidebar.active {
-    left: 0;
-  }
-  
-  .mobile-menu-btn {
-    display: block;
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    z-index: 1001;
-    background: var(--primary-color);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-}
-
-@media (max-width: 768px) {
   .navbar-list {
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 1rem;
+    gap: 1rem;
   }
   
-  .contact-platforms {
-    grid-template-columns: 1fr;
+  .navbar-link {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.4rem;
   }
   
-  .qr-codes {
-    grid-template-columns: 1fr;
+  .service-list {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .project-list {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 2rem;
   }
   
   .service-list {
     grid-template-columns: 1fr;
   }
   
+  .project-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-platforms {
+    grid-template-columns: 1fr;
+  }
+  
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .filter-list {
-    justify-content: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 1rem;
+    justify-content: flex-start;
+  }
+  
+  .navbar-list {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 1rem;
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile Portrait */
+@media (max-width: 576px) {
   :root {
-    --font-size-xl: 2.4rem;
-    --font-size-lg: 1.8rem;
-    --font-size-md: 1.4rem;
+    --section-spacing: 4rem;
     --card-padding: 1.5rem;
+  }
+  
+  .main-content {
+    padding: 1.5rem;
+  }
+  
+  .article-title {
+    font-size: 2.4rem;
+  }
+  
+  .service-item {
+    padding: 1.5rem;
   }
   
   .platform-card {
     padding: 1.5rem;
   }
   
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .availability-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-img {
+    height: 200px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 400px) {
+  .navbar-link {
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+  }
+  
+  .service-icon-box {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .service-icon-box img {
+    width: 25px;
+    height: 25px;
+  }
+  
   .platform-username {
     font-size: 1.4rem;
+    padding: 0.8rem;
   }
   
-  .qr-placeholder {
-    width: 150px;
-    height: 150px;
-  }
-  
-  .article-title {
-    font-size: 2.2rem;
+  .platform-btn {
+    padding: 0.8rem 1rem;
+    font-size: 1.2rem;
   }
 }
 
-/* Mobile Menu Button */
-.mobile-menu-btn {
-  display: none;
-}
-
-@media (max-width: 1200px) {
-  .mobile-menu-btn {
-    display: flex;
+/* Height-based adjustments */
+@media (max-height: 700px) {
+  .sidebar {
+    padding: 1.5rem;
   }
   
-  .sidebar-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
+  .avatar-box {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
   }
   
-  .sidebar-overlay.active {
-    display: block;
+  .contacts-list {
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-item {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
   }
 }
 
@@ -122,7 +151,10 @@
 @media print {
   .sidebar,
   .navbar,
-  .mobile-menu-btn {
+  .mobile-menu-btn,
+  .platform-actions,
+  .load-more,
+  .social-list {
     display: none;
   }
   
@@ -134,5 +166,14 @@
   article[data-page] {
     display: block !important;
     page-break-inside: avoid;
+  }
+  
+  body {
+    color: #000;
+    background: #fff;
+  }
+  
+  .project-item {
+    break-inside: avoid;
   }
 }
