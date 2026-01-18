@@ -1,682 +1,737 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roblox Developer Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Developer | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
 </head>
 <body>
-  <div class="main-content">
+
+    <!-- ### Sidebar ### -->
     <aside class="sidebar" data-sidebar>
-      <div class="sidebar-info">
-        <figure class="avatar-box">
-          <img src="./assets/images/avatar.jpg" alt="Roblox Developer" width="80">
-        </figure>
-        <div class="info-content">
-          <h1 class="name" title="RobloxDev">RobloxDev</h1>
-          <p class="title">Roblox Game Developer</p>
+        <div class="sidebar-info">
+            <figure class="avatar-box">
+                <img src="./assets/images/my-avatar.png" alt="Roblox Developer" width="80">
+            </figure>
+            <div class="info-content">
+                <h1 class="name" title="RobloxDev">RobloxDev</h1>
+                <p class="title">Roblox Game Developer</p>
+            </div>
+            <button class="info_more-btn" data-sidebar-btn>
+                <span>Show Contacts</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
         </div>
-        <button class="info_more-btn" data-sidebar-btn>
-          <span>Show Contacts</span>
-          <i class="fas fa-chevron-down"></i>
-        </button>
-      </div>
-      <div class="sidebar-info_more">
-        <div class="separator"></div>
-        <ul class="contacts-list">
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fab fa-discord"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Discord</p>
-              <a href="#" class="contact-link" id="discordUsername">robloxdev#1234</a>
-              <button class="copy-btn" data-copy="robloxdev#1234">Copy</button>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Discord Server</p>
-              <a href="#" class="contact-link" id="discordServer">discord.gg/robloxdev</a>
-              <button class="copy-btn" data-copy="discord.gg/robloxdev">Copy</button>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Email</p>
-              <a href="mailto:contact@robloxdev.com" class="contact-link">contact@robloxdev.com</a>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fas fa-user-friends"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Roblox Friend</p>
-              <a href="#" class="contact-link" id="robloxFriend">RobloxDevMaster</a>
-              <button class="copy-btn" data-copy="RobloxDevMaster">Copy</button>
-            </div>
-          </li>
-          <li class="contact-item">
-            <div class="icon-box">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="contact-info">
-              <p class="contact-title">Roblox Group</p>
-              <a href="#" class="contact-link" id="robloxGroup">RobloxDevStudios</a>
-              <button class="copy-btn" data-copy="RobloxDevStudios">Copy</button>
-            </div>
-          </li>
-        </ul>
-        <div class="separator"></div>
-        <ul class="social-list">
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <i class="fab fa-roblox"></i>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <i class="fab fa-discord"></i>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <i class="fab fa-github"></i>
-            </a>
-          </li>
-          <li class="social-item">
-            <a href="#" class="social-link">
-              <i class="fab fa-youtube"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+
+        <div class="sidebar-info_more">
+            <div class="separator"></div>
+            <ul class="contacts-list">
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Discord</p>
+                        <a href="#" class="contact-link">robloxdev#1234</a>
+                        <button class="copy-btn" onclick="copyToClipboard('robloxdev#1234')">Copy</button>
+                    </div>
+                </li>
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Discord Server</p>
+                        <a href="#" class="contact-link">discord.gg/robloxdev</a>
+                        <button class="copy-btn" onclick="copyToClipboard('discord.gg/robloxdev')">Copy</button>
+                    </div>
+                </li>
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Email</p>
+                        <a href="mailto:contact@robloxdev.com" class="contact-link">contact@robloxdev.com</a>
+                    </div>
+                </li>
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Roblox Friend</p>
+                        <a href="#" class="contact-link">RobloxDevMaster</a>
+                        <button class="copy-btn" onclick="copyToClipboard('RobloxDevMaster')">Copy</button>
+                    </div>
+                </li>
+                <li class="contact-item">
+                    <div class="icon-box">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="contact-info">
+                        <p class="contact-title">Roblox Group</p>
+                        <a href="#" class="contact-link">RobloxDevStudios</a>
+                        <button class="copy-btn" onclick="copyToClipboard('RobloxDevStudios')">Copy</button>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="separator"></div>
+
+            <ul class="social-list">
+                <li class="social-item">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-roblox"></i>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <li class="social-item">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </aside>
 
-    <div class="main">
-      <nav class="navbar">
-        <ul class="navbar-list">
-          <li class="navbar-item">
-            <button class="navbar-link active" data-nav-link>About</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Portfolio</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Services</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Testimonials</button>
-          </li>
-          <li class="navbar-item">
-            <button class="navbar-link" data-nav-link>Contact</button>
-          </li>
-        </ul>
-      </nav>
-
-      <article class="about active" data-page="about">
-        <header>
-          <h2 class="h2 article-title">About me</h2>
-        </header>
-        <section class="about-text">
-          <p>
-            I'm a passionate Roblox Game Developer with over 3 years of experience creating immersive experiences 
-            on the Roblox platform. I specialize in Lua scripting, game mechanics design, and 3D environment creation.
-          </p>
-          <p>
-            My job is to build your game so that it's both functional and engaging for players. I add a personal touch 
-            to your game concepts and make sure they're optimized, visually appealing, and easy to navigate. My aim is 
-            to bring your vision to life in the most creative and efficient way possible.
-          </p>
-        </section>
-
-        <section class="service">
-          <h3 class="h3 service-title">What i'm doing</h3>
-          <ul class="service-list">
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-design.svg" alt="design icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Game Design</h4>
-                <p class="service-item-text">
-                  The most modern and innovative game design at a professional level.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Lua Scripting</h4>
-                <p class="service-item-text">
-                  High-quality Lua scripting for complex game mechanics and systems.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">UI/UX Design</h4>
-                <p class="service-item-text">
-                  Professional design of intuitive and beautiful user interfaces.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">3D Modeling</h4>
-                <p class="service-item-text">
-                  Creation of high-quality 3D models and environments for Roblox.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <section class="testimonials">
-          <h3 class="h3 testimonials-title">Testimonials</h3>
-          <ul class="testimonials-list has-scrollbar">
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel Lewis</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    This developer created an amazing RPG game for our studio. The Lua scripting was clean, efficient, 
-                    and the game mechanics were implemented perfectly. Our players loved the engaging gameplay and 
-                    smooth performance. Highly recommended for any Roblox project!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica Miller</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    We hired this developer to optimize our existing game, and the results were outstanding. 
-                    Frame rates improved by 40%, and memory usage decreased significantly. The developer was 
-                    professional, communicative, and delivered ahead of schedule. Will definitely work with again!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily Evans</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    The 3D models and environments created for our simulator game were exceptional. Attention to 
-                    detail, optimization for Roblox, and creative design made our game stand out. Players specifically 
-                    mention how much they love the game's visuals. Excellent work!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry William</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    As a fellow developer, I collaborated on a complex game project. The Lua scripting skills were 
-                    impressive, with clean, modular code that was easy to understand and extend. Great problem-solving 
-                    abilities and a deep understanding of Roblox's systems.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <div class="modal-container" data-modal-container>
-          <div class="overlay" data-overlay></div>
-          <section class="testimonials-modal">
-            <button class="modal-close-btn" data-modal-close-btn>
-              <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-img-wrapper">
-              <figure class="modal-avatar-box">
-                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-              </figure>
-              <img src="./assets/images/icon-quote.svg" alt="quote icon">
-            </div>
-            <div class="modal-content">
-              <h4 class="h3 modal-title" data-modal-title>Daniel Lewis</h4>
-              <time datetime="2021-06-14">14 June, 2021</time>
-              <div data-modal-text>
-                <p>
-                  This developer created an amazing RPG game for our studio. The Lua scripting was clean, efficient, 
-                  and the game mechanics were implemented perfectly. Our players loved the engaging gameplay and 
-                  smooth performance. Highly recommended for any Roblox project!
-                </p>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <section class="clients">
-          <h3 class="h3 clients-title">Games I've Worked On</h3>
-          <ul class="clients-list has-scrollbar">
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-1-color.png" alt="client logo">
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-2-color.png" alt="client logo">
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-3-color.png" alt="client logo">
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-4-color.png" alt="client logo">
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-5-color.png" alt="client logo">
-              </a>
-            </li>
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
-          </ul>
-        </section>
-      </article>
-
-      <article class="portfolio" data-page="portfolio">
-        <header>
-          <h2 class="h2 article-title">Portfolio</h2>
-        </header>
-        <section class="projects">
-          <ul class="filter-list">
-            <li class="filter-item">
-              <button class="active" data-filter-btn>All</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>RPG Games</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Simulators</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Obby</button>
-            </li>
-            <li class="filter-item">
-              <button data-filter-btn>Tycoon</button>
-            </li>
-          </ul>
-          <div class="filter-select-box">
-            <button class="filter-select" data-select>
-              <div class="select-value" data-selecct-value>Select category</div>
-              <div class="select-icon">
-                <i class="fas fa-chevron-down"></i>
-              </div>
-            </button>
-            <ul class="select-list">
-              <li class="select-item">
-                <button data-select-item>All</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>RPG Games</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Simulators</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Obby</button>
-              </li>
-              <li class="select-item">
-                <button data-select-item>Tycoon</button>
-              </li>
+    <!-- ### Main Content ### -->
+    <div class="main-content">
+        <!-- ### Navigation ### -->
+        <nav class="navbar">
+            <ul class="navbar-list">
+                <li class="navbar-item">
+                    <button class="navbar-link active" data-nav-link>About</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Resume</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Portfolio</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Blog</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Contact</button>
+                </li>
             </ul>
-          </div>
-          <ul class="project-list">
-            <li class="project-item active" data-filter-item data-category="rpg games">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <img src="./assets/images/project-1.jpg" alt="Fantasy RPG" loading="lazy">
-                </figure>
-                <h3 class="project-title">Fantasy RPG World</h3>
-                <p class="project-category">RPG Games</p>
-              </a>
-            </li>
-            <li class="project-item active" data-filter-item data-category="simulators">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <img src="./assets/images/project-2.jpg" alt="Pet Simulator" loading="lazy">
-                </figure>
-                <h3 class="project-title">Epic Pet Simulator</h3>
-                <p class="project-category">Simulators</p>
-              </a>
-            </li>
-            <li class="project-item active" data-filter-item data-category="obby">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <img src="./assets/images/project-3.jpg" alt="Obby Challenge" loading="lazy">
-                </figure>
-                <h3 class="project-title">Extreme Obby Challenge</h3>
-                <p class="project-category">Obby</p>
-              </a>
-            </li>
-            <li class="project-item active" data-filter-item data-category="tycoon">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <img src="./assets/images/project-4.jpg" alt="Restaurant Tycoon" loading="lazy">
-                </figure>
-                <h3 class="project-title">Restaurant Tycoon</h3>
-                <p class="project-category">Tycoon</p>
-              </a>
-            </li>
-            <li class="project-item active" data-filter-item data-category="rpg games">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <img src="./assets/images/project-5.jpg" alt="Adventure RPG" loading="lazy">
-                </figure>
-                <h3 class="project-title">Space Adventure RPG</h3>
-                <p class="project-category">RPG Games</p>
-              </a>
-            </li>
-            <li class="project-item active" data-filter-item data-category="simulators">
-              <a href="#">
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <i class="fas fa-gamepad"></i>
-                  </div>
-                  <img src="./assets/images/project-6.jpg" alt="Farming Simulator" loading="lazy">
-                </figure>
-                <h3 class="project-title">Farming Simulator X</h3>
-                <p class="project-category">Simulators</p>
-              </a>
-            </li>
-          </ul>
-        </section>
-      </article>
+        </nav>
 
-      <article class="services" data-page="services">
-        <header>
-          <h2 class="h2 article-title">My Skills</h2>
-        </header>
-        <section class="skills">
-          <h3 class="h3 skills-title">Development Skills</h3>
-          <ul class="skills-list content-card">
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Lua Scripting</h5>
-                <data value="95">95%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 95%;"></div>
-              </div>
-            </li>
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Game Design</h5>
-                <data value="90">90%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 90%;"></div>
-              </div>
-            </li>
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">3D Modeling</h5>
-                <data value="85">85%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 85%;"></div>
-              </div>
-            </li>
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">UI/UX Design</h5>
-                <data value="80">80%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 80%;"></div>
-              </div>
-            </li>
-            <li class="skills-item">
-              <div class="title-wrapper">
-                <h5 class="h5">Game Optimization</h5>
-                <data value="88">88%</data>
-              </div>
-              <div class="skill-progress-bg">
-                <div class="skill-progress-fill" style="width: 88%;"></div>
-              </div>
-            </li>
-          </ul>
-        </section>
+        <!-- ### About ### -->
+        <article class="about active" data-page="about">
+            <header>
+                <h2 class="h2 article-title">About me</h2>
+            </header>
+            <section class="about-text">
+                <p>
+                    I'm a passionate Roblox Game Developer with over 3 years of experience creating immersive experiences 
+                    on the Roblox platform. I specialize in Lua scripting, game mechanics design, and 3D environment creation.
+                </p>
+                <p>
+                    My job is to build your game so that it's both functional and engaging for players. I add a personal touch 
+                    to your game concepts and make sure they're optimized, visually appealing, and easy to navigate. My aim is 
+                    to bring your vision to life in the most creative and efficient way possible.
+                </p>
+            </section>
 
-        <section class="service">
-          <h3 class="h3 service-title">Detailed Services</h3>
-          <ul class="service-list">
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-design.svg" alt="design icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Complete Game Development</h4>
-                <p class="service-item-text">
-                  Full-cycle game development from concept to launch, including design, scripting, modeling, and testing.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Scripting & Systems</h4>
-                <p class="service-item-text">
-                  Complex game systems, economy design, data stores, leaderboards, and custom gameplay mechanics.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-app.svg" alt="mobile app icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">UI/UX & GUI Design</h4>
-                <p class="service-item-text">
-                  Intuitive user interfaces, responsive designs, and engaging user experiences tailored to your game.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-photo.svg" alt="camera icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">3D Assets & Environments</h4>
-                <p class="service-item-text">
-                  Custom 3D models, textures, animations, and immersive environments optimized for Roblox performance.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-design.svg" alt="design icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Game Optimization</h4>
-                <p class="service-item-text">
-                  Performance tuning, memory optimization, and efficiency improvements for smooth gameplay.
-                </p>
-              </div>
-            </li>
-            <li class="service-item">
-              <div class="service-icon-box">
-                <img src="./assets/icons/icon-dev.svg" alt="Web development icon" width="40">
-              </div>
-              <div class="service-content-box">
-                <h4 class="h4 service-item-title">Bug Fixing & Support</h4>
-                <p class="service-item-text">
-                  Debugging, fixing issues, and providing ongoing support for existing Roblox games.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </article>
+            <!-- ### Service ### -->
+            <section class="service">
+                <h3 class="h3 service-title">What i'm doing</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Game Design</h4>
+                            <p class="service-item-text">
+                                The most modern and high-quality design made at a professional level.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Lua Scripting</h4>
+                            <p class="service-item-text">
+                                High-quality development of complex game systems at the professional level.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">UI/UX Design</h4>
+                            <p class="service-item-text">
+                                Professional development of user interfaces for iOS and Android.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">3D Modeling</h4>
+                            <p class="service-item-text">
+                                I make high-quality 3D models of any category at a professional level.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
 
-      <article class="testimonials" data-page="testimonials">
-        <header>
-          <h2 class="h2 article-title">Testimonials</h2>
-        </header>
-        <section class="testimonials-section">
-          <h3 class="h3 testimonials-title">What Clients Say</h3>
-          <ul class="testimonials-list has-scrollbar">
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel Lewis</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    This developer created an amazing RPG game for our studio. The Lua scripting was clean, efficient, 
-                    and the game mechanics were implemented perfectly. Our players loved the engaging gameplay and 
-                    smooth performance. Highly recommended for any Roblox project!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica Miller</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    We hired this developer to optimize our existing game, and the results were outstanding. 
-                    Frame rates improved by 40%, and memory usage decreased significantly. The developer was 
-                    professional, communicative, and delivered ahead of schedule. Will definitely work with again!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily Evans</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    The 3D models and environments created for our simulator game were exceptional. Attention to 
-                    detail, optimization for Roblox, and creative design made our game stand out. Players specifically 
-                    mention how much they love the game's visuals. Excellent work!
-                  </p>
-                </div>
-              </div>
-            </li>
-            <li class="testimonials-item">
-              <div class="content-card" data-testimonials-item>
-                <figure class="testimonials-avatar-box">
-                  <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
-                </figure>
-                <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry William</h4>
-                <div class="testimonials-text" data-testimonials-text>
-                  <p>
-                    As a fellow developer, I collaborated on a complex game project. The Lua scripting skills were 
-                    impressive, with clean, modular code that was easy to understand and extend. Great problem-solving 
-                    abilities and a deep understanding of Roblox's systems.
-                  </p>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </section>
-      </article>
+            <!-- ### Testimonials ### -->
+            <section class="testimonials">
+                <h3 class="h3 testimonials-title">Testimonials</h3>
+                <ul class="testimonials-list has-scrollbar">
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar>
+                            </figure>
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel Lewis</h4>
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>
+                                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar>
+                            </figure>
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica Miller</h4>
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>
+                                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar>
+                            </figure>
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily Evans</h4>
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>
+                                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
+                            </figure>
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry William</h4>
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>
+                                    Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
 
-      <article class="contact" data-page="contact">
-        <header>
-          <h2 class="h2 article-title">Contact</h2>
-        </header>
-        <section class="mapbox" data-mapbox>
-          <figure>
-            <div class="roblox-placeholder">
-              <i class="fab fa-roblox"></i>
-              <h3>Roblox Development Hub</h3>
-              <p>Connect with me through Roblox platforms</p>
+            <!-- ### Testimonials Modal ### -->
+            <div class="modal-container" data-modal-container>
+                <div class="overlay" data-overlay></div>
+                <section class="testimonials-modal">
+                    <button class="modal-close-btn" data-modal-close-btn>
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="modal-img-wrapper">
+                        <figure class="modal-avatar-box">
+                            <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+                        </figure>
+                        <img src="./assets/images/icon-quote.svg" alt="quote icon">
+                    </div>
+                    <div class="modal-content">
+                        <h4 class="h3 modal-title" data-modal-title>Daniel Lewis</h4>
+                        <time datetime="2021-06-14">14 June, 2021</time>
+                        <div data-modal-text>
+                            <p>
+                                Richard was hired to create a corporate identity. We were very pleased with the work done. She has a lot of experience and is very concerned about the needs of client. Lorem ipsum dolor sit amet, ullamcous cididt consectetur adipiscing elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
+                            </p>
+                        </div>
+                    </div>
+                </section>
             </div>
-          </figure>
-        </section>
-        <section class="contact-form">
-          <h3 class="h3 form-title">Contact Form</h3>
-          <form action="#" class="form" data-form>
-            <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
-            </div>
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-            <button class="form-btn" type="submit" data-form-btn>
-              <i class="fas fa-paper-plane"></i>
-              <span>Send Message</span>
-            </button>
-          </form>
-        </section>
-      </article>
+
+            <!-- ### Clients ### -->
+            <section class="clients">
+                <h3 class="h3 clients-title">Clients</h3>
+                <ul class="clients-list has-scrollbar">
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-1-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-2-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-3-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-4-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-5-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-6-color.png" alt="client logo">
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- ### Resume ### -->
+        <article class="resume" data-page="resume">
+            <header>
+                <h2 class="h2 article-title">Resume</h2>
+            </header>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="h3">Education</h3>
+                </div>
+
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Roblox Developer Hub</h4>
+                        <span>2020 — 2021</span>
+                        <p class="timeline-text">
+                            Advanced Lua scripting and game development courses. Learned advanced game mechanics, optimization techniques, and multiplayer systems.
+                        </p>
+                    </li>
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Game Design Institute</h4>
+                        <span>2019 — 2020</span>
+                        <p class="timeline-text">
+                            Game design fundamentals, player psychology, and monetization strategies. Focus on creating engaging player experiences.
+                        </p>
+                    </li>
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">3D Art Academy</h4>
+                        <span>2018 — 2019</span>
+                        <p class="timeline-text">
+                            3D modeling, texturing, and animation for games. Specialized in low-poly modeling optimized for Roblox platform.
+                        </p>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="timeline">
+                <div class="title-wrapper">
+                    <div class="icon-box">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="h3">Experience</h3>
+                </div>
+
+                <ol class="timeline-list">
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Lead Roblox Developer</h4>
+                        <span>2021 — Present</span>
+                        <p class="timeline-text">
+                            Leading development of major Roblox games with millions of visits. Managing teams of developers and designers.
+                        </p>
+                    </li>
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Game Developer</h4>
+                        <span>2019 — 2021</span>
+                        <p class="timeline-text">
+                            Developed various Roblox games including RPGs, simulators, and obbies. Specialized in Lua scripting and game mechanics.
+                        </p>
+                    </li>
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">Junior Developer</h4>
+                        <span>2018 — 2019</span>
+                        <p class="timeline-text">
+                            Started with simple scripts and game mechanics. Learned Roblox Studio and Lua programming fundamentals.
+                        </p>
+                    </li>
+                </ol>
+            </section>
+
+            <section class="skill">
+                <h3 class="h3 skills-title">My skills</h3>
+                <ul class="skills-list content-card">
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">Lua Scripting</h5>
+                            <data value="90">90%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">Game Design</h5>
+                            <data value="85">85%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">3D Modeling</h5>
+                            <data value="80">80%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 80%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">UI/UX Design</h5>
+                            <data value="75">75%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 75%;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- ### Portfolio ### -->
+        <article class="portfolio" data-page="portfolio">
+            <header>
+                <h2 class="h2 article-title">Portfolio</h2>
+            </header>
+
+            <section class="projects">
+                <ul class="filter-list">
+                    <li class="filter-item">
+                        <button class="active" data-filter-btn>All</button>
+                    </li>
+                    <li class="filter-item">
+                        <button data-filter-btn>RPG Games</button>
+                    </li>
+                    <li class="filter-item">
+                        <button data-filter-btn>Simulators</button>
+                    </li>
+                    <li class="filter-item">
+                        <button data-filter-btn>Obby</button>
+                    </li>
+                </ul>
+
+                <div class="filter-select-box">
+                    <button class="filter-select" data-select>
+                        <div class="select-value" data-selecct-value>Select category</div>
+                        <div class="select-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+
+                    <ul class="select-list">
+                        <li class="select-item">
+                            <button data-select-item>All</button>
+                        </li>
+                        <li class="select-item">
+                            <button data-select-item>RPG Games</button>
+                        </li>
+                        <li class="select-item">
+                            <button data-select-item>Simulators</button>
+                        </li>
+                        <li class="select-item">
+                            <button data-select-item>Obby</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="project-list">
+                    <li class="project-item active" data-filter-item data-category="rpg games">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Fantasy RPG World</h3>
+                            <p class="project-category">RPG Games</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="simulators">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-2.jpg" alt="orizon" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Epic Pet Simulator</h3>
+                            <p class="project-category">Simulators</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="obby">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Extreme Obby Challenge</h3>
+                            <p class="project-category">Obby</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="rpg games">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-4.jpg" alt="brawlhalla" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Space Adventure RPG</h3>
+                            <p class="project-category">RPG Games</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="simulators">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-5.jpg" alt="dsm." loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Farming Simulator X</h3>
+                            <p class="project-category">Simulators</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="obby">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-6.jpg" alt="metaspark" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Parkour Obby Master</h3>
+                            <p class="project-category">Obby</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="rpg games">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-7.jpg" alt="summary" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Medieval Adventure</h3>
+                            <p class="project-category">RPG Games</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="simulators">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Restaurant Tycoon</h3>
+                            <p class="project-category">Simulators</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="obby">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-9.jpg" alt="arrival" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Speed Run Obby</h3>
+                            <p class="project-category">Obby</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- ### Blog ### -->
+        <article class="blog" data-page="blog">
+            <header>
+                <h2 class="h2 article-title">Blog</h2>
+            </header>
+
+            <section class="blog-posts">
+                <ul class="blog-posts-list">
+                    <li class="blog-post-item">
+                        <a href="#">
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy">
+                            </figure>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <p class="blog-category">Game Development</p>
+                                    <span class="dot"></span>
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+                                <h3 class="h3 blog-item-title">Best practices for Roblox Lua scripting</h3>
+                                <p class="blog-text">
+                                    Learn the most efficient ways to write Lua code for Roblox games.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="blog-post-item">
+                        <a href="#">
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-2.jpg" alt="Design conferences in 2022" loading="lazy">
+                            </figure>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <p class="blog-category">Game Design</p>
+                                    <span class="dot"></span>
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+                                <h3 class="h3 blog-item-title">Creating engaging game mechanics</h3>
+                                <p class="blog-text">
+                                    How to design game mechanics that keep players coming back.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="blog-post-item">
+                        <a href="#">
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-3.jpg" alt="Design conferences in 2022" loading="lazy">
+                            </figure>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <p class="blog-category">Optimization</p>
+                                    <span class="dot"></span>
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+                                <h3 class="h3 blog-item-title">Optimizing Roblox games for performance</h3>
+                                <p class="blog-text">
+                                    Techniques to improve game performance and reduce lag.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="blog-post-item">
+                        <a href="#">
+                            <figure class="blog-banner-box">
+                                <img src="./assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy">
+                            </figure>
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <p class="blog-category">3D Modeling</p>
+                                    <span class="dot"></span>
+                                    <time datetime="2022-02-23">Fab 23, 2022</time>
+                                </div>
+                                <h3 class="h3 blog-item-title">Creating low-poly models for Roblox</h3>
+                                <p class="blog-text">
+                                    Tips for making optimized 3D models that work well in Roblox.
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- ### Contact ### -->
+        <article class="contact" data-page="contact">
+            <header>
+                <h2 class="h2 article-title">Contact</h2>
+            </header>
+
+            <!-- Mapbox removed as requested -->
+
+            <section class="contact-form">
+                <h3 class="h3 form-title">Contact Form</h3>
+                <form action="#" class="form" data-form>
+                    <div class="input-wrapper">
+                        <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                        <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+                    </div>
+                    <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+                    <button class="form-btn" type="submit" disabled data-form-btn>
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </section>
+        </article>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- ### Custom JS link ### -->
+    <script src="./assets/js/script.js"></script>
+
+    <!-- ### Ionicon link ### -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard: ' + text);
+            });
+        }
+        
+        // Custom Roblox icon
+        const style = document.createElement('style');
+        style.textContent = `
+            .fa-roblox:before {
+                content: "R";
+                font-weight: bold;
+                font-family: 'Poppins', sans-serif;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
 </body>
 </html>
