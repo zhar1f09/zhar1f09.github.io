@@ -1,339 +1,377 @@
-// DOM Elements
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-const backToTopBtn = document.querySelector('.back-to-top');
+// ===== DOM ELEMENTS =====
+const navLinks = document.querySelectorAll('[data-nav-link]');
+const pages = document.querySelectorAll('[data-page]');
+const filterBtns = document.querySelectorAll('[data-filter-btn]');
+const filterItems = document.querySelectorAll('[data-filter-item]');
+const selectBox = document.querySelector('[data-select]');
+const selectItems = document.querySelectorAll('[data-select-item]');
+const selectValue = document.querySelector('[data-selecct-value]');
+const testimonialsItems = document.querySelectorAll('[data-testimonials-item]');
 const copyButtons = document.querySelectorAll('.copy-btn');
-const discordSocial = document.getElementById('discordSocial');
-const currentYearSpan = document.getElementById('currentYear');
-const statNumbers = document.querySelectorAll('.stat-number');
+const discordLinks = document.querySelectorAll('.copy-discord');
 
-// Mobile Navigation Toggle
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-        
-        // Toggle body scroll
-        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-    });
-}
-
-// Close mobile menu when clicking a link
+// ===== PAGE NAVIGATION =====
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+  link.addEventListener('click', function() {
+    // Remove active class from all links
+    navLinks.forEach(item => item.classList.remove('active'));
+    
+    // Add active class to clicked link
+    this.classList.add('active');
+    
+    // Get page name
+    const pageName = this.textContent.toLowerCase().trim();
+    
+    // Hide all pages
+    pages.forEach(page => {
+      page.classList.remove('active');
     });
+    
+    // Show selected page
+    const targetPage = document.querySelector(`[data-page="${pageName}"]`);
+    if (targetPage) {
+      targetPage.classList.add('active');
+    }
+    
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 });
 
-// Portfolio Filtering
+// ===== PORTFOLIO FILTERING =====
 if (filterBtns.length > 0) {
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            
-            // Add active class to clicked button
-            btn.classList.add('active');
-            
-            // Get filter value
-            const filterValue = btn.getAttribute('data-filter');
-            
-            // Filter items
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
-                    setTimeout(() => {
-                        item.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
-}
-
-// Copy to Clipboard Functionality
-copyButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const textToCopy = btn.getAttribute('data-text') || 
-                          btn.parentElement.querySelector('.method-value')?.textContent ||
-                          'zhar1f09';
-        
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            showNotification('Copied to clipboard!');
-            btn.innerHTML = '<i class="fas fa-check"></i> Copied';
-            btn.style.background = 'rgba(0, 255, 0, 0.1)';
-            btn.style.borderColor = '#00FF00';
-            btn.style.color = '#00FF00';
-            
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                btn.style.background = '';
-                btn.style.borderColor = '';
-                btn.style.color = '';
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-            showNotification('Failed to copy. Please try again.');
-        });
-    });
-});
-
-// Discord Social Link
-if (discordSocial) {
-    discordSocial.addEventListener('click', (e) => {
-        e.preventDefault();
-        const discordUsername = 'zhar1f09';
-        navigator.clipboard.writeText(discordUsername).then(() => {
-            showNotification('Discord username copied!');
-        });
-    });
-}
-
-// Back to Top Button
-if (backToTopBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Remove active class from all buttons
+      filterBtns.forEach(item => item.classList.remove('active'));
+      
+      // Add active class to clicked button
+      this.classList.add('active');
+      
+      const filterValue = this.textContent.toLowerCase().trim();
+      
+      // Filter items
+      filterItems.forEach(item => {
+        if (filterValue === 'all') {
+          item.classList.add('active');
         } else {
-            backToTopBtn.classList.remove('visible');
+          if (item.getAttribute('data-category').toLowerCase() === filterValue) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
         }
+      });
     });
-    
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+  });
+}
+
+// ===== MOBILE SELECT DROPDOWN =====
+if (selectBox) {
+  selectBox.addEventListener('click', function() {
+    this.parentElement.classList.toggle('active');
+  });
+  
+  selectItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const selectedValue = this.textContent.trim();
+      selectValue.textContent = selectedValue;
+      
+      // Filter items based on selection
+      const filterValue = selectedValue.toLowerCase();
+      
+      filterItems.forEach(filterItem => {
+        if (filterValue === 'all') {
+          filterItem.classList.add('active');
+        } else {
+          if (filterItem.getAttribute('data-category').toLowerCase() === filterValue) {
+            filterItem.classList.add('active');
+          } else {
+            filterItem.classList.remove('active');
+          }
+        }
+      });
+      
+      // Close dropdown
+      selectBox.parentElement.classList.remove('active');
+    });
+  });
+}
+
+// ===== TESTIMONIALS MODAL =====
+if (testimonialsItems.length > 0) {
+  testimonialsItems.forEach(item => {
+    item.addEventListener('click', function() {
+      const avatar = this.querySelector('[data-testimonials-avatar]').src;
+      const title = this.querySelector('[data-testimonials-title]').textContent;
+      const text = this.querySelector('[data-testimonials-text]').innerHTML;
+      
+      // Create modal
+      const modalContainer = document.createElement('div');
+      modalContainer.className = 'modal-container';
+      
+      const modal = document.createElement('div');
+      modal.className = 'modal active';
+      modal.innerHTML = `
+        <div class="modal-close-overlay" data-modal-close></div>
+        <div class="modal-content">
+          <button class="modal-close-btn" data-modal-close>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+          <div class="modal-img-wrapper">
+            <figure class="modal-avatar-box">
+              <img src="${avatar}" alt="${title}" width="80">
+            </figure>
+          </div>
+          <div class="modal-content-box">
+            <h4 class="h3 modal-title">${title}</h4>
+            <div class="modal-text">${text}</div>
+          </div>
+        </div>
+      `;
+      
+      modalContainer.appendChild(modal);
+      document.body.appendChild(modalContainer);
+      document.body.style.overflow = 'hidden';
+      
+      // Add close functionality
+      const closeBtns = modal.querySelectorAll('[data-modal-close]');
+      closeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          modal.classList.remove('active');
+          setTimeout(() => {
+            modalContainer.remove();
+            document.body.style.overflow = '';
+          }, 300);
         });
+      });
     });
+  });
 }
 
-// Animated Counter for Stats
-function animateCounter(element, target) {
-    let current = 0;
-    const increment = target / 50;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current) + (element.getAttribute('data-count') === '100' ? '%' : '+');
-    }, 30);
-}
-
-// Intersection Observer for Stats Animation
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            statNumbers.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-count'));
-                animateCounter(stat, target);
-            });
-            statsObserver.unobserve(entry.target);
-        }
+// ===== COPY TO CLIPBOARD =====
+copyButtons.forEach(btn => {
+  btn.addEventListener('click', function() {
+    const textToCopy = this.getAttribute('data-copy') || 'zhar1f09';
+    
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      showNotification('Copied to clipboard!');
+      
+      // Visual feedback
+      const originalHTML = this.innerHTML;
+      this.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon><span>Copied!</span>';
+      this.style.background = 'linear-gradient(135deg, #00AA00, #008800)';
+      
+      setTimeout(() => {
+        this.innerHTML = originalHTML;
+        this.style.background = '';
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      showNotification('Failed to copy. Please try again.');
     });
-}, { threshold: 0.5 });
-
-// Smooth Scrolling for Anchor Links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            const navHeight = document.querySelector('.main-nav').offsetHeight;
-            const targetPosition = targetElement.offsetTop - navHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
+  });
 });
 
-// Active Navigation Link on Scroll
-function updateActiveNavLink() {
-    const scrollPosition = window.scrollY + 100;
+// Discord links copy functionality
+discordLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const username = this.textContent.trim();
     
-    navLinks.forEach(link => {
-        const section = document.querySelector(link.getAttribute('href'));
-        if (section) {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        }
+    navigator.clipboard.writeText(username).then(() => {
+      showNotification('Discord username copied!');
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+      showNotification('Failed to copy username');
     });
-}
+  });
+});
 
-// Notification System
+// ===== NOTIFICATION SYSTEM =====
 function showNotification(message) {
-    // Remove existing notification
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Create new notification
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    
-    document.body.appendChild(notification);
-    
-    // Show notification
+  // Remove existing notification
+  const existingNotification = document.querySelector('.notification');
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+  
+  // Create new notification
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  
+  document.body.appendChild(notification);
+  
+  // Show notification
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 10);
+  
+  // Remove notification after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
     setTimeout(() => {
-        notification.classList.add('show');
-    }, 10);
-    
-    // Remove notification after 3 seconds
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
-            }
-        }, 300);
-    }, 3000);
+      notification.remove();
+    }, 300);
+  }, 3000);
 }
 
-// Initialize on DOM Load
-document.addEventListener('DOMContentLoaded', () => {
-    // Set current year in footer
-    if (currentYearSpan) {
-        currentYearSpan.textContent = new Date().getFullYear();
+// ===== SMOOTH SCROLLING =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+    
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop - 80,
+        behavior: 'smooth'
+      });
     }
-    
-    // Observe stats section for animation
-    const statsSection = document.querySelector('.contact-stats');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
-    
-    // Initialize active nav link
-    updateActiveNavLink();
-    
-    // Add hover effect to service cards
-    const serviceCards = document.querySelectorAll('.service-card');
-    serviceCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Add scroll event listener for active nav links
-    window.addEventListener('scroll', updateActiveNavLink);
+  });
 });
 
-// Keyboard Navigation
-document.addEventListener('keydown', (e) => {
-    // Close mobile menu with Escape key
-    if (e.key === 'Escape') {
-        navToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-        document.body.style.overflow = '';
+// ===== INITIALIZE ON LOAD =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Add notification styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #8B0000, #B22222);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      z-index: 10000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
     
-    // Portfolio filtering with number keys (1-7)
-    if (e.key >= '1' && e.key <= '7') {
-        const index = parseInt(e.key) - 1;
-        if (filterBtns[index]) {
-            filterBtns[index].click();
-        }
+    .notification.show {
+      transform: translateY(0);
+      opacity: 1;
     }
+    
+    .modal-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    
+    .modal {
+      background: var(--secondary-dark);
+      border-radius: 10px;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      border: 1px solid var(--accent-red);
+    }
+    
+    .modal-close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    
+    .modal-avatar-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+    
+    .modal-title {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    
+    .modal-text {
+      text-align: center;
+      color: var(--text-secondary);
+    }
+  `;
+  document.head.appendChild(style);
+  
+  // Initialize skill animations
+  const skillBars = document.querySelectorAll('.skill-progress-fill');
+  skillBars.forEach(bar => {
+    const width = bar.style.width;
+    bar.style.width = '0';
+    setTimeout(() => {
+      bar.style.width = width;
+    }, 500);
+  });
 });
 
-// Performance Optimization
-let ticking = false;
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            // Update anything that needs to run on scroll
-            ticking = false;
-        });
-        ticking = true;
+// ===== WINDOW RESIZE HANDLER =====
+window.addEventListener('resize', function() {
+  // Handle responsive behavior
+  if (window.innerWidth <= 768) {
+    const filterList = document.querySelector('.filter-list');
+    const selectBox = document.querySelector('.filter-select-box');
+    
+    if (filterList && selectBox) {
+      filterList.style.display = 'none';
+      selectBox.style.display = 'block';
     }
+  } else {
+    const filterList = document.querySelector('.filter-list');
+    const selectBox = document.querySelector('.filter-select-box');
+    
+    if (filterList && selectBox) {
+      filterList.style.display = 'flex';
+      selectBox.style.display = 'none';
+    }
+  }
 });
 
-// Image Lazy Loading
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
+// ===== KEYBOARD NAVIGATION =====
+document.addEventListener('keydown', function(e) {
+  // Close modal with Escape key
+  if (e.key === 'Escape') {
+    const modal = document.querySelector('.modal.active');
+    if (modal) {
+      const closeBtn = modal.querySelector('.modal-close-btn');
+      if (closeBtn) closeBtn.click();
+    }
+  }
+  
+  // Navigate pages with arrow keys
+  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+    const activeNav = document.querySelector('.navbar-link.active');
+    const navItems = Array.from(navLinks);
+    const currentIndex = navItems.indexOf(activeNav);
     
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
-}
-
-// Add CSS for animations
-const style = document.createElement('style');
-style.textContent = `
-    .portfolio-item {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    let nextIndex;
+    if (e.key === 'ArrowRight') {
+      nextIndex = (currentIndex + 1) % navItems.length;
+    } else {
+      nextIndex = (currentIndex - 1 + navItems.length) % navItems.length;
     }
     
-    .service-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .contact-method {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    .hero-content,
-    .service-card,
-    .portfolio-item,
-    .contact-method {
-        animation: fadeInUp 0.6s ease-out forwards;
-    }
-    
-    .service-card:nth-child(2) { animation-delay: 0.1s; }
-    .service-card:nth-child(3) { animation-delay: 0.2s; }
-    .service-card:nth-child(4) { animation-delay: 0.3s; }
-    .service-card:nth-child(5) { animation-delay: 0.4s; }
-    .service-card:nth-child(6) { animation-delay: 0.5s; }
-`;
-document.head.appendChild(style);
+    navItems[nextIndex].click();
+  }
+});
