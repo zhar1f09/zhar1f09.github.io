@@ -1,377 +1,262 @@
-// ===== DOM ELEMENTS =====
-const navLinks = document.querySelectorAll('[data-nav-link]');
-const pages = document.querySelectorAll('[data-page]');
-const filterBtns = document.querySelectorAll('[data-filter-btn]');
-const filterItems = document.querySelectorAll('[data-filter-item]');
-const selectBox = document.querySelector('[data-select]');
-const selectItems = document.querySelectorAll('[data-select-item]');
-const selectValue = document.querySelector('[data-selecct-value]');
-const testimonialsItems = document.querySelectorAll('[data-testimonials-item]');
-const copyButtons = document.querySelectorAll('.copy-btn');
-const discordLinks = document.querySelectorAll('.copy-discord');
+// DOM Elements
+const sidebar = document.querySelector("[data-sidebar]");
+const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+const navLinks = document.querySelectorAll("[data-nav-link]");
+const pages = document.querySelectorAll("[data-page]");
+const filterBtns = document.querySelectorAll("[data-filter-btn]");
+const filterItems = document.querySelectorAll("[data-filter-item]");
+const selectBox = document.querySelector("[data-select]");
+const selectItems = document.querySelectorAll("[data-select-item]");
+const testimonialItems = document.querySelectorAll("[data-testimonials-item]");
+const modalContainer = document.querySelector("[data-modal-container]");
+const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
+const overlay = document.querySelector("[data-overlay]");
+const form = document.querySelector("[data-form]");
+const formInputs = document.querySelectorAll("[data-form-input]");
+const formBtn = document.querySelector("[data-form-btn]");
+const copyBtns = document.querySelectorAll(".copy-btn");
 
-// ===== PAGE NAVIGATION =====
+// Sidebar Toggle
+sidebarBtn.addEventListener("click", function () {
+  sidebar.classList.toggle("active");
+});
+
+// Page Navigation
 navLinks.forEach(link => {
-  link.addEventListener('click', function() {
+  link.addEventListener("click", function () {
     // Remove active class from all links
-    navLinks.forEach(item => item.classList.remove('active'));
-    
+    navLinks.forEach(item => item.classList.remove("active"));
     // Add active class to clicked link
-    this.classList.add('active');
+    this.classList.add("active");
     
-    // Get page name
-    const pageName = this.textContent.toLowerCase().trim();
+    // Get page name from data attribute
+    const pageName = this.textContent.toLowerCase();
     
     // Hide all pages
-    pages.forEach(page => {
-      page.classList.remove('active');
-    });
+    pages.forEach(page => page.classList.remove("active"));
     
     // Show selected page
-    const targetPage = document.querySelector(`[data-page="${pageName}"]`);
-    if (targetPage) {
-      targetPage.classList.add('active');
-    }
+    document.querySelector(`[data-page="${pageName}"]`).classList.add("active");
     
-    // Scroll to top
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Close sidebar on mobile
+    if (window.innerWidth < 768) {
+      sidebar.classList.remove("active");
+    }
   });
 });
 
-// ===== PORTFOLIO FILTERING =====
-if (filterBtns.length > 0) {
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Remove active class from all buttons
-      filterBtns.forEach(item => item.classList.remove('active'));
-      
-      // Add active class to clicked button
-      this.classList.add('active');
-      
-      const filterValue = this.textContent.toLowerCase().trim();
-      
-      // Filter items
-      filterItems.forEach(item => {
-        if (filterValue === 'all') {
-          item.classList.add('active');
-        } else {
-          if (item.getAttribute('data-category').toLowerCase() === filterValue) {
-            item.classList.add('active');
-          } else {
-            item.classList.remove('active');
-          }
-        }
-      });
+// Portfolio Filtering
+filterBtns.forEach(btn => {
+  btn.addEventListener("click", function () {
+    // Remove active class from all filter buttons
+    filterBtns.forEach(item => item.classList.remove("active"));
+    // Add active class to clicked button
+    this.classList.add("active");
+    
+    // Get filter value
+    const filterValue = this.textContent.toLowerCase();
+    
+    // Show/hide portfolio items
+    filterItems.forEach(item => {
+      if (filterValue === "all" || item.dataset.category === filterValue) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
     });
   });
+});
+
+// Mobile Filter Select
+selectBox.addEventListener("click", function () {
+  this.parentElement.classList.toggle("active");
+});
+
+selectItems.forEach(item => {
+  item.addEventListener("click", function () {
+    // Update select value
+    const selectValue = this.textContent;
+    document.querySelector("[data-selecct-value]").textContent = selectValue;
+    
+    // Close select box
+    selectBox.parentElement.classList.remove("active");
+    
+    // Trigger filter
+    const filterValue = selectValue.toLowerCase();
+    
+    filterItems.forEach(item => {
+      if (filterValue === "all" || item.dataset.category === filterValue) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    });
+  });
+});
+
+// Testimonials Modal
+testimonialItems.forEach(item => {
+  item.addEventListener("click", function () {
+    // Get testimonial data
+    const avatar = this.querySelector("[data-testimonials-avatar]").src;
+    const name = this.querySelector("[data-testimonials-title]").textContent;
+    const text = this.querySelector("[data-testimonials-text]").innerHTML;
+    
+    // Set modal content
+    document.querySelector("[data-modal-img]").src = avatar;
+    document.querySelector("[data-modal-title]").textContent = name;
+    document.querySelector("[data-modal-text]").innerHTML = text;
+    
+    // Show modal
+    modalContainer.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+// Close Modal
+function closeModal() {
+  modalContainer.classList.remove("active");
+  document.body.style.overflow = "auto";
 }
 
-// ===== MOBILE SELECT DROPDOWN =====
-if (selectBox) {
-  selectBox.addEventListener('click', function() {
-    this.parentElement.classList.toggle('active');
-  });
+modalCloseBtn.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+// Close modal on Escape key
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && modalContainer.classList.contains("active")) {
+    closeModal();
+  }
+});
+
+// Contact Form
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
   
-  selectItems.forEach(item => {
-    item.addEventListener('click', function() {
-      const selectedValue = this.textContent.trim();
-      selectValue.textContent = selectedValue;
-      
-      // Filter items based on selection
-      const filterValue = selectedValue.toLowerCase();
-      
-      filterItems.forEach(filterItem => {
-        if (filterValue === 'all') {
-          filterItem.classList.add('active');
-        } else {
-          if (filterItem.getAttribute('data-category').toLowerCase() === filterValue) {
-            filterItem.classList.add('active');
-          } else {
-            filterItem.classList.remove('active');
-          }
-        }
-      });
-      
-      // Close dropdown
-      selectBox.parentElement.classList.remove('active');
-    });
-  });
-}
+  // Get form data
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData);
+  
+  // Show loading state
+  const originalText = formBtn.querySelector("span").textContent;
+  formBtn.querySelector("span").textContent = "Sending...";
+  formBtn.disabled = true;
+  
+  // Simulate API call (replace with actual form submission)
+  setTimeout(() => {
+    // Show success message
+    alert(`Thank you ${data.fullname}! Your message has been sent successfully. I'll get back to you soon at ${data.email}.`);
+    
+    // Reset form
+    this.reset();
+    
+    // Reset button
+    formBtn.querySelector("span").textContent = originalText;
+    formBtn.disabled = false;
+  }, 1500);
+});
 
-// ===== TESTIMONIALS MODAL =====
-if (testimonialsItems.length > 0) {
-  testimonialsItems.forEach(item => {
-    item.addEventListener('click', function() {
-      const avatar = this.querySelector('[data-testimonials-avatar]').src;
-      const title = this.querySelector('[data-testimonials-title]').textContent;
-      const text = this.querySelector('[data-testimonials-text]').innerHTML;
-      
-      // Create modal
-      const modalContainer = document.createElement('div');
-      modalContainer.className = 'modal-container';
-      
-      const modal = document.createElement('div');
-      modal.className = 'modal active';
-      modal.innerHTML = `
-        <div class="modal-close-overlay" data-modal-close></div>
-        <div class="modal-content">
-          <button class="modal-close-btn" data-modal-close>
-            <ion-icon name="close-outline"></ion-icon>
-          </button>
-          <div class="modal-img-wrapper">
-            <figure class="modal-avatar-box">
-              <img src="${avatar}" alt="${title}" width="80">
-            </figure>
-          </div>
-          <div class="modal-content-box">
-            <h4 class="h3 modal-title">${title}</h4>
-            <div class="modal-text">${text}</div>
-          </div>
-        </div>
-      `;
-      
-      modalContainer.appendChild(modal);
-      document.body.appendChild(modalContainer);
-      document.body.style.overflow = 'hidden';
-      
-      // Add close functionality
-      const closeBtns = modal.querySelectorAll('[data-modal-close]');
-      closeBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          modal.classList.remove('active');
-          setTimeout(() => {
-            modalContainer.remove();
-            document.body.style.overflow = '';
-          }, 300);
-        });
-      });
-    });
+// Form validation on blur
+formInputs.forEach(input => {
+  input.addEventListener("blur", function () {
+    if (!this.value.trim()) {
+      this.style.borderColor = "#ff4757";
+    } else {
+      this.style.borderColor = "";
+    }
   });
-}
+});
 
-// ===== COPY TO CLIPBOARD =====
-copyButtons.forEach(btn => {
-  btn.addEventListener('click', function() {
-    const textToCopy = this.getAttribute('data-copy') || 'zhar1f09';
+// Copy buttons for contact info
+copyBtns.forEach(btn => {
+  btn.addEventListener("click", function () {
+    const textToCopy = this.dataset.copy;
     
     navigator.clipboard.writeText(textToCopy).then(() => {
-      showNotification('Copied to clipboard!');
-      
-      // Visual feedback
-      const originalHTML = this.innerHTML;
-      this.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon><span>Copied!</span>';
-      this.style.background = 'linear-gradient(135deg, #00AA00, #008800)';
+      // Show feedback
+      const originalText = this.textContent;
+      this.textContent = "Copied!";
+      this.style.backgroundColor = "#00d68f";
+      this.style.color = "#fff";
       
       setTimeout(() => {
-        this.innerHTML = originalHTML;
-        this.style.background = '';
+        this.textContent = originalText;
+        this.style.backgroundColor = "";
+        this.style.color = "";
       }, 2000);
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-      showNotification('Failed to copy. Please try again.');
     });
   });
 });
 
-// Discord links copy functionality
-discordLinks.forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const username = this.textContent.trim();
-    
-    navigator.clipboard.writeText(username).then(() => {
-      showNotification('Discord username copied!');
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-      showNotification('Failed to copy username');
+// Initialize skill bars animation
+function animateSkillBars() {
+  const skillBars = document.querySelectorAll(".skill-progress-fill");
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const width = entry.target.style.width;
+        entry.target.style.width = "0";
+        
+        setTimeout(() => {
+          entry.target.style.width = width;
+        }, 300);
+        
+        observer.unobserve(entry.target);
+      }
     });
-  });
-});
-
-// ===== NOTIFICATION SYSTEM =====
-function showNotification(message) {
-  // Remove existing notification
-  const existingNotification = document.querySelector('.notification');
-  if (existingNotification) {
-    existingNotification.remove();
-  }
+  }, { threshold: 0.5 });
   
-  // Create new notification
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.textContent = message;
-  
-  document.body.appendChild(notification);
-  
-  // Show notification
-  setTimeout(() => {
-    notification.classList.add('show');
-  }, 10);
-  
-  // Remove notification after 3 seconds
-  setTimeout(() => {
-    notification.classList.remove('show');
-    setTimeout(() => {
-      notification.remove();
-    }, 300);
-  }, 3000);
+  skillBars.forEach(bar => observer.observe(bar));
 }
 
-// ===== SMOOTH SCROLLING =====
+// Initialize when page loads
+window.addEventListener("DOMContentLoaded", () => {
+  animateSkillBars();
+  
+  // Set current year in copyright (if needed)
+  const yearElement = document.querySelector(".copyright");
+  if (yearElement) {
+    const currentYear = new Date().getFullYear();
+    yearElement.innerHTML = yearElement.innerHTML.replace("2023", currentYear);
+  }
+});
+
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
+  anchor.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
     
-    const targetId = this.getAttribute('href');
-    if (targetId === '#') return;
+    if (href === "#" || href === "") {
+      e.preventDefault();
+      return;
+    }
     
-    const targetElement = document.querySelector(targetId);
+    const targetElement = document.querySelector(href);
+    
     if (targetElement) {
+      e.preventDefault();
+      
       window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
+        top: targetElement.offsetTop - 100,
+        behavior: "smooth"
       });
     }
   });
 });
 
-// ===== INITIALIZE ON LOAD =====
-document.addEventListener('DOMContentLoaded', function() {
-  // Add notification styles
-  const style = document.createElement('style');
-  style.textContent = `
-    .notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(135deg, #8B0000, #B22222);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 500;
-      z-index: 10000;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    
-    .notification.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-    
-    .modal-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-    }
-    
-    .modal {
-      background: var(--secondary-dark);
-      border-radius: 10px;
-      padding: 30px;
-      max-width: 500px;
-      width: 90%;
-      position: relative;
-      border: 1px solid var(--accent-red);
-    }
-    
-    .modal-close-btn {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    
-    .modal-avatar-box {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 20px;
-    }
-    
-    .modal-title {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    
-    .modal-text {
-      text-align: center;
-      color: var(--text-secondary);
-    }
-  `;
-  document.head.appendChild(style);
+// Close mobile menu when clicking outside
+document.addEventListener("click", function (e) {
+  const isClickInsideSidebar = sidebar.contains(e.target);
+  const isClickOnSidebarBtn = sidebarBtn.contains(e.target);
   
-  // Initialize skill animations
-  const skillBars = document.querySelectorAll('.skill-progress-fill');
-  skillBars.forEach(bar => {
-    const width = bar.style.width;
-    bar.style.width = '0';
-    setTimeout(() => {
-      bar.style.width = width;
-    }, 500);
-  });
-});
-
-// ===== WINDOW RESIZE HANDLER =====
-window.addEventListener('resize', function() {
-  // Handle responsive behavior
-  if (window.innerWidth <= 768) {
-    const filterList = document.querySelector('.filter-list');
-    const selectBox = document.querySelector('.filter-select-box');
-    
-    if (filterList && selectBox) {
-      filterList.style.display = 'none';
-      selectBox.style.display = 'block';
-    }
-  } else {
-    const filterList = document.querySelector('.filter-list');
-    const selectBox = document.querySelector('.filter-select-box');
-    
-    if (filterList && selectBox) {
-      filterList.style.display = 'flex';
-      selectBox.style.display = 'none';
-    }
+  if (!isClickInsideSidebar && !isClickOnSidebarBtn && window.innerWidth < 768) {
+    sidebar.classList.remove("active");
   }
 });
 
-// ===== KEYBOARD NAVIGATION =====
-document.addEventListener('keydown', function(e) {
-  // Close modal with Escape key
-  if (e.key === 'Escape') {
-    const modal = document.querySelector('.modal.active');
-    if (modal) {
-      const closeBtn = modal.querySelector('.modal-close-btn');
-      if (closeBtn) closeBtn.click();
-    }
-  }
-  
-  // Navigate pages with arrow keys
-  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-    const activeNav = document.querySelector('.navbar-link.active');
-    const navItems = Array.from(navLinks);
-    const currentIndex = navItems.indexOf(activeNav);
-    
-    let nextIndex;
-    if (e.key === 'ArrowRight') {
-      nextIndex = (currentIndex + 1) % navItems.length;
-    } else {
-      nextIndex = (currentIndex - 1 + navItems.length) % navItems.length;
-    }
-    
-    navItems[nextIndex].click();
-  }
-});
+// Add Roblox icon to FontAwesome
+const robloxIconScript = document.createElement("script");
+robloxIconScript.src = "https://kit.fontawesome.com/7b5d9be8c7.js";
+robloxIconScript.crossOrigin = "anonymous";
+document.head.appendChild(robloxIconScript);
