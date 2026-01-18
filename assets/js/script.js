@@ -1,370 +1,339 @@
 // DOM Elements
-const sidebar = document.querySelector('[data-sidebar]');
-const sidebarBtn = document.querySelector('[data-sidebar-btn]');
-const navLinks = document.querySelectorAll('[data-nav-link]');
-const pages = document.querySelectorAll('[data-page]');
-const filterBtns = document.querySelectorAll('[data-filter-btn]');
-const filterItems = document.querySelectorAll('[data-filter-item]');
-const selectBox = document.querySelector('[data-select]');
-const selectItems = document.querySelectorAll('[data-select-item]');
-const selectValue = document.querySelector('[data-selecct-value]');
-const loadMoreBtn = document.getElementById('loadMoreBtn');
-const copyDiscordBtns = document.querySelectorAll('.copy-discord, .copy-discord-btn');
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
+const backToTopBtn = document.querySelector('.back-to-top');
+const copyButtons = document.querySelectorAll('.copy-btn');
+const discordSocial = document.getElementById('discordSocial');
+const currentYearSpan = document.getElementById('currentYear');
+const statNumbers = document.querySelectorAll('.stat-number');
 
-// Initialize mobile menu
-function initMobileMenu() {
-  const mobileMenuBtn = document.createElement('button');
-  mobileMenuBtn.className = 'mobile-menu-btn';
-  mobileMenuBtn.innerHTML = '<ion-icon name="menu-outline"></ion-icon>';
-  
-  const sidebarOverlay = document.createElement('div');
-  sidebarOverlay.className = 'sidebar-overlay';
-  
-  document.body.appendChild(mobileMenuBtn);
-  document.body.appendChild(sidebarOverlay);
-  
-  mobileMenuBtn.addEventListener('click', function() {
-    sidebar.classList.add('active');
-    sidebarOverlay.classList.add('active');
-  });
-  
-  sidebarOverlay.addEventListener('click', function() {
-    sidebar.classList.remove('active');
-    this.classList.remove('active');
-  });
-  
-  // Close sidebar when clicking a nav link on mobile
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      if (window.innerWidth <= 1200) {
-        sidebar.classList.remove('active');
-        sidebarOverlay.classList.remove('active');
-      }
+// Mobile Navigation Toggle
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        
+        // Toggle body scroll
+        document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
-  });
 }
 
-// Page navigation
+// Close mobile menu when clicking a link
 navLinks.forEach(link => {
-  link.addEventListener('click', function() {
-    // Remove active class from all links
-    navLinks.forEach(item => item.classList.remove('active'));
-    
-    // Add active class to clicked link
-    this.classList.add('active');
-    
-    // Get page name
-    const pageName = this.textContent.toLowerCase().trim();
-    
-    // Hide all pages
-    pages.forEach(page => {
-      page.classList.remove('active');
+    link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     });
-    
-    // Show selected page
-    const targetPage = document.querySelector(`[data-page="${pageName}"]`);
-    if (targetPage) {
-      targetPage.classList.add('active');
-    }
-    
-    // Scroll to top of page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
 });
 
-// Sidebar toggle
-if (sidebarBtn) {
-  sidebarBtn.addEventListener('click', function() {
-    const isExpanded = sidebar.classList.contains('active');
-    
-    if (isExpanded) {
-      sidebar.classList.remove('active');
-      this.querySelector('span').textContent = 'Show Contacts';
-      this.querySelector('ion-icon').name = 'chevron-down';
-    } else {
-      sidebar.classList.add('active');
-      this.querySelector('span').textContent = 'Hide Contacts';
-      this.querySelector('ion-icon').name = 'chevron-up';
-    }
-  });
-}
-
-// Portfolio filtering
+// Portfolio Filtering
 if (filterBtns.length > 0) {
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function() {
-      // Remove active class from all buttons
-      filterBtns.forEach(item => item.classList.remove('active'));
-      
-      // Add active class to clicked button
-      this.classList.add('active');
-      
-      const filterValue = this.textContent.toLowerCase().trim();
-      
-      // Filter items
-      let visibleCount = 0;
-      filterItems.forEach(item => {
-        if (filterValue === 'all') {
-          item.classList.add('active');
-          visibleCount++;
-        } else {
-          if (item.getAttribute('data-category') === filterValue) {
-            item.classList.add('active');
-            visibleCount++;
-          } else {
-            item.classList.remove('active');
-          }
-        }
-      });
-      
-      // Show/hide load more button based on visible items
-      if (visibleCount > 6) {
-        loadMoreBtn.style.display = 'block';
-      } else {
-        loadMoreBtn.style.display = 'none';
-      }
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            // Get filter value
+            const filterValue = btn.getAttribute('data-filter');
+            
+            // Filter items
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
     });
-  });
 }
 
-// Mobile select dropdown
-if (selectBox) {
-  selectBox.addEventListener('click', function() {
-    this.parentElement.classList.toggle('active');
-  });
-  
-  selectItems.forEach(item => {
-    item.addEventListener('click', function() {
-      const selectedValue = this.textContent.trim();
-      selectValue.textContent = selectedValue;
-      
-      // Filter items based on selection
-      const filterValue = selectedValue.toLowerCase();
-      
-      let visibleCount = 0;
-      filterItems.forEach(filterItem => {
-        if (filterValue === 'all') {
-          filterItem.classList.add('active');
-          visibleCount++;
-        } else {
-          if (filterItem.getAttribute('data-category') === filterValue) {
-            filterItem.classList.add('active');
-            visibleCount++;
-          } else {
-            filterItem.classList.remove('active');
-          }
-        }
-      });
-      
-      // Close dropdown
-      selectBox.parentElement.classList.remove('active');
-      
-      // Show/hide load more button
-      if (visibleCount > 6) {
-        loadMoreBtn.style.display = 'block';
-      } else {
-        loadMoreBtn.style.display = 'none';
-      }
+// Copy to Clipboard Functionality
+copyButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const textToCopy = btn.getAttribute('data-text') || 
+                          btn.parentElement.querySelector('.method-value')?.textContent ||
+                          'zhar1f09';
+        
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showNotification('Copied to clipboard!');
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied';
+            btn.style.background = 'rgba(0, 255, 0, 0.1)';
+            btn.style.borderColor = '#00FF00';
+            btn.style.color = '#00FF00';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                btn.style.background = '';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+            showNotification('Failed to copy. Please try again.');
+        });
     });
-  });
-}
-
-// Load more projects functionality
-if (loadMoreBtn) {
-  loadMoreBtn.addEventListener('click', function() {
-    // Get currently visible category
-    const activeFilter = document.querySelector('[data-filter-btn].active');
-    const category = activeFilter ? activeFilter.textContent.toLowerCase().trim() : 'all';
-    
-    // Show all projects in current category
-    filterItems.forEach(item => {
-      if (category === 'all' || item.getAttribute('data-category') === category) {
-        item.style.display = 'block';
-      }
-    });
-    
-    // Hide the load more button
-    this.style.display = 'none';
-  });
-}
-
-// Copy Discord username functionality
-copyDiscordBtns.forEach(btn => {
-  btn.addEventListener('click', function() {
-    const username = this.getAttribute('data-username') || this.textContent.trim();
-    
-    navigator.clipboard.writeText(username).then(() => {
-      // Show notification
-      showNotification('Discord username copied to clipboard!');
-      
-      // Visual feedback
-      this.style.color = 'var(--primary-red)';
-      setTimeout(() => {
-        this.style.color = '';
-      }, 1000);
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-      showNotification('Failed to copy. Please try again.');
-    });
-  });
 });
 
-// Show notification function
-function showNotification(message) {
-  // Remove existing notification
-  const existingNotification = document.querySelector('.copy-notification');
-  if (existingNotification) {
-    existingNotification.remove();
-  }
-  
-  // Create new notification
-  const notification = document.createElement('div');
-  notification.className = 'copy-notification';
-  notification.textContent = message;
-  
-  document.body.appendChild(notification);
-  
-  // Remove notification after 3 seconds
-  setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease';
-    setTimeout(() => notification.remove(), 300);
-  }, 3000);
+// Discord Social Link
+if (discordSocial) {
+    discordSocial.addEventListener('click', (e) => {
+        e.preventDefault();
+        const discordUsername = 'zhar1f09';
+        navigator.clipboard.writeText(discordUsername).then(() => {
+            showNotification('Discord username copied!');
+        });
+    });
 }
 
-// Initialize skill animations
-function initSkillAnimations() {
-  const skillBars = document.querySelectorAll('.skill-progress-fill');
-  skillBars.forEach(bar => {
-    const width = bar.style.width;
-    bar.style.width = '0';
+// Back to Top Button
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
     
-    // Animate on scroll into view
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Animated Counter for Stats
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + (element.getAttribute('data-count') === '100' ? '%' : '+');
+    }, 30);
+}
+
+// Intersection Observer for Stats Animation
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            bar.style.width = width;
-          }, 300);
-          observer.unobserve(entry.target);
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                animateCounter(stat, target);
+            });
+            statsObserver.unobserve(entry.target);
         }
-      });
-    }, { threshold: 0.5 });
+    });
+}, { threshold: 0.5 });
+
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const navHeight = document.querySelector('.main-nav').offsetHeight;
+            const targetPosition = targetElement.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Active Navigation Link on Scroll
+function updateActiveNavLink() {
+    const scrollPosition = window.scrollY + 100;
     
-    observer.observe(bar.parentElement);
-  });
+    navLinks.forEach(link => {
+        const section = document.querySelector(link.getAttribute('href'));
+        if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        }
+    });
 }
 
-// Initialize on DOM load
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize mobile menu if needed
-  if (window.innerWidth <= 1200) {
-    initMobileMenu();
-  }
-  
-  // Initialize skill animations
-  initSkillAnimations();
-  
-  // Show only first 6 projects initially
-  let visibleCount = 0;
-  filterItems.forEach((item, index) => {
-    if (index < 6) {
-      item.style.display = 'block';
-      visibleCount++;
-    } else {
-      item.style.display = 'none';
+// Notification System
+function showNotification(message) {
+    // Remove existing notification
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
     }
-  });
-  
-  // Show load more button if there are more than 6 projects
-  if (filterItems.length > 6) {
-    loadMoreBtn.style.display = 'block';
-  }
-  
-  // Add hover effect to service items
-  const serviceItems = document.querySelectorAll('.service-item');
-  serviceItems.forEach(item => {
-    item.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-10px)';
+    
+    // Create new notification
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Remove notification after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
+            }
+        }, 300);
+    }, 3000);
+}
+
+// Initialize on DOM Load
+document.addEventListener('DOMContentLoaded', () => {
+    // Set current year in footer
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+    
+    // Observe stats section for animation
+    const statsSection = document.querySelector('.contact-stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+    
+    // Initialize active nav link
+    updateActiveNavLink();
+    
+    // Add hover effect to service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
     });
     
-    item.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0)';
+    // Add scroll event listener for active nav links
+    window.addEventListener('scroll', updateActiveNavLink);
+});
+
+// Keyboard Navigation
+document.addEventListener('keydown', (e) => {
+    // Close mobile menu with Escape key
+    if (e.key === 'Escape') {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Portfolio filtering with number keys (1-7)
+    if (e.key >= '1' && e.key <= '7') {
+        const index = parseInt(e.key) - 1;
+        if (filterBtns[index]) {
+            filterBtns[index].click();
+        }
+    }
+});
+
+// Performance Optimization
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            // Update anything that needs to run on scroll
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Image Lazy Loading
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.add('loaded');
+                imageObserver.unobserve(img);
+            }
+        });
     });
-  });
-});
-
-// Window resize handler
-window.addEventListener('resize', function() {
-  if (window.innerWidth <= 1200) {
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    if (!mobileBtn) {
-      initMobileMenu();
-    }
-  } else {
-    // Remove mobile menu if exists
-    const mobileBtn = document.querySelector('.mobile-menu-btn');
-    const overlay = document.querySelector('.sidebar-overlay');
     
-    if (mobileBtn) mobileBtn.remove();
-    if (overlay) overlay.remove();
-    
-    // Ensure sidebar is visible on desktop
-    sidebar.classList.remove('active');
-  }
-});
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-  // Close sidebar with Escape key
-  if (e.key === 'Escape') {
-    sidebar.classList.remove('active');
-    const overlay = document.querySelector('.sidebar-overlay');
-    if (overlay) overlay.classList.remove('active');
-  }
-  
-  // Navigate pages with arrow keys
-  if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-    const activeNav = document.querySelector('.navbar-link.active');
-    const navItems = Array.from(navLinks);
-    const currentIndex = navItems.indexOf(activeNav);
-    
-    let nextIndex;
-    if (e.key === 'ArrowRight') {
-      nextIndex = (currentIndex + 1) % navItems.length;
-    } else {
-      nextIndex = (currentIndex - 1 + navItems.length) % navItems.length;
-    }
-    
-    navItems[nextIndex].click();
-  }
-});
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
 
 // Add CSS for animations
 const style = document.createElement('style');
 style.textContent = `
-  .project-item {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .service-item {
-    transition: all 0.3s ease;
-  }
-  
-  .skill-progress-fill {
-    transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
+    .portfolio-item {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    50% {
-      transform: translateY(-10px);
+    
+    .service-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-  }
-  
-  .platform-card:hover {
-    animation: float 3s ease-in-out infinite;
-  }
+    
+    .contact-method {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .hero-content,
+    .service-card,
+    .portfolio-item,
+    .contact-method {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .service-card:nth-child(2) { animation-delay: 0.1s; }
+    .service-card:nth-child(3) { animation-delay: 0.2s; }
+    .service-card:nth-child(4) { animation-delay: 0.3s; }
+    .service-card:nth-child(5) { animation-delay: 0.4s; }
+    .service-card:nth-child(6) { animation-delay: 0.5s; }
 `;
 document.head.appendChild(style);
