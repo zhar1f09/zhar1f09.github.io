@@ -1,160 +1,127 @@
 /* Additional Responsive Styles */
 
-/* Large Desktop */
-@media (min-width: 1600px) {
-    .section-container {
-        max-width: 1400px;
-    }
-}
-
 /* Tablet Landscape */
 @media (max-width: 1024px) and (orientation: landscape) {
-    .hero-section {
-        min-height: auto;
-        padding: 120px 0 var(--space-xl);
-    }
-    
-    .hero-container {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-/* Tablet Portrait */
-@media (max-width: 768px) and (orientation: portrait) {
-    .hero-section {
-        padding-top: 80px;
-    }
-    
-    .image-frame {
-        width: 280px;
-        height: 350px;
-    }
+  .sidebar {
+    position: relative;
+    height: auto;
+  }
+  
+  .main-content {
+    min-height: auto;
+  }
 }
 
 /* Mobile Landscape */
 @media (max-width: 768px) and (orientation: landscape) {
-    .hero-section {
-        min-height: auto;
-        padding: 100px 0 var(--space-lg);
-    }
-    
-    .nav-menu {
-        top: 70px;
-    }
+  .sidebar-info_more {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .project-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Small Mobile */
 @media (max-width: 360px) {
-    .hero-title {
-        font-size: 3.2rem;
-    }
-    
-    .section-title {
-        font-size: 2.4rem;
-    }
-    
-    .service-card,
-    .contact-method,
-    .stat-item {
-        padding: var(--space-md);
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-sm);
-    }
-    
-    .portfolio-item {
-        height: 250px;
-    }
+  :root {
+    --sidebar-width: 100%;
+  }
+  
+  .navbar-link {
+    font-size: 1.4rem;
+    padding: 8px 0;
+  }
+  
+  .service-icon-box {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .service-icon-box img {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .card-username {
+    font-size: 1.6rem;
+    padding: 8px;
+  }
 }
 
 /* Height-based adjustments */
-@media (max-height: 700px) {
-    .hero-section {
-        min-height: auto;
-        padding: 100px 0 var(--space-xl);
-    }
-    
-    .image-frame {
-        height: 350px;
-    }
+@media (max-height: 600px) {
+  .sidebar {
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+  
+  .avatar-box {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+  
+  .contacts-list {
+    margin-bottom: 15px;
+  }
+  
+  .contact-item {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
 }
 
 /* Print Styles */
 @media print {
-    .main-nav,
-    .hero-cta,
-    .portfolio-filters,
-    .copy-btn,
-    .social-icons,
-    .back-to-top {
-        display: none !important;
-    }
-    
-    body {
-        color: #000;
-        background: #fff;
-        font-size: 12pt;
-    }
-    
-    .hero-section,
-    .services-section,
-    .portfolio-section,
-    .contact-section {
-        padding: 2rem 0;
-    }
-    
-    .hero-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .image-frame {
-        display: none;
-    }
-    
-    .section-title {
-        color: #000;
-        font-size: 18pt;
-    }
-    
-    .highlight,
-    .gradient-text {
-        color: #8B0000 !important;
-        background: none !important;
-        -webkit-text-fill-color: #8B0000 !important;
-    }
-    
-    .service-card,
-    .contact-method,
-    .stat-item {
-        border: 1px solid #ddd;
-        break-inside: avoid;
-    }
-    
-    .portfolio-grid {
-        display: block;
-    }
-    
-    .portfolio-item {
-        page-break-inside: avoid;
-        margin-bottom: 2rem;
-    }
-    
-    a {
-        color: #000;
-        text-decoration: underline;
-    }
-    
-    a[href]::after {
-        content: " (" attr(href) ")";
-        font-size: 10pt;
-        color: #666;
-    }
-    
-    .footer-bottom {
-        border-top: 1px solid #ddd;
-        margin-top: 3rem;
-        padding-top: 2rem;
-    }
+  .sidebar {
+    position: static;
+    width: 100%;
+    border-right: none;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .navbar,
+  .social-list,
+  .copy-btn,
+  .roblox-links {
+    display: none !important;
+  }
+  
+  body {
+    color: #000;
+    background: #fff;
+    font-size: 12pt;
+  }
+  
+  .article-title {
+    color: #000;
+  }
+  
+  .gradient-red {
+    color: #8B0000 !important;
+    background: none !important;
+  }
+  
+  .contact-card {
+    border: 1px solid #000;
+    break-inside: avoid;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
 }
