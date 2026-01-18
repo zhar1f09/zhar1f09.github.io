@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <!-- ### SIDEBAR ### -->
+    <!-- SIDEBAR -->
     <aside class="sidebar" data-sidebar>
         <div class="sidebar-info">
             <figure class="avatar-box">
@@ -40,7 +40,7 @@
                     <div class="contact-info">
                         <p class="contact-title">Discord</p>
                         <a href="#" class="contact-link">robloxdev#1234</a>
-                        <button class="copy-btn" onclick="copyToClipboard('robloxdev#1234')">Copy</button>
+                        <button class="copy-btn" data-copy="robloxdev#1234">Copy</button>
                     </div>
                 </li>
                 <li class="contact-item">
@@ -50,7 +50,7 @@
                     <div class="contact-info">
                         <p class="contact-title">Discord Server</p>
                         <a href="#" class="contact-link">discord.gg/robloxdev</a>
-                        <button class="copy-btn" onclick="copyToClipboard('discord.gg/robloxdev')">Copy</button>
+                        <button class="copy-btn" data-copy="discord.gg/robloxdev">Copy</button>
                     </div>
                 </li>
                 <li class="contact-item">
@@ -69,7 +69,7 @@
                     <div class="contact-info">
                         <p class="contact-title">Roblox Friend</p>
                         <a href="#" class="contact-link">RobloxDevMaster</a>
-                        <button class="copy-btn" onclick="copyToClipboard('RobloxDevMaster')">Copy</button>
+                        <button class="copy-btn" data-copy="RobloxDevMaster">Copy</button>
                     </div>
                 </li>
                 <li class="contact-item">
@@ -79,7 +79,7 @@
                     <div class="contact-info">
                         <p class="contact-title">Roblox Group</p>
                         <a href="#" class="contact-link">RobloxDevStudios</a>
-                        <button class="copy-btn" onclick="copyToClipboard('RobloxDevStudios')">Copy</button>
+                        <button class="copy-btn" data-copy="RobloxDevStudios">Copy</button>
                     </div>
                 </li>
             </ul>
@@ -111,23 +111,23 @@
         </div>
     </aside>
 
-    <!-- ### MAIN CONTENT ### -->
+    <!-- MAIN CONTENT -->
     <div class="main-content">
 
-        <!-- ### NAVIGATION ### -->
+        <!-- NAVIGATION -->
         <nav class="navbar">
             <ul class="navbar-list">
                 <li class="navbar-item">
                     <button class="navbar-link active" data-nav-link>About</button>
                 </li>
                 <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link>Resume</button>
-                </li>
-                <li class="navbar-item">
                     <button class="navbar-link" data-nav-link>Portfolio</button>
                 </li>
                 <li class="navbar-item">
-                    <button class="navbar-link" data-nav-link>Blog</button>
+                    <button class="navbar-link" data-nav-link>Skills</button>
+                </li>
+                <li class="navbar-item">
+                    <button class="navbar-link" data-nav-link>Testimonials</button>
                 </li>
                 <li class="navbar-item">
                     <button class="navbar-link" data-nav-link>Contact</button>
@@ -135,7 +135,7 @@
             </ul>
         </nav>
 
-        <!-- ### ABOUT ### -->
+        <!-- ABOUT -->
         <article class="about active" data-page="about">
             <header>
                 <h2 class="h2 article-title">About me</h2>
@@ -152,7 +152,7 @@
                 </p>
             </section>
 
-            <!-- ### SERVICE ### -->
+            <!-- SERVICES -->
             <section class="service">
                 <h3 class="h3 service-title">What i'm doing</h3>
                 <ul class="service-list">
@@ -203,9 +203,319 @@
                 </ul>
             </section>
 
-            <!-- ### TESTIMONIALS ### -->
+            <!-- CLIENTS -->
+            <section class="clients">
+                <h3 class="h3 clients-title">Games I've Worked On</h3>
+                <ul class="clients-list has-scrollbar">
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-1-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-2-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-3-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-4-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-5-color.png" alt="client logo">
+                        </a>
+                    </li>
+                    <li class="clients-item">
+                        <a href="#">
+                            <img src="./assets/images/logo-6-color.png" alt="client logo">
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- PORTFOLIO -->
+        <article class="portfolio" data-page="portfolio">
+            <header>
+                <h2 class="h2 article-title">Portfolio</h2>
+            </header>
+
+            <section class="projects">
+                <ul class="filter-list">
+                    <li class="filter-item">
+                        <button class="active" data-filter-btn>All</button>
+                    </li>
+                    <li class="filter-item">
+                        <button data-filter-btn>RPG Games</button>
+                    </li>
+                    <li class="filter-item">
+                        <button data-filter-btn>Simulators</button>
+                    </li>
+                    <li class="filter-item">
+                        <button data-filter-btn>Obby</button>
+                    </li>
+                </ul>
+
+                <div class="filter-select-box">
+                    <button class="filter-select" data-select>
+                        <div class="select-value" data-select-value>Select category</div>
+                        <div class="select-icon">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </button>
+
+                    <ul class="select-list">
+                        <li class="select-item">
+                            <button data-select-item>All</button>
+                        </li>
+                        <li class="select-item">
+                            <button data-select-item>RPG Games</button>
+                        </li>
+                        <li class="select-item">
+                            <button data-select-item>Simulators</button>
+                        </li>
+                        <li class="select-item">
+                            <button data-select-item>Obby</button>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="project-list">
+                    <li class="project-item active" data-filter-item data-category="rpg games">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-1.jpg" alt="Fantasy RPG" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Fantasy RPG World</h3>
+                            <p class="project-category">RPG Games</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="simulators">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-2.jpg" alt="Pet Simulator" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Epic Pet Simulator</h3>
+                            <p class="project-category">Simulators</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="obby">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-3.jpg" alt="Obby Challenge" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Extreme Obby Challenge</h3>
+                            <p class="project-category">Obby</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="rpg games">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-4.jpg" alt="Space RPG" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Space Adventure RPG</h3>
+                            <p class="project-category">RPG Games</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="simulators">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-5.jpg" alt="Farming Simulator" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Farming Simulator X</h3>
+                            <p class="project-category">Simulators</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="obby">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-6.jpg" alt="Parkour Obby" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Parkour Obby Master</h3>
+                            <p class="project-category">Obby</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="rpg games">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-7.jpg" alt="Medieval Adventure" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Medieval Adventure</h3>
+                            <p class="project-category">RPG Games</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="simulators">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-8.jpg" alt="Restaurant Tycoon" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Restaurant Tycoon</h3>
+                            <p class="project-category">Simulators</p>
+                        </a>
+                    </li>
+                    <li class="project-item active" data-filter-item data-category="obby">
+                        <a href="#">
+                            <figure class="project-img">
+                                <div class="project-item-icon-box">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                                <img src="./assets/images/project-9.jpg" alt="Speed Run Obby" loading="lazy">
+                            </figure>
+                            <h3 class="project-title">Speed Run Obby</h3>
+                            <p class="project-category">Obby</p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- SKILLS -->
+        <article class="skills" data-page="skills">
+            <header>
+                <h2 class="h2 article-title">My Skills</h2>
+            </header>
+
+            <section class="skill">
+                <h3 class="h3 skills-title">Technical Skills</h3>
+                <ul class="skills-list content-card">
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">Lua Scripting</h5>
+                            <data value="95">95%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 95%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">Game Design</h5>
+                            <data value="90">90%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">3D Modeling</h5>
+                            <data value="85">85%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">UI/UX Design</h5>
+                            <data value="88">88%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 88%;"></div>
+                        </div>
+                    </li>
+                    <li class="skills-item">
+                        <div class="title-wrapper">
+                            <h5 class="h5">Game Optimization</h5>
+                            <data value="92">92%</data>
+                        </div>
+                        <div class="skill-progress-bg">
+                            <div class="skill-progress-fill" style="width: 92%;"></div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="service">
+                <h3 class="h3 service-title">Tools & Technologies</h3>
+                <ul class="service-list">
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <i class="fab fa-roblox"></i>
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Roblox Studio</h4>
+                            <p class="service-item-text">
+                                Expert in using Roblox Studio for game development and deployment.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Lua Programming</h4>
+                            <p class="service-item-text">
+                                Advanced Lua scripting for complex game mechanics and systems.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Blender</h4>
+                            <p class="service-item-text">
+                                3D modeling and animation for custom game assets and characters.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="service-item">
+                        <div class="service-icon-box">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="service-content-box">
+                            <h4 class="h4 service-item-title">Photoshop</h4>
+                            <p class="service-item-text">
+                                Creating textures, UI elements, and promotional graphics.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </article>
+
+        <!-- TESTIMONIALS -->
+        <article class="testimonials" data-page="testimonials">
+            <header>
+                <h2 class="h2 article-title">Testimonials</h2>
+            </header>
+
             <section class="testimonials">
-                <h3 class="h3 testimonials-title">Testimonials</h3>
+                <h3 class="h3 testimonials-title">What Clients Say</h3>
                 <ul class="testimonials-list has-scrollbar">
                     <li class="testimonials-item">
                         <div class="content-card" data-testimonials-item>
@@ -249,173 +559,51 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-            </section>
-
-            <!-- ### CLIENTS ### -->
-            <section class="clients">
-                <h3 class="h3 clients-title">Clients</h3>
-                <ul class="clients-list has-scrollbar">
-                    <li class="clients-item">
-                        <a href="#">
-                            <img src="./assets/images/logo-1-color.png" alt="client logo">
-                        </a>
-                    </li>
-                    <li class="clients-item">
-                        <a href="#">
-                            <img src="./assets/images/logo-2-color.png" alt="client logo">
-                        </a>
-                    </li>
-                    <li class="clients-item">
-                        <a href="#">
-                            <img src="./assets/images/logo-3-color.png" alt="client logo">
-                        </a>
-                    </li>
-                </ul>
-            </section>
-        </article>
-
-        <!-- ### RESUME ### -->
-        <article class="resume" data-page="resume">
-            <header>
-                <h2 class="h2 article-title">Resume</h2>
-            </header>
-
-            <section class="timeline">
-                <div class="title-wrapper">
-                    <div class="icon-box">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="h3">Education</h3>
-                </div>
-
-                <ol class="timeline-list">
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Roblox Developer Hub</h4>
-                        <span>2020 — 2021</span>
-                        <p class="timeline-text">
-                            Advanced Lua scripting and game development courses. Learned advanced game mechanics, optimization techniques, and multiplayer systems.
-                        </p>
-                    </li>
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Game Design Institute</h4>
-                        <span>2019 — 2020</span>
-                        <p class="timeline-text">
-                            Game design fundamentals, player psychology, and monetization strategies. Focus on creating engaging player experiences.
-                        </p>
-                    </li>
-                </ol>
-            </section>
-
-            <section class="timeline">
-                <div class="title-wrapper">
-                    <div class="icon-box">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3 class="h3">Experience</h3>
-                </div>
-
-                <ol class="timeline-list">
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Lead Roblox Developer</h4>
-                        <span>2021 — Present</span>
-                        <p class="timeline-text">
-                            Leading development of major Roblox games with millions of visits. Managing teams of developers and designers.
-                        </p>
-                    </li>
-                    <li class="timeline-item">
-                        <h4 class="h4 timeline-item-title">Game Developer</h4>
-                        <span>2019 — 2021</span>
-                        <p class="timeline-text">
-                            Developed various Roblox games including RPGs, simulators, and obbies. Specialized in Lua scripting and game mechanics.
-                        </p>
-                    </li>
-                </ol>
-            </section>
-
-            <section class="skill">
-                <h3 class="h3 skills-title">My skills</h3>
-                <ul class="skills-list content-card">
-                    <li class="skills-item">
-                        <div class="title-wrapper">
-                            <h5 class="h5">Lua Scripting</h5>
-                            <data value="90">90%</data>
-                        </div>
-                        <div class="skill-progress-bg">
-                            <div class="skill-progress-fill" style="width: 90%;"></div>
-                        </div>
-                    </li>
-                    <li class="skills-item">
-                        <div class="title-wrapper">
-                            <h5 class="h5">Game Design</h5>
-                            <data value="85">85%</data>
-                        </div>
-                        <div class="skill-progress-bg">
-                            <div class="skill-progress-fill" style="width: 85%;"></div>
-                        </div>
-                    </li>
-                    <li class="skills-item">
-                        <div class="title-wrapper">
-                            <h5 class="h5">3D Modeling</h5>
-                            <data value="80">80%</data>
-                        </div>
-                        <div class="skill-progress-bg">
-                            <div class="skill-progress-fill" style="width: 80%;"></div>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-        </article>
-
-        <!-- ### PORTFOLIO ### -->
-        <article class="portfolio" data-page="portfolio">
-            <header>
-                <h2 class="h2 article-title">Portfolio</h2>
-            </header>
-
-            <section class="projects">
-                <ul class="filter-list">
-                    <li class="filter-item">
-                        <button class="active" data-filter-btn>All</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn>RPG Games</button>
-                    </li>
-                    <li class="filter-item">
-                        <button data-filter-btn>Simulators</button>
-                    </li>
-                </ul>
-
-                <ul class="project-list">
-                    <li class="project-item active" data-filter-item data-category="rpg games">
-                        <a href="#">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <img src="./assets/images/project-1.jpg" alt="finance" loading="lazy">
+                    <li class="testimonials-item">
+                        <div class="content-card" data-testimonials-item>
+                            <figure class="testimonials-avatar-box">
+                                <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar>
                             </figure>
-                            <h3 class="project-title">Fantasy RPG World</h3>
-                            <p class="project-category">RPG Games</p>
-                        </a>
-                    </li>
-                    <li class="project-item active" data-filter-item data-category="simulators">
-                        <a href="#">
-                            <figure class="project-img">
-                                <div class="project-item-icon-box">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                                <img src="./assets/images/project-2.jpg" alt="orizon" loading="lazy">
-                            </figure>
-                            <h3 class="project-title">Epic Pet Simulator</h3>
-                            <p class="project-category">Simulators</p>
-                        </a>
+                            <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry William</h4>
+                            <div class="testimonials-text" data-testimonials-text>
+                                <p>
+                                    As a fellow developer, I collaborated on a complex project. The Lua scripting skills were 
+                                    impressive, with clean, modular code that was easy to understand and extend.
+                                </p>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </section>
+
+            <!-- TESTIMONIALS MODAL -->
+            <div class="modal-container" data-modal-container>
+                <div class="overlay" data-overlay></div>
+                <section class="testimonials-modal">
+                    <button class="modal-close-btn" data-modal-close-btn>
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="modal-img-wrapper">
+                        <figure class="modal-avatar-box">
+                            <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+                        </figure>
+                        <img src="./assets/images/icon-quote.svg" alt="quote icon">
+                    </div>
+                    <div class="modal-content">
+                        <h4 class="h3 modal-title" data-modal-title>Daniel Lewis</h4>
+                        <time datetime="2021-06-14">14 June, 2021</time>
+                        <div data-modal-text>
+                            <p>
+                                This developer created an amazing RPG game for our studio. The Lua scripting was clean, efficient, 
+                                and the game mechanics were implemented perfectly. Our players loved the engaging gameplay.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </article>
 
-        <!-- ### CONTACT ### -->
+        <!-- CONTACT -->
         <article class="contact" data-page="contact">
             <header>
                 <h2 class="h2 article-title">Contact</h2>
@@ -438,16 +626,10 @@
         </article>
     </div>
 
-    <!-- ### JAVASCRIPT ### -->
+    <!-- JAVASCRIPT -->
     <script src="./assets/js/script.js"></script>
 
     <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Copied to clipboard: ' + text);
-            });
-        }
-        
         // Custom Roblox icon
         const style = document.createElement('style');
         style.textContent = `
@@ -458,30 +640,6 @@
             }
         `;
         document.head.appendChild(style);
-        
-        // Simple navigation
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.navbar-link');
-            const articles = document.querySelectorAll('article[data-page]');
-            
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const page = this.getAttribute('data-nav-link').toLowerCase();
-                    
-                    // Update active nav link
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show corresponding article
-                    articles.forEach(article => {
-                        article.classList.remove('active');
-                        if (article.getAttribute('data-page') === page) {
-                            article.classList.add('active');
-                        }
-                    });
-                });
-            });
-        });
     </script>
 
 </body>
