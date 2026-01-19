@@ -3,998 +3,946 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roblox Developer | Game Creator Portfolio</title>
+    <title>Zhar1f09 | Roblox Developer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        /* EXACT vCard Color Scheme */
         :root {
-            --primary-color: #00a2ff;
-            --secondary-color: #ff4757;
-            --dark-color: #0f1523;
-            --dark-light: #1a2238;
-            --light-color: #f0f4f8;
-            --gray-color: #8a94a6;
-            --success-color: #00d68f;
-            --border-radius: 12px;
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --bg-tertiary: #252525;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-tertiary: #888888;
+            --accent: #ff6b6b;
+            --accent-hover: #ff5252;
+            --border-color: #2a2a2a;
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
             --transition: all 0.3s ease;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            --roblox-blue: #00a2ff;
-            --roblox-red: #ff4757;
-            --roblox-dark: #0f1523;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-color);
-            color: var(--light-color);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
         }
-
+        
         .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            display: flex;
+            min-height: 100vh;
         }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--light-color);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(to right, var(--roblox-blue), var(--roblox-red));
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: var(--gray-color);
-            margin-bottom: 50px;
-            max-width: 600px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--roblox-blue), #0088cc);
-            color: white;
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 162, 255, 0.4);
-        }
-
-        .btn-secondary {
-            background: linear-gradient(135deg, var(--roblox-red), #ff2e43);
-        }
-
-        /* Header */
-        header {
-            background-color: rgba(15, 21, 35, 0.95);
+        
+        /* SIDEBAR - EXACT vCard Style */
+        .sidebar {
+            width: 320px;
+            background-color: var(--bg-secondary);
+            padding: 40px 30px;
             position: fixed;
-            width: 100%;
-            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid var(--border-color);
             z-index: 1000;
-            padding: 20px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
         }
-
-        .navbar {
+        
+        .profile-img-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), #ff8e8e);
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: white;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            border: 5px solid var(--border-color);
         }
-
-        .logo {
-            font-size: 28px;
+        
+        .profile-name {
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--light-color);
-            text-decoration: none;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        
+        .profile-title {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-info {
+            margin: 25px 0;
+        }
+        
+        .info-item {
             display: flex;
             align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
-
-        .logo i {
-            color: var(--roblox-blue);
-            margin-right: 10px;
-            font-size: 32px;
+        
+        .info-item i {
+            color: var(--accent);
+            margin-right: 12px;
+            font-size: 1rem;
+            width: 20px;
         }
-
-        .logo span {
-            color: var(--roblox-red);
-        }
-
-        .nav-links {
+        
+        .social-links {
             display: flex;
-            list-style: none;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
         }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
-        .nav-links a {
-            color: var(--light-color);
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
             transition: var(--transition);
-            padding: 5px 0;
+            border: 1px solid var(--border-color);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-3px);
+        }
+        
+        /* MAIN CONTENT - EXACT vCard Layout */
+        .main-content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 50px;
+            background-color: var(--bg-primary);
+        }
+        
+        section {
+            margin-bottom: 70px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+            color: var(--text-primary);
             position: relative;
+            padding-bottom: 15px;
         }
-
-        .nav-links a:hover {
-            color: var(--roblox-blue);
-        }
-
-        .nav-links a::after {
+        
+        .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--roblox-blue);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
+            width: 40px;
             height: 3px;
-            background-color: var(--light-color);
-            margin: 3px 0;
-            transition: var(--transition);
-            border-radius: 2px;
+            background-color: var(--accent);
         }
-
-        /* Hero Section */
-        .hero {
-            padding-top: 150px;
-            padding-bottom: 100px;
-            background: linear-gradient(135deg, rgba(15, 21, 35, 0.9) 0%, rgba(26, 34, 56, 0.9) 100%);
+        
+        /* About Section */
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* What I Do Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 107, 107, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Skills Section - Compact */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+        
+        .skill-percentage {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .skill-bar {
+            height: 6px;
+            background-color: var(--bg-tertiary);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background-color: var(--accent);
+            border-radius: 3px;
+            transition: width 1.5s ease;
+        }
+        
+        /* Resume Section */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .resume-card {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .resume-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+        
+        .timeline {
+            position: relative;
+        }
+        
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 2px solid var(--accent);
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent);
+        }
+        
+        .timeline-period {
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .timeline-role {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--accent);
+            color: var(--text-primary);
+            border-color: var(--accent);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            background-color: var(--bg-tertiary);
             position: relative;
             overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        
+        .portfolio-img img {
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100" stroke="rgba(0, 162, 255, 0.1)" stroke-width="1"/><path d="M100,0 L0,100" stroke="rgba(0, 162, 255, 0.1)" stroke-width="1"/></svg>');
-            opacity: 0.3;
+            object-fit: cover;
+            transition: transform 0.5s ease;
         }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.05);
         }
-
-        .hero-text {
-            flex: 1;
-            padding-right: 40px;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .hero-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-title span {
-            color: var(--roblox-blue);
-        }
-
-        .hero-subtitle {
-            font-size: 20px;
-            color: var(--gray-color);
-            margin-bottom: 30px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--dark-light);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        /* Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            background-color: var(--dark-light);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow);
-            border-color: var(--roblox-blue);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--roblox-blue), #0088cc);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .service-icon i {
-            font-size: 28px;
+        
+        .portfolio-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
             color: white;
-        }
-
-        .service-title {
-            font-size: 22px;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--light-color);
         }
-
-        .service-desc {
-            color: var(--gray-color);
-            font-size: 16px;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            background-color: var(--dark-light);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .testimonial-card {
-            background-color: var(--dark-color);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: var(--light-color);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-            background: linear-gradient(135deg, var(--roblox-blue), var(--roblox-red));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-        }
-
-        .author-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            color: var(--gray-color);
-            font-size: 14px;
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--dark-color);
-        }
-
-        .contact-container {
-            display: flex;
-            gap: 50px;
-            margin-top: 40px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-form {
-            flex: 1;
-        }
-
-        .contact-methods {
-            margin-top: 30px;
-        }
-
-        .contact-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
+        
+        .portfolio-content {
             padding: 20px;
-            background-color: var(--dark-light);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
         }
-
-        .contact-method:hover {
-            transform: translateX(10px);
-            border-left: 4px solid var(--roblox-blue);
+        
+        .portfolio-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
-
-        .method-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--roblox-blue), #0088cc);
-            border-radius: 50%;
+        
+        .portfolio-tags {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
+            flex-wrap: wrap;
+            gap: 8px;
         }
-
-        .method-icon i {
-            font-size: 24px;
-            color: white;
-        }
-
-        .method-info h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .method-info p {
-            color: var(--gray-color);
-            font-size: 14px;
-        }
-
-        .method-info a {
-            color: var(--roblox-blue);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .method-info a:hover {
-            text-decoration: underline;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
+        
+        .portfolio-tag {
+            background-color: rgba(255, 107, 107, 0.1);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: 500;
         }
-
-        .form-control {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--dark-light);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--border-radius);
-            color: var(--light-color);
-            font-family: 'Poppins', sans-serif;
-            font-size: 16px;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--roblox-blue);
-            box-shadow: 0 0 0 2px rgba(0, 162, 255, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #0a0e1a;
-            padding: 60px 0 30px;
-            text-align: center;
-        }
-
-        .footer-content {
-            margin-bottom: 40px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
+        
+        /* Contact Section - Minimal */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
-            margin-top: 30px;
         }
-
-        .social-link {
+        
+        .contact-card {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+        
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            background-color: var(--dark-light);
+            background-color: rgba(255, 107, 107, 0.1);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--light-color);
-            text-decoration: none;
-            font-size: 20px;
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+        
+        .contact-text h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+        
+        .contact-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
+            font-size: 0.95rem;
         }
-
-        .social-link:hover {
-            background-color: var(--roblox-blue);
-            transform: translateY(-5px);
+        
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
-
-        .copyright {
-            color: var(--gray-color);
-            font-size: 14px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
+        
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content,
-            .about-content {
-                flex-direction: column;
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 280px;
             }
             
-            .hero-text,
-            .about-text {
-                padding-right: 0;
-                margin-bottom: 40px;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .hero-title {
-                font-size: 40px;
+            .main-content {
+                margin-left: 280px;
+                padding: 40px;
             }
         }
-
+        
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                background-color: var(--dark-color);
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: relative;
                 width: 100%;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
+                height: auto;
+                padding: 30px;
             }
             
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
+            .main-content {
+                margin-left: 0;
+                padding: 30px;
             }
             
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .hero-title {
-                font-size: 36px;
-            }
-            
-            section {
-                padding: 60px 0;
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
         }
-
-        @media (max-width: 576px) {
-            .hero-title {
-                font-size: 32px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .service-card,
-            .testimonial-card,
-            .contact-method {
-                padding: 20px;
-            }
+        
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <i class="fas fa-gamepad"></i>Roblox<span>Dev</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <div class="container">
+        <!-- SIDEBAR - Fixed position like vCard -->
+        <aside class="sidebar">
+            <div class="profile-img-container">
+                <div class="profile-img">Z</div>
+                <h1 class="profile-name">Zhar1f09</h1>
+                <p class="profile-title">Roblox Multi-Creator</p>
+            </div>
+            
+            <div class="sidebar-info">
+                <div class="info-item">
+                    <i class="fas fa-user"></i>
+                    <span>3+ Years Experience</span>
                 </div>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Hi, I'm a <span>Roblox Developer</span></h1>
-                    <p class="hero-subtitle">I create immersive games and experiences on the Roblox platform. Specializing in Lua scripting, 3D modeling, and game design to bring your vision to life.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn">Get In Touch</a>
-                        <a href="#services" class="btn btn-secondary">View My Work</a>
-                    </div>
+                <div class="info-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>25+ Projects Completed</span>
                 </div>
-                <div class="hero-image">
-                    <!-- Placeholder for Roblox avatar or game screenshot -->
-                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, var(--roblox-blue), var(--roblox-red)); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold;">
-                        <i class="fas fa-cube" style="font-size: 80px; margin-right: 20px;"></i>
-                        <div>Roblox<br>Portfolio</div>
-                    </div>
+                <div class="info-item">
+                    <i class="fas fa-smile"></i>
+                    <span>2 Happy Clients</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Roblox Platform</span>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Passionate Roblox developer with 3+ years of experience creating games that engage millions of players.</p>
-            <div class="about-content">
+            
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fas fa-gamepad"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </aside>
+        
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- About Section -->
+            <section id="about">
+                <h2 class="section-title">About Me</h2>
                 <div class="about-text">
-                    <p>I'm a dedicated Roblox game developer with expertise in Lua scripting, game mechanics design, and 3D environment creation. I love turning creative ideas into interactive experiences that players enjoy.</p>
-                    <p>My journey started with simple obbys and has evolved into complex RPGs, simulators, and adventure games. I understand what makes games engaging and how to optimize performance for the best player experience.</p>
-                    <p>I stay updated with the latest Roblox features and development techniques to ensure my games are modern, efficient, and visually appealing. Whether you need a complete game developed or assistance with specific scripting challenges, I can help bring your vision to life.</p>
-                    <a href="#contact" class="btn" style="margin-top: 20px;">Let's Create Together</a>
+                    <p>Hello! I'm Zhar1f09, a passionate Roblox creator with 3+ years of experience. I have been on Discord for 4 years with 3 years of experience in developing. I enjoy contributing to projects or commissions that I can do to contribute and learn more about every skill + Improve {Improvise}.</p>
+                    <p>My journey in Roblox creation started as a hobby and has grown into a passion for creating immersive experiences. I love taking on new challenges and expanding my skill set with every project.</p>
                 </div>
-                <div class="about-image">
-                    <!-- Placeholder for developer image or game screenshots -->
-                    <div style="width: 100%; height: 350px; background: linear-gradient(135deg, var(--dark-color), var(--dark-light)); border-radius: var(--border-radius); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px;">
-                        <div style="font-size: 80px; margin-bottom: 20px;">
+            </section>
+            
+            <!-- What I Do Section -->
+            <section id="services">
+                <h2 class="section-title">What I'm Doing</h2>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3 class="service-title">3D Modeling</h3>
+                        <p class="service-desc">Creating custom 3D models, characters, and assets for Roblox games using Blender and Roblox Studio with professional quality.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="service-title">World Building</h3>
+                        <p class="service-desc">Designing and constructing immersive environments and game worlds with attention to detail, optimization, and gameplay flow.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h3 class="service-title">Clothing Design</h3>
+                        <p class="service-desc">Creating custom clothing items, accessories, and avatar customization options with trend-aware designs for the Roblox community.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="service-title">Graphics Creation</h3>
+                        <p class="service-desc">Designing game icons, thumbnails, promotional graphics, and UI elements that enhance player experience and engagement.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <h3 class="service-title">Discord Services</h3>
+                        <p class="service-desc">Complete Discord server setup, custom bot development, moderation systems, and community management for Roblox games.</p>
+                    </div>
+                    
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3 style="margin-bottom: 10px;">Lua Expert</h3>
-                        <p style="text-align: center; color: var(--gray-color);">Specializing in efficient Roblox Lua scripting</p>
+                        <h3 class="service-title">Lua Scripting</h3>
+                        <p class="service-desc">Developing custom game mechanics, systems, and interactive elements using Lua scripting for enhanced gameplay experiences.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">What I Do</h2>
-            <p class="section-subtitle">Comprehensive Roblox development services to bring your game ideas to life</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
+            </section>
+            
+            <!-- Skills Section - Compact -->
+            <section id="skills">
+                <h2 class="section-title">My Skills</h2>
+                <div class="skills-list">
+                    <div class="skill-item fade-in">
+                        <div class="skill-header">
+                            <span class="skill-name">3D Modeling (Blender)</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
                     </div>
-                    <h3 class="service-title">Lua Scripting</h3>
-                    <p class="service-desc">Custom Lua scripts for game mechanics, GUIs, data handling, and complex systems. Clean, efficient, and well-documented code.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-cube"></i>
+                    
+                    <div class="skill-item fade-in">
+                        <div class="skill-header">
+                            <span class="skill-name">Roblox Building</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
                     </div>
-                    <h3 class="service-title">3D Modeling</h3>
-                    <p class="service-desc">Creating custom 3D assets, environments, and characters optimized for Roblox performance and aesthetics.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-gamepad"></i>
+                    
+                    <div class="skill-item fade-in">
+                        <div class="skill-header">
+                            <span class="skill-name">Clothing Design</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
                     </div>
-                    <h3 class="service-title">Game Design</h3>
-                    <p class="service-desc">Complete game development from concept to deployment, including mechanics, progression systems, and monetization strategies.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
+                    
+                    <div class="skill-item fade-in">
+                        <div class="skill-header">
+                            <span class="skill-name">Graphics & UI Design</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 88%"></div>
+                        </div>
                     </div>
-                    <h3 class="service-title">Bug Fixing & Optimization</h3>
-                    <p class="service-desc">Identifying and resolving performance issues, bugs, and improving existing games for better player experience.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Player & Collaborator Feedback</h2>
-            <p class="section-subtitle">What players and fellow developers say about my work</p>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The game mechanics were implemented flawlessly. Players loved the unique systems and the attention to detail in the scripting."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JD</div>
-                        <div class="author-info">
-                            <h4>James Developer</h4>
-                            <p>Fellow Roblox Creator</p>
+                    
+                    <div class="skill-item fade-in">
+                        <div class="skill-header">
+                            <span class="skill-name">Discord Community Management</span>
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item fade-in">
+                        <div class="skill-header">
+                            <span class="skill-name">Lua Scripting</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Our game's performance improved dramatically after the optimization work. Frame rates doubled and players reported much smoother gameplay."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SG</div>
-                        <div class="author-info">
-                            <h4>Sarah Gamer</h4>
-                            <p>Game Studio Partner</p>
+            </section>
+            
+            <!-- Resume Section -->
+            <section id="resume">
+                <h2 class="section-title">Resume</h2>
+                <div class="resume-grid">
+                    <div class="resume-card">
+                        <h3 class="resume-title">Experience</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-period">2021 - Present</div>
+                                <h4 class="timeline-role">Freelance Roblox Creator</h4>
+                                <p class="timeline-desc">Creating custom 3D models, environments, clothing items, and graphics for various Roblox games and developers. Providing Discord community setup and management services.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-period">2020 - Present</div>
+                                <h4 class="timeline-role">Discord Community Manager</h4>
+                                <p class="timeline-desc">Setting up and managing Discord servers for Roblox game communities, implementing moderation systems, custom bots, and engagement strategies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="resume-card">
+                        <h3 class="resume-title">Stats & Achievements</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-period">3+ Years</div>
+                                <h4 class="timeline-role">Development Experience</h4>
+                                <p class="timeline-desc">Extensive experience across multiple Roblox development disciplines with continuous skill improvement and learning.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-period">25+ Projects</div>
+                                <h4 class="timeline-role">Completed Commissions</h4>
+                                <p class="timeline-desc">Successfully delivered various projects including modeling, building, clothing design, graphics, and Discord services for satisfied clients.</p>
+                            </div>
+                            
+                            <div class="timeline-item">
+                                <div class="timeline-period">2 Happy Clients</div>
+                                <h4 class="timeline-role">Client Satisfaction</h4>
+                                <p class="timeline-desc">Received positive feedback and repeat business from satisfied clients for quality work, professionalism, and timely delivery.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The custom 3D models created for our game were exactly what we envisioned. They really brought our game world to life and players love them."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">MD</div>
-                        <div class="author-info">
-                            <h4>Mike Designer</h4>
-                            <p>Art Director</p>
+            </section>
+            
+            <!-- Portfolio Section -->
+            <section id="portfolio">
+                <h2 class="section-title">Portfolio</h2>
+                
+                <div class="portfolio-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="modeling">3D Modeling</button>
+                    <button class="filter-btn" data-filter="building">Building</button>
+                    <button class="filter-btn" data-filter="clothing">Clothing</button>
+                    <button class="filter-btn" data-filter="graphics">Graphics</button>
+                    <button class="filter-btn" data-filter="discord">Discord</button>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-item fade-in" data-category="modeling">
+                        <div class="portfolio-img">
+                            <div class="portfolio-badge">Modeling</div>
+                            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fantasy Character Models">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Fantasy Character Set</h3>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Blender</span>
+                                <span class="portfolio-tag">3D Modeling</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item fade-in" data-category="building">
+                        <div class="portfolio-img">
+                            <div class="portfolio-badge">Building</div>
+                            <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cyberpunk City">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Cyberpunk Cityscape</h3>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Roblox Studio</span>
+                                <span class="portfolio-tag">Building</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item fade-in" data-category="clothing">
+                        <div class="portfolio-img">
+                            <div class="portfolio-badge">Clothing</div>
+                            <img src="https://images.unsplash.com/photo-1558769132-cb1c458e4222?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clothing Collection">
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Urban Streetwear Collection</h3>
+                            <div class="portfolio-tags">
+                                <span class="portfolio-tag">Photoshop</span>
+                                <span class="portfolio-tag">Clothing Design</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Connect with me through these Roblox-friendly methods</p>
-            <div class="contact-container">
+            </section>
+            
+            <!-- Contact Section - Minimal -->
+            <section id="contact">
+                <h2 class="section-title">Contact</h2>
+                
                 <div class="contact-info">
-                    <h3 style="font-size: 24px; margin-bottom: 20px;">Contact Methods</h3>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fab fa-discord"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Discord Message</h4>
-                                <p>Direct message me on Discord for quick queries</p>
-                                <p><a href="#" id="discordUsername">robloxdev_1234</a> <button class="copy-btn" data-text="robloxdev_1234" style="background: none; border: none; color: var(--roblox-blue); cursor: pointer; margin-left: 10px; font-size: 12px;">Copy</button></p>
-                            </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fab fa-discord"></i>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Discord Server</h4>
-                                <p>Join my development community server</p>
-                                <p><a href="#" id="discordServer">discord.gg/robloxdev</a> <button class="copy-btn" data-text="discord.gg/robloxdev" style="background: none; border: none; color: var(--roblox-blue); cursor: pointer; margin-left: 10px; font-size: 12px;">Copy</button></p>
-                            </div>
+                        <div class="contact-text">
+                            <h3>Discord</h3>
+                            <p>Zhar1f09#0000</p>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Email</h4>
-                                <p>Send me an email for formal inquiries or project details</p>
-                                <p><a href="mailto:contact@robloxdevportfolio.com">contact@robloxdevportfolio.com</a></p>
-                            </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-gamepad"></i>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-user-friends"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Roblox Friend</h4>
-                                <p>Send a friend request on Roblox to connect</p>
-                                <p><a href="#" id="robloxProfile">RobloxDevMaster</a> <button class="copy-btn" data-text="RobloxDevMaster" style="background: none; border: none; color: var(--roblox-blue); cursor: pointer; margin-left: 10px; font-size: 12px;">Copy</button></p>
-                            </div>
+                        <div class="contact-text">
+                            <h3>Roblox</h3>
+                            <p>@Zhar1f09</p>
                         </div>
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="method-info">
-                                <h4>Roblox Group</h4>
-                                <p>Join my Roblox development group</p>
-                                <p><a href="#" id="robloxGroup">RobloxDevStudios</a> <button class="copy-btn" data-text="RobloxDevStudios" style="background: none; border: none; color: var(--roblox-blue); cursor: pointer; margin-left: 10px; font-size: 12px;">Copy</button></p>
-                            </div>
+                    </div>
+                    
+                    <div class="contact-card fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>zhar1f09@email.com</p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
-                    <h3 style="font-size: 24px; margin-bottom: 20px;">Send a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Project inquiry or collaboration" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" class="form-control" placeholder="Describe your project or question..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <a href="#" class="logo" style="font-size: 32px; margin-bottom: 20px; display: inline-block;">
-                    <i class="fas fa-gamepad"></i>Roblox<span>Dev</span>
-                </a>
-                <p style="max-width: 600px; margin: 0 auto 30px; color: var(--gray-color);">Creating immersive experiences on the Roblox platform. Let's build something amazing together.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <i class="fab fa-roblox"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-discord"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2026 RobloxDev Portfolio. All rights reserved. | This portfolio is for demonstration purposes.
-            </div>
-        </div>
-    </footer>
+            </section>
+        </main>
+    </div>
 
     <script>
-        // Mobile navigation toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        // Portfolio filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
         
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            hamburger.classList.toggle('active');
-            
-            // Animate hamburger to X
-            const spans = hamburger.querySelectorAll('span');
-            if (navLinks.classList.contains('active')) {
-                spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
-                spans[1].style.opacity = '0';
-                spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
-            } else {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
-        });
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-                const spans = hamburger.querySelectorAll('span');
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            });
-        });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For demo purposes, we'll just show an alert
-            alert(`Thank you ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
-            
-            // Reset form
-            this.reset();
-        });
-        
-        // Copy buttons for contact info
-        document.querySelectorAll('.copy-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const textToCopy = this.getAttribute('data-text');
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    // Visual feedback
-                    const originalText = this.textContent;
-                    this.textContent = 'Copied!';
-                    this.style.color = 'var(--success-color)';
-                    
-                    setTimeout(() => {
-                        this.textContent = originalText;
-                        this.style.color = 'var(--roblox-blue)';
-                    }, 2000);
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Show/hide portfolio items based on filter
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 });
             });
         });
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('href') === '#') return;
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
                 
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
                 }
             });
-        });
+        };
         
-        // Add Roblox icon to FontAwesome
-        const robloxIcon = document.createElement('script');
-        robloxIcon.src = 'https://kit.fontawesome.com/7b5d9be8c7.js';
-        robloxIcon.crossOrigin = 'anonymous';
-        document.head.appendChild(robloxIcon);
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
         
-        // Add Roblox icon CSS class
-        const style = document.createElement('style');
-        style.textContent = `
-            .fa-roblox:before {
-                content: "R";
-                font-weight: bold;
-                font-family: 'Poppins', sans-serif;
-            }
-        `;
-        document.head.appendChild(style);
+        // Animate skill bars on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        };
+        
+        // Trigger animation when skills section is in view
+        const skillsSection = document.getElementById('skills');
+        
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkillBars();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        
+        if (skillsSection) {
+            skillsObserver.observe(skillsSection);
+        }
     </script>
 </body>
 </html>
