@@ -40,72 +40,96 @@
             <div class="contact-info">
                 <h3 class="contact-title">Professional Contact</h3>
                 
-                <div class="info-item">
+                <!-- Email - Opens default email client -->
+                <a href="mailto:zhar1f09@example.com" class="info-item clickable" data-action="email">
                     <i class="fas fa-envelope"></i>
                     <div class="info-content">
                         <span class="info-label">Email</span>
-                        <span class="info-value">zharif0611@gmail.com</span>
+                        <span class="info-value">zhar1f09@example.com</span>
                     </div>
-                </div>
+                    <div class="info-action">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
                 
-                <div class="info-item">
+                <!-- Roblox Profile - Opens in new tab -->
+                <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="info-item clickable" data-action="roblox-profile">
                     <i class="fab fa-roblox"></i>
                     <div class="info-content">
                         <span class="info-label">Roblox Profile</span>
                         <span class="info-value">Zhar1f09</span>
                     </div>
-                </div>
+                    <div class="info-action">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
                 
-                <div class="info-item">
-                    <i class="fab fa-roblox"></i>
+                <!-- Roblox Group - Opens in new tab -->
+                <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="info-item clickable" data-action="roblox-group">
+                    <i class="fas fa-users"></i>
                     <div class="info-content">
                         <span class="info-label">Roblox Group</span>
                         <span class="info-value">Your Group Name</span>
                     </div>
-                </div>
+                    <div class="info-action">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
                 
-                <div class="info-item">
+                <!-- Discord - Copies to clipboard -->
+                <button class="info-item clickable" data-action="copy" data-copy-text="zhar1f09" id="discord-contact">
                     <i class="fab fa-discord"></i>
                     <div class="info-content">
                         <span class="info-label">Discord</span>
                         <span class="info-value">zhar1f09</span>
                     </div>
-                </div>
+                    <div class="info-action">
+                        <i class="fas fa-copy"></i>
+                    </div>
+                </button>
                 
-                <div class="info-item">
-                    <i class="fas fa-users"></i>
+                <!-- Discord Server - Opens in new tab -->
+                <a href="https://discord.gg/YOUR_SERVER_INVITE" target="_blank" class="info-item clickable" data-action="discord-server">
+                    <i class="fab fa-discord"></i>
                     <div class="info-content">
                         <span class="info-label">Discord Server</span>
                         <span class="info-value">Join for Updates</span>
                     </div>
-                </div>
+                    <div class="info-action">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
                 
-                <div class="info-item">
+                <!-- Availability - Shows message -->
+                <button class="info-item clickable" data-action="availability">
                     <i class="fas fa-clock"></i>
                     <div class="info-content">
                         <span class="info-label">Availability</span>
                         <span class="info-value">Available for Projects</span>
                     </div>
-                </div>
+                    <div class="info-action">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                </button>
             </div>
 
             <!-- Professional Social Links - BOTTOM -->
             <div class="social-section">
                 <h3>Connect Professionally</h3>
                 <div class="social-links">
-                    <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-link" title="Roblox Profile">
+                    <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-link" title="Roblox Profile" data-action="roblox-profile">
                         <i class="fab fa-roblox"></i>
                         <span class="social-tooltip">Roblox</span>
                     </a>
-                    <a href="#" class="social-link" title="Discord" id="discord-copy">
+                    <button class="social-link" title="Discord" data-action="copy" data-copy-text="zhar1f09" id="discord-social">
                         <i class="fab fa-discord"></i>
                         <span class="social-tooltip">zhar1f09</span>
-                    </a>
-                    <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="social-link" title="Roblox Group">
+                    </button>
+                    <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="social-link" title="Roblox Group" data-action="roblox-group">
                         <i class="fas fa-users"></i>
                         <span class="social-tooltip">Group</span>
                     </a>
-                    <a href="mailto:zhar1f09@example.com" class="social-link" title="Email">
+                    <a href="mailto:zhar1f09@example.com" class="social-link" title="Email" data-action="email">
                         <i class="fas fa-envelope"></i>
                         <span class="social-tooltip">Email</span>
                     </a>
@@ -623,9 +647,9 @@
                 <div class="footer-content">
                     <p>© <span id="currentYear"></span> Zhar1f09. Professional Roblox Developer based in Singapore.</p>
                     <p class="footer-links">
-                        <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank">Roblox Profile</a> • 
-                        <a href="#" id="footer-discord">Discord: zhar1f09</a> • 
-                        <a href="mailto:zhar1f09@example.com">Email Me</a>
+                        <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" data-action="roblox-profile">Roblox Profile</a> • 
+                        <button data-action="copy" data-copy-text="zhar1f09" id="footer-discord">Discord: zhar1f09</button> • 
+                        <a href="mailto:zhar1f09@example.com" data-action="email">Email Me</a>
                     </p>
                 </div>
             </footer>
