@@ -261,7 +261,7 @@ body {
 
 /* Section Styling */
 .section {
-    max-width: 1000px;
+    max-width: 1200px;
     margin-bottom: 80px;
     opacity: 0;
     transform: translateY(30px);
@@ -295,15 +295,6 @@ body {
     height: 4px;
     background: var(--accent);
     border-radius: 2px;
-}
-
-.wip-badge {
-    background: var(--accent);
-    color: white;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
 }
 
 /* About Section */
@@ -365,12 +356,17 @@ body {
     display: block;
 }
 
-/* Portfolio Grid */
+/* Portfolio Grid - UPDATED TO 3×2 LAYOUT */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 20px;
+}
+
+/* Ensure exactly 6 items show in the grid */
+.portfolio-grid .portfolio-item:nth-child(n+7) {
+    display: none;
 }
 
 .portfolio-item {
@@ -382,6 +378,7 @@ body {
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    min-height: 380px;
 }
 
 .portfolio-item:hover {
@@ -392,7 +389,7 @@ body {
 
 .portfolio-image {
     position: relative;
-    height: 250px;
+    height: 220px;
     overflow: hidden;
 }
 
@@ -413,7 +410,7 @@ body {
     left: 0;
     right: 0;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
-    padding: 25px;
+    padding: 20px;
     color: white;
     transform: translateY(100%);
     transition: var(--transition);
@@ -435,13 +432,14 @@ body {
 }
 
 .portfolio-overlay h4 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 8px;
 }
 
 .portfolio-overlay p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     opacity: 0.9;
+    line-height: 1.4;
 }
 
 .portfolio-info {
@@ -460,26 +458,34 @@ body {
     line-height: 1.6;
 }
 
-/* Skills Container - UPDATED FOR BETTER RESPONSIVE LAYOUT */
+/* Skills Container - UPDATED FOR NEW CATEGORIES */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 30px;
 }
 
-/* PC: 2x2 grid (2 rows, 2 columns) */
+/* PC: 3×2 grid (3 columns, 2 rows) */
 @media (min-width: 1200px) {
     .skills-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* iPad & Tablet: 2x2 grid (same as PC) */
+/* iPad & Tablet: 2×3 grid (2 columns, 3 rows) */
 @media (min-width: 768px) and (max-width: 1199px) {
     .skills-container {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
     .skill-category {
@@ -500,14 +506,19 @@ body {
     .skills-container {
         grid-template-columns: 1fr;
     }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .skill-category {
     background: var(--bg-card);
-    padding: 30px;
+    padding: 25px;
     border-radius: 12px;
     border: 1px solid var(--border);
     transition: var(--transition);
+    min-height: 320px;
 }
 
 .skill-category:hover {
@@ -525,28 +536,30 @@ body {
 
 .skill-header i {
     color: var(--accent);
-    font-size: 2rem;
+    font-size: 1.8rem;
     background: var(--bg-accent);
-    padding: 15px;
+    padding: 12px;
     border-radius: 10px;
+    min-width: 50px;
+    text-align: center;
 }
 
 .skill-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-primary);
 }
 
 .skill-description {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
     border-bottom: 1px solid var(--border);
 }
 
 .skill-description p {
     color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .skill-list {
@@ -555,10 +568,11 @@ body {
 
 .skill-list li {
     color: var(--text-secondary);
-    margin-bottom: 12px;
-    padding-left: 25px;
+    margin-bottom: 10px;
+    padding-left: 20px;
     position: relative;
-    line-height: 1.6;
+    line-height: 1.5;
+    font-size: 0.9rem;
 }
 
 .skill-list li::before {
@@ -566,7 +580,7 @@ body {
     color: var(--accent);
     position: absolute;
     left: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 /* Contact Form Styles */
@@ -670,40 +684,6 @@ body {
     box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
 }
 
-/* W.I.P Container */
-.wip-container {
-    background: var(--bg-card);
-    border: 2px dashed var(--border);
-    border-radius: 12px;
-    padding: 60px 40px;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.wip-content {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.wip-content i {
-    font-size: 4rem;
-    color: var(--accent);
-    margin-bottom: 20px;
-}
-
-.wip-content h3 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: var(--text-primary);
-}
-
-.wip-content p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-
 /* Stats Section */
 .stats {
     display: grid;
@@ -783,10 +763,6 @@ body {
         margin-left: 300px;
         padding: 40px;
     }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
 }
 
 /* iPad & Tablet Layout (768px - 992px) */
@@ -815,10 +791,7 @@ body {
     
     .skill-category {
         padding: 20px;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        min-height: auto;
     }
     
     .stats {
@@ -835,6 +808,10 @@ body {
     
     .social-links {
         grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -879,3 +856,90 @@ body {
         gap: 20px;
         text-align: center;
     }
+    
+    .social-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .sidebar {
+        padding: 20px;
+    }
+    
+    .profile-img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .profile-initial {
+        font-size: 3rem;
+    }
+    
+    .profile-name {
+        font-size: 1.8rem;
+    }
+    
+    .portfolio-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .skill-category {
+        padding: 15px;
+    }
+    
+    .skill-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .skill-header i {
+        font-size: 1.5rem;
+        padding: 12px;
+    }
+    
+    .skill-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .skill-description p {
+        font-size: 0.9rem;
+    }
+    
+    .info-item {
+        padding: 12px;
+    }
+    
+    .info-label {
+        font-size: 0.75rem;
+    }
+    
+    .info-value {
+        font-size: 0.9rem;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover);
+}
