@@ -1,9 +1,7 @@
 // DOM Elements
 const contactForm = document.getElementById('contactForm');
 const currentYearElement = document.getElementById('currentYear');
-const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
-const statNumbers = document.querySelectorAll('.stat-number');
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -16,9 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll animations
     initScrollAnimations();
     
-    // Initialize active nav link
-    updateActiveNavLink();
-    
     // Add event listeners
     setupEventListeners();
     
@@ -26,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
         document.querySelectorAll('.section').forEach(section => {
             if (isElementInViewport(section)) {
-                section.classList.add('visible');
+                section.style.animationPlayState = 'running';
             }
         });
     }, 300);
@@ -41,20 +36,22 @@ function updateCurrentYear() {
 
 // Initialize counter animations
 function initCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
     statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'));
-        const duration = 2000; // 2 seconds
-        const step = target / (duration / 16); // 60fps
+        const target = parseInt(stat.textContent.replace('+', ''));
+        stat.textContent = '0+';
         
         let current = 0;
-        const timer = setInterval(() => {
-            current += step;
+        const increment = target / 50; // 50 steps for smooth animation
+        
+        const counter = setInterval(() => {
+            current += increment;
             if (current >= target) {
                 current = target;
-                clearInterval(timer);
+                clearInterval(counter);
             }
-            stat.textContent = Math.floor(current);
-        }, 16);
+            stat.textContent = Math.floor(current) + '+';
+        }, 30);
     });
 }
 
@@ -68,7 +65,7 @@ function initScrollAnimations() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.style.animationPlayState = 'running';
             }
         });
     }, observerOptions);
@@ -86,27 +83,6 @@ function isElementInViewport(el) {
     );
 }
 
-// Update active navigation link
-function updateActiveNavLink() {
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.scrollY >= (sectionTop - 200)) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
-    });
-}
-
 // Setup event listeners
 function setupEventListeners() {
     // Form submission
@@ -122,32 +98,7 @@ function setupEventListeners() {
             
             e.preventDefault();
             scrollToSection(targetId);
-            
-            // Update active nav link on click
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
         });
-    });
-    
-    // Update active nav link on scroll
-    window.addEventListener('scroll', updateActiveNavLink);
-    
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-        // Escape key closes any open modals (future feature)
-        if (e.key === 'Escape') {
-            // Add functionality for closing modals if added later
-        }
-        
-        // Tab navigation for accessibility
-        if (e.key === 'Tab') {
-            document.body.classList.add('keyboard-nav');
-        }
-    });
-    
-    // Mouse click removes keyboard navigation class
-    document.addEventListener('mousedown', function() {
-        document.body.classList.remove('keyboard-nav');
     });
 }
 
@@ -172,13 +123,10 @@ function handleFormSubmit(e) {
         return;
     }
     
-    // In a real implementation, you would send this data to a server
-    // For GitHub Pages static hosting, we'll simulate submission
-    
     // Show loading state
     const submitBtn = contactForm.querySelector('.submit-btn');
     const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
     // Simulate API call delay
@@ -190,12 +138,12 @@ function handleFormSubmit(e) {
         contactForm.reset();
         
         // Reset button
-        submitBtn.textContent = originalText;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         submitBtn.disabled = false;
         
         // Log to console (for testing)
         console.log('Form submitted:', { name, email, subject, message });
-    }, 1500);
+    }, 2000);
 }
 
 // Scroll to section smoothly
@@ -235,6 +183,7 @@ function showNotification(message, type = 'info') {
         transform: translateX(120%);
         transition: transform 0.3s ease;
         max-width: 400px;
+        font-family: 'Inter', sans-serif;
     `;
     
     // Set background color based on type
@@ -281,40 +230,12 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Initialize tooltips (if needed in future)
-function initTooltips() {
-    const tooltipElements = document.querySelectorAll('[data-tooltip]');
-    
-    tooltipElements.forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            const tooltipText = this.getAttribute('data-tooltip');
-            const tooltip = document.createElement('div');
-            tooltip.className = 'tooltip';
-            tooltip.textContent = tooltipText;
-            
-            const rect = this.getBoundingClientRect();
-            tooltip.style.position = 'fixed';
-            tooltip.style.left = `${rect.left + rect.width / 2}px`;
-            tooltip.style.top = `${rect.top - 40}px`;
-            tooltip.style.transform = 'translateX(-50%)';
-            tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-            tooltip.style.color = 'white';
-            tooltip.style.padding = '5px 10px';
-            tooltip.style.borderRadius = '4px';
-            tooltip.style.fontSize = '0.8rem';
-            tooltip.style.zIndex = '10000';
-            tooltip.style.pointerEvents = 'none';
-            tooltip.style.whiteSpace = 'nowrap';
-            
-            document.body.appendChild(tooltip);
-            
-            this.tooltipElement = tooltip;
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            if (this.tooltipElement && this.tooltipElement.parentNode) {
-                this.tooltipElement.parentNode.removeChild(this.tooltipElement);
-            }
+// Portfolio image error handler
+function initPortfolioImages() {
+    const portfolioImages = document.querySelectorAll('.portfolio-item img');
+    portfolioImages.forEach(img => {
+        img.addEventListener('error', function() {
+            this.src = 'https://via.placeholder.com/300x200/2a2a2a/666666?text=Portfolio+Image';
         });
     });
 }
