@@ -4,7 +4,6 @@ const currentYearElement = document.getElementById('currentYear');
 const sections = document.querySelectorAll('.section');
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -22,9 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add event listeners
     setupEventListeners();
-    
-    // Initialize image error handlers
-    initImageHandlers();
     
     // Trigger initial animations
     setTimeout(() => {
@@ -64,26 +60,39 @@ function initCounters() {
     });
 }
 
-// Initialize portfolio tabs
+// Initialize portfolio tabs - FIXED VERSION
 function initPortfolioTabs() {
     tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
             // Remove active class from all buttons
             tabButtons.forEach(btn => btn.classList.remove('active'));
             
             // Add active class to clicked button
-            button.classList.add('active');
+            this.classList.add('active');
             
             // Hide all tab contents
-            tabContents.forEach(content => content.classList.remove('active'));
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
             
             // Show selected tab content
-            const tabId = button.getAttribute('data-tab');
-            document.getElementById(tabId).classList.add('active');
+            const tabId = this.getAttribute('data-tab');
+            const targetTab = document.getElementById(tabId);
             
-            // Special handling for "All" tab
+            if (targetTab) {
+                targetTab.classList.add('active');
+                targetTab.style.display = 'block';
+            }
+            
+            // Special handling for "All" tab - show all items
             if (tabId === 'all') {
                 showAllPortfolioItems();
+            } else {
+                // For category tabs, filter items
+                filterPortfolioItems(tabId);
             }
         });
     });
@@ -91,8 +100,33 @@ function initPortfolioTabs() {
 
 // Show all portfolio items
 function showAllPortfolioItems() {
-    portfolioItems.forEach(item => {
+    const allItems = document.querySelectorAll('.portfolio-item');
+    allItems.forEach(item => {
         item.style.display = 'block';
+        item.style.opacity = '1';
+        item.style.transform = 'scale(1)';
+    });
+}
+
+// Filter portfolio items by category
+function filterPortfolioItems(category) {
+    const allItems = document.querySelectorAll('.portfolio-item');
+    
+    allItems.forEach(item => {
+        if (item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+            // Add animation
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'scale(1)';
+            }, 100);
+        } else {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                item.style.display = 'none';
+            }, 300);
+        }
     });
 }
 
@@ -142,13 +176,10 @@ function setupEventListeners() {
         });
     });
     
-    // Portfolio item click events
-    portfolioItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // You can add modal functionality here
-            console.log('Portfolio item clicked');
-        });
-    });
+    // Initialize all items as visible
+    setTimeout(() => {
+        showAllPortfolioItems();
+    }, 500);
 }
 
 // Handle form submission
@@ -306,13 +337,5 @@ function initImageHandlers() {
     });
 }
 
-// Keyboard shortcuts
-document.addEventListener('keydown', function(e) {
-    // Tab navigation for portfolio
-    if (e.key === 'Tab' && e.ctrlKey) {
-        e.preventDefault();
-        const currentIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
-        const nextIndex = (currentIndex + 1) % tabButtons.length;
-        tabButtons[nextIndex].click();
-    }
-});
+// Initialize image handlers
+initImageHandlers();
