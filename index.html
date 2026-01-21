@@ -3,437 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zhar1f09 - Professional Roblox Developer Portfolio">
+    <meta name="keywords" content="Roblox, Developer, Lua, Game Development, Portfolio">
+    <meta name="author" content="Zhar1f09">
+    
     <title>Zhar1f09 | Roblox Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Exact vCard Color Scheme */
-        :root {
-            --bg-primary: #1a1a1a;
-            --bg-secondary: #242424;
-            --bg-tertiary: #2a2a2a;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-tertiary: #888888;
-            --accent: #ff6b6b;
-            --accent-hover: #ff5252;
-            --border-color: #333333;
-            --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            min-height: 100vh;
-        }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar {
-            background-color: var(--bg-secondary);
-            padding: 40px;
-            position: fixed;
-            width: 320px;
-            height: 100vh;
-            overflow-y: auto;
-            border-right: 1px solid var(--border-color);
-            z-index: 1000;
-        }
-
-        .profile-img-container {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent), #ff8e8e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            font-weight: bold;
-            margin: 0 auto 25px;
-            border: 6px solid var(--border-color);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-name {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .profile-title {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 40px;
-        }
-
-        .contact-info {
-            margin: 35px 0;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 18px;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .info-item i {
-            color: var(--accent);
-            margin-right: 15px;
-            font-size: 1.1rem;
-            width: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .social-link {
-            width: 44px;
-            height: 44px;
-            background-color: var(--bg-tertiary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-
-        .social-link:hover {
-            background-color: var(--accent);
-            color: var(--text-primary);
-            transform: translateY(-3px);
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .main-content {
-            padding: 60px;
-            margin-left: 320px;
-            background-color: var(--bg-primary);
-        }
-
-        section {
-            margin-bottom: 80px;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: var(--text-primary);
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        /* About Section */
-        .about-text {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-        }
-
-        .highlight {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .skill-category {
-            background-color: var(--bg-secondary);
-            border-radius: 10px;
-            padding: 25px;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: var(--card-shadow);
-        }
-
-        .skill-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .skill-header i {
-            color: var(--accent);
-            font-size: 1.5rem;
-            margin-right: 15px;
-        }
-
-        .skill-header h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .skill-list {
-            list-style-type: none;
-        }
-
-        .skill-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            color: var(--text-secondary);
-        }
-
-        .skill-list li::before {
-            content: '▸';
-            color: var(--accent);
-            margin-right: 10px;
-            font-size: 0.9rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: var(--bg-secondary);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent);
-            box-shadow: var(--card-shadow);
-        }
-
-        .project-img {
-            height: 180px;
-            background-color: var(--bg-tertiary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--accent);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .project-tag {
-            background-color: var(--bg-tertiary);
-            color: var(--text-tertiary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .project-link {
-            display: inline-block;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-
-        .project-link:hover {
-            color: var(--accent-hover);
-        }
-
-        /* Contact Section */
-        .contact-form {
-            max-width: 700px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .submit-btn {
-            background-color: var(--accent);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            color: var(--text-tertiary);
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-        }
-
-        /* Mobile Responsiveness */
-        @media screen and (max-width: 1024px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                position: static;
-                width: 100%;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border-color);
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 40px 30px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .main-content {
-                padding: 30px 20px;
-            }
-
-            .skills-container,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for page load */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-content {
-            animation: fadeInUp 0.5s ease forwards;
-        }
-    </style>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="profile-img-container">
-                <div class="profile-img">Z</div>
+                <div class="profile-img">
+                    <div class="profile-initial">Z</div>
+                </div>
                 <h1 class="profile-name">Zhar1f09</h1>
                 <div class="profile-title">Roblox Developer</div>
             </div>
@@ -458,25 +55,35 @@
             </div>
 
             <div class="social-links">
-                <a href="https://www.roblox.com/users/your-id-here" class="social-link">
+                <a href="https://www.roblox.com/users/your-profile-id" target="_blank" class="social-link" title="Roblox Profile">
                     <i class="fab fa-roblox"></i>
                 </a>
-                <a href="https://github.com/zhar1f09" class="social-link">
+                <a href="https://github.com/zhar1f09" target="_blank" class="social-link" title="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="#" class="social-link" title="Discord">
                     <i class="fab fa-discord"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="#" class="social-link" title="Twitter">
                     <i class="fab fa-twitter"></i>
                 </a>
             </div>
+            
+            <!-- Navigation -->
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="#about" class="nav-link active"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <!-- About Section -->
-            <section id="about">
+            <section id="about" class="section">
                 <h2 class="section-title">About Me</h2>
                 <div class="section-content">
                     <p class="about-text">
@@ -488,11 +95,26 @@
                     <p class="about-text">
                         When I'm not coding, I enjoy testing new games, analyzing game mechanics, and collaborating with other developers to push the boundaries of what's possible on Roblox.
                     </p>
+                    
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="3">0</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="10">0</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Skills Section -->
-            <section id="skills">
+            <section id="skills" class="section">
                 <h2 class="section-title">Skills & Expertise</h2>
                 <div class="skills-container section-content">
                     <div class="skill-category">
@@ -543,7 +165,7 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects">
+            <section id="projects" class="section">
                 <h2 class="section-title">Featured Projects</h2>
                 <div class="projects-grid section-content">
                     <div class="project-card">
@@ -603,7 +225,7 @@
             </section>
 
             <!-- Contact Section -->
-            <section id="contact">
+            <section id="contact" class="section">
                 <h2 class="section-title">Get In Touch</h2>
                 <div class="section-content">
                     <p class="about-text" style="margin-bottom: 40px;">
@@ -638,80 +260,13 @@
 
             <!-- Footer -->
             <footer class="footer">
-                <p>© 2024 Zhar1f09 | Roblox Developer Portfolio</p>
+                <p>&copy; <span id="currentYear"></span> Zhar1f09 | Roblox Developer Portfolio</p>
                 <p style="margin-top: 10px; font-size: 0.8rem;">Hosted on GitHub Pages</p>
             </footer>
         </main>
     </div>
 
-    <script>
-        // Form submission handling
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For GitHub Pages, we can't do backend processing
-            // You would need to use a service like Formspree or Netlify Forms
-            
-            alert(`Thank you ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
-            
-            // Reset form
-            contactForm.reset();
-        });
-
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all section contents
-        document.querySelectorAll('.section-content').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
-        });
-
-        // Update year in footer automatically
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearSpan = document.querySelector('.footer p');
-            if (yearSpan) {
-                yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', new Date().getFullYear());
-            }
-        });
-    </script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
