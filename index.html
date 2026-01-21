@@ -88,13 +88,13 @@
             <section id="about" class="section" style="animation-delay: 0.1s">
                 <h2 class="section-title">About Me</h2>
                 <p class="about-text">
-                    Hello! I'm <span class="highlight">Zhar1f09</span>, a dedicated Roblox developer with a passion for creating immersive gaming experiences. With over 3 years of experience in Lua scripting and game development, I specialize in bringing creative visions to life on the Roblox platform.
+                    Hello! I'm <span class="highlight">Zhar1f09</span>, a dedicated Roblox developer with over 3 years of experience creating immersive gaming experiences. I specialize in bringing creative visions to life on the Roblox platform.
                 </p>
                 <p class="about-text">
-                    My expertise includes <span class="highlight">complex game mechanics</span>, <span class="highlight">optimized performance</span>, and <span class="highlight">engaging user interfaces</span>. I've contributed to projects ranging from simple obby games to fully-featured RPG systems with thousands of active players.
+                    My passion lies in building engaging games that players love. From complex game mechanics to beautiful environments, I focus on delivering high-quality experiences that stand out.
                 </p>
                 <p class="about-text">
-                    I believe in clean, maintainable code and always strive to create games that are not only fun to play but also robust and scalable. My development process involves thorough testing, player feedback integration, and continuous optimization.
+                    I believe in clean, efficient development and always prioritize player experience in everything I create.
                 </p>
 
                 <!-- Stats -->
@@ -114,105 +114,248 @@
                 </div>
             </section>
 
-            <!-- Portfolio Section -->
+            <!-- Portfolio Section with Tabs -->
             <section id="portfolio" class="section" style="animation-delay: 0.2s">
-                <h2 class="section-title">Portfolio Gallery</h2>
-                <div class="portfolio-grid">
-                    <!-- Modeling Projects -->
-                    <div class="portfolio-category">
-                        <h3><i class="fas fa-cube"></i> 3D Modeling</h3>
-                        <div class="portfolio-images">
-                            <div class="portfolio-item">
-                                <img src="images/modeling/model1.png" alt="Model 1" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Model+1'">
-                                <div class="portfolio-overlay">
-                                    <span>Character Model</span>
+                <h2 class="section-title">My Portfolio</h2>
+                
+                <!-- Portfolio Tabs -->
+                <div class="portfolio-tabs">
+                    <button class="tab-btn active" data-tab="all">All Work</button>
+                    <button class="tab-btn" data-tab="modeling">3D Modeling</button>
+                    <button class="tab-btn" data-tab="building">Environment Building</button>
+                    <button class="tab-btn" data-tab="ui-ux">UI/UX Design</button>
+                    <button class="tab-btn" data-tab="scripting">Scripting</button>
+                </div>
+
+                <!-- Portfolio Content -->
+                <div class="portfolio-content">
+                    <!-- All Work -->
+                    <div class="tab-content active" id="all">
+                        <div class="portfolio-grid">
+                            <!-- All items will be shown here -->
+                            <div class="portfolio-item" data-category="modeling">
+                                <div class="portfolio-image">
+                                    <img src="images/modeling/model1.jpg" alt="Character Model" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Character+Model'">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-category">Modeling</span>
+                                        <h4>Fantasy Character</h4>
+                                        <p>High-poly character model with custom animations</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="portfolio-item">
-                                <img src="images/modeling/model2.png" alt="Model 2" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Model+2'">
-                                <div class="portfolio-overlay">
-                                    <span>Weapon Design</span>
+                            
+                            <div class="portfolio-item" data-category="modeling">
+                                <div class="portfolio-image">
+                                    <img src="images/modeling/model2.jpg" alt="Weapon Design" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Weapon+Design'">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-category">Modeling</span>
+                                        <h4>Magical Sword</h4>
+                                        <p>Custom weapon with particle effects</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="portfolio-item">
-                                <img src="images/modeling/model3.png" alt="Model 3" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Model+3'">
-                                <div class="portfolio-overlay">
-                                    <span>Vehicle Model</span>
+                            
+                            <div class="portfolio-item" data-category="building">
+                                <div class="portfolio-image">
+                                    <img src="images/building/build1.jpg" alt="Fantasy Castle" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Fantasy+Castle'">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-category">Building</span>
+                                        <h4>Medieval Castle</h4>
+                                        <p>Complete castle with interiors and lighting</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="building">
+                                <div class="portfolio-image">
+                                    <img src="images/building/build2.jpg" alt="Modern City" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Modern+City'">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-category">Building</span>
+                                        <h4>Cyberpunk City</h4>
+                                        <p>Futuristic cityscape with neon lighting</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="ui-ux">
+                                <div class="portfolio-image">
+                                    <img src="images/ui-ux/ui1.jpg" alt="Game UI" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Game+UI+Design'">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-category">UI/UX</span>
+                                        <h4>Main Menu UI</h4>
+                                        <p>Custom UI with animations and effects</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item" data-category="scripting">
+                                <div class="portfolio-image">
+                                    <img src="images/scripting/script1.jpg" alt="Script Example" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Scripting+System'">
+                                    <div class="portfolio-overlay">
+                                        <span class="portfolio-category">Scripting</span>
+                                        <h4>Combat System</h4>
+                                        <p>Advanced combat mechanics with special moves</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Building Projects -->
-                    <div class="portfolio-category">
-                        <h3><i class="fas fa-building"></i> Environment Building</h3>
-                        <div class="portfolio-images">
+                    <!-- Modeling Tab -->
+                    <div class="tab-content" id="modeling">
+                        <div class="portfolio-grid">
                             <div class="portfolio-item">
-                                <img src="images/building/build1.png" alt="Build 1" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Build+1'">
-                                <div class="portfolio-overlay">
-                                    <span>Fantasy Castle</span>
+                                <div class="portfolio-image">
+                                    <img src="images/modeling/model1.jpg" alt="Character Model" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Character+Model'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Fantasy Character</h4>
+                                        <p>High-poly character model with custom animations and rigging</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Fantasy Character</h4>
+                                    <p>Complete character model with custom animations, textures, and rigging for use in RPG games.</p>
                                 </div>
                             </div>
+                            
                             <div class="portfolio-item">
-                                <img src="images/building/build2.png" alt="Build 2" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Build+2'">
-                                <div class="portfolio-overlay">
-                                    <span>Modern City</span>
+                                <div class="portfolio-image">
+                                    <img src="images/modeling/model2.jpg" alt="Weapon Design" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Weapon+Design'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Magical Sword</h4>
+                                        <p>Custom weapon model with particle effects system</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Magical Sword</h4>
+                                    <p>Weapon model with custom particle effects, glow effects, and animation sequences.</p>
                                 </div>
                             </div>
+                            
                             <div class="portfolio-item">
-                                <img src="images/building/build3.png" alt="Build 3" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Build+3'">
-                                <div class="portfolio-overlay">
-                                    <span>Space Station</span>
+                                <div class="portfolio-image">
+                                    <img src="images/modeling/model3.jpg" alt="Vehicle Model" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Vehicle+Model'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Space Vehicle</h4>
+                                        <p>Sci-fi vehicle with moving parts and effects</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- UI/UX Projects -->
-                    <div class="portfolio-category">
-                        <h3><i class="fas fa-desktop"></i> UI/UX Design</h3>
-                        <div class="portfolio-images">
-                            <div class="portfolio-item">
-                                <img src="images/ui-ux/ui1.png" alt="UI 1" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=UI+Design+1'">
-                                <div class="portfolio-overlay">
-                                    <span>Main Menu UI</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-item">
-                                <img src="images/ui-ux/ui2.png" alt="UI 2" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=UI+Design+2'">
-                                <div class="portfolio-overlay">
-                                    <span>Inventory System</span>
-                                </div>
-                            </div>
-                            <div class="portfolio-item">
-                                <img src="images/ui-ux/ui3.png" alt="UI 3" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=UI+Design+3'">
-                                <div class="portfolio-overlay">
-                                    <span>HUD Design</span>
+                                <div class="portfolio-info">
+                                    <h4>Space Vehicle</h4>
+                                    <p>Futuristic vehicle model with animated parts, custom textures, and particle effects.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Scripting Projects -->
-                    <div class="portfolio-category">
-                        <h3><i class="fas fa-code"></i> Scripting Examples</h3>
-                        <div class="portfolio-images">
+                    <!-- Building Tab -->
+                    <div class="tab-content" id="building">
+                        <div class="portfolio-grid">
                             <div class="portfolio-item">
-                                <img src="images/scripting/script1.png" alt="Script 1" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Script+Example+1'">
-                                <div class="portfolio-overlay">
-                                    <span>Combat System</span>
+                                <div class="portfolio-image">
+                                    <img src="images/building/build1.jpg" alt="Fantasy Castle" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Fantasy+Castle'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Medieval Castle</h4>
+                                        <p>Complete castle with interiors and lighting system</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Medieval Castle</h4>
+                                    <p>Large-scale castle environment with detailed interiors, custom lighting, and optimized for performance.</p>
                                 </div>
                             </div>
+                            
                             <div class="portfolio-item">
-                                <img src="images/scripting/script2.png" alt="Script 2" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Script+Example+2'">
-                                <div class="portfolio-overlay">
-                                    <span>Data Saving</span>
+                                <div class="portfolio-image">
+                                    <img src="images/building/build2.jpg" alt="Modern City" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Modern+City'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Cyberpunk City</h4>
+                                        <p>Futuristic cityscape with neon lighting and effects</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Cyberpunk City</h4>
+                                    <p>Large city environment with custom neon lighting, animated signs, and detailed alleyways.</p>
                                 </div>
                             </div>
+                            
                             <div class="portfolio-item">
-                                <img src="images/scripting/script3.png" alt="Script 3" onerror="this.src='https://via.placeholder.com/300x200/2a2a2a/666666?text=Script+Example+3'">
-                                <div class="portfolio-overlay">
-                                    <span>GUI System</span>
+                                <div class="portfolio-image">
+                                    <img src="images/building/build3.jpg" alt="Space Station" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Space+Station'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Space Station</h4>
+                                        <p>Sci-fi environment with interactive elements</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Space Station</h4>
+                                    <p>Sci-fi environment with interactive doors, control panels, and space views.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UI/UX Tab -->
+                    <div class="tab-content" id="ui-ux">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <div class="portfolio-image">
+                                    <img src="images/ui-ux/ui1.jpg" alt="Game UI" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Game+UI+Design'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Main Menu UI</h4>
+                                        <p>Custom UI with animations and transition effects</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Main Menu UI</h4>
+                                    <p>Complete menu system with animated buttons, transitions, and responsive design.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item">
+                                <div class="portfolio-image">
+                                    <img src="images/ui-ux/ui2.jpg" alt="Inventory System" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Inventory+System'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Inventory System</h4>
+                                        <p>Drag-and-drop inventory with tooltips</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Inventory System</h4>
+                                    <p>Advanced inventory UI with drag-and-drop functionality, tooltips, and category filters.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scripting Tab -->
+                    <div class="tab-content" id="scripting">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <div class="portfolio-image">
+                                    <img src="images/scripting/script1.jpg" alt="Script Example" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Combat+System'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Combat System</h4>
+                                        <p>Advanced combat mechanics with special moves</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Combat System</h4>
+                                    <p>Complete combat system with different attack types, combos, special moves, and hit detection.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item">
+                                <div class="portfolio-image">
+                                    <img src="images/scripting/script2.jpg" alt="Data System" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Data+System'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Data Saving System</h4>
+                                        <p>Player data management and saving</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Data Saving System</h4>
+                                    <p>Secure data saving system with error handling, data validation, and cloud saving support.</p>
                                 </div>
                             </div>
                         </div>
@@ -220,107 +363,98 @@
                 </div>
             </section>
 
-            <!-- Skills Section -->
+            <!-- Development Skills Section -->
             <section id="skills" class="section" style="animation-delay: 0.3s">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
+                <h2 class="section-title">Development Skills</h2>
+                
+                <div class="skills-container">
+                    <!-- Modeling Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-cube"></i>
+                            <h3>3D Modeling</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Creating custom 3D models for characters, weapons, vehicles, and props using Roblox Studio and external modeling tools.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Character Modeling & Rigging</li>
+                            <li>Weapon & Prop Design</li>
+                            <li>Vehicle Modeling</li>
+                            <li>Texture Creation</li>
+                            <li>Animation Setup</li>
+                            <li>Optimization for Games</li>
+                        </ul>
+                    </div>
+
+                    <!-- Building Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-building"></i>
+                            <h3>Environment Building</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Designing and building immersive game environments including landscapes, structures, and interactive spaces.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>World & Map Design</li>
+                            <li>Architectural Building</li>
+                            <li>Lighting & Atmosphere</li>
+                            <li>Terrain Generation</li>
+                            <li>Optimization Techniques</li>
+                            <li>Interactive Elements</li>
+                        </ul>
+                    </div>
+
+                    <!-- UI/UX Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-desktop"></i>
+                            <h3>UI/UX Design</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Creating intuitive and visually appealing user interfaces that enhance player experience and engagement.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Interface Design</li>
+                            <li>User Experience Flow</li>
+                            <li>Animation & Transitions</li>
+                            <li>Responsive Design</li>
+                            <li>Icon & Graphic Design</li>
+                            <li>Usability Testing</li>
+                        </ul>
+                    </div>
+
+                    <!-- Scripting Skills -->
                     <div class="skill-category">
                         <div class="skill-header">
                             <i class="fas fa-code"></i>
-                            <h3>Programming</h3>
+                            <h3>Scripting & Programming</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Developing game mechanics, systems, and functionality using Lua scripting and Roblox Studio API.</p>
                         </div>
                         <ul class="skill-list">
-                            <li>Lua Scripting (Expert)</li>
-                            <li>Roblox Studio API</li>
-                            <li>Game Architecture</li>
+                            <li>Lua Scripting (Advanced)</li>
+                            <li>Game Mechanics</li>
                             <li>Data Management</li>
-                            <li>Remote Events</li>
+                            <li>Multiplayer Systems</li>
                             <li>Performance Optimization</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <i class="fas fa-gamepad"></i>
-                            <h3>Game Development</h3>
-                        </div>
-                        <ul class="skill-list">
-                            <li>Game Design & Mechanics</li>
-                            <li>UI/UX Development</li>
-                            <li>Animation Systems</li>
-                            <li>Multiplayer Networking</li>
-                            <li>Monetization Strategy</li>
-                            <li>Player Engagement Systems</li>
+                            <li>Debugging & Testing</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <!-- Projects Section -->
+            <!-- Projects Section (W.I.P) -->
             <section id="projects" class="section" style="animation-delay: 0.4s">
-                <h2 class="section-title">Featured Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-mountain"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Skyward Obby Extreme</h3>
-                            <p class="project-description">
-                                A massive obstacle course with 100+ levels, unique mechanics, and custom power-ups. Features dynamic difficulty scaling and global leaderboards.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Obby</span>
-                                <span class="project-tag">Multiplayer</span>
-                                <span class="project-tag">Leaderboards</span>
-                            </div>
-                            <a href="#" class="project-link">
-                                View Details
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-dragon"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Dragon's Legacy RPG</h3>
-                            <p class="project-description">
-                                Complete RPG system with quests, character progression, custom combat mechanics, and an extensive pet system. Over 50 hours of gameplay.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">RPG</span>
-                                <span class="project-tag">Combat System</span>
-                                <span class="project-tag">Quests</span>
-                            </div>
-                            <a href="#" class="project-link">
-                                View Details
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-city"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Metro City Tycoon</h3>
-                            <p class="project-description">
-                                Business simulation game where players build and manage a metropolitan city. Features complex economy systems and player trading.
-                            </p>
-                            <div class="project-tags">
-                                <span class="project-tag">Tycoon</span>
-                                <span class="project-tag">Economy</span>
-                                <span class="project-tag">Management</span>
-                            </div>
-                            <a href="#" class="project-link">
-                                View Details
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
+                <h2 class="section-title">Featured Projects <span class="wip-badge">W.I.P</span></h2>
+                <div class="wip-container">
+                    <div class="wip-content">
+                        <i class="fas fa-tools"></i>
+                        <h3>Projects Section Under Development</h3>
+                        <p>This section is currently being updated with new projects and case studies.</p>
+                        <p>Check back soon to see detailed breakdowns of my major game projects!</p>
                     </div>
                 </div>
             </section>
@@ -329,7 +463,7 @@
             <section id="contact" class="section" style="animation-delay: 0.5s">
                 <h2 class="section-title">Get In Touch</h2>
                 <p class="about-text" style="margin-bottom: 30px;">
-                    Interested in collaborating on a Roblox project? Need a skilled developer for your game? I'm always open to discussing new opportunities and challenges.
+                    Interested in collaborating on a Roblox project? Need a skilled developer for your game? I'm always open to discussing new opportunities.
                 </p>
                 
                 <form class="contact-form" id="contactForm">
@@ -344,8 +478,15 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="subject">Project Type</label>
-                        <input type="text" id="subject" placeholder="e.g., RPG Game, Obby, Tycoon" required>
+                        <label for="project-type">Project Type</label>
+                        <select id="project-type" required>
+                            <option value="">Select a project type</option>
+                            <option value="modeling">3D Modeling</option>
+                            <option value="building">Environment Building</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="scripting">Scripting/Programming</option>
+                            <option value="full-game">Full Game Development</option>
+                        </select>
                     </div>
                     
                     <div class="form-group">
