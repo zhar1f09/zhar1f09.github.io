@@ -1,948 +1,547 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhar1f09 | Roblox Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* EXACT vCard Color Scheme */
-        :root {
-            --bg-primary: #121212;
-            --bg-secondary: #1e1e1e;
-            --bg-tertiary: #252525;
-            --text-primary: #ffffff;
-            --text-secondary: #b0b0b0;
-            --text-tertiary: #888888;
-            --accent: #ff6b6b;
-            --accent-hover: #ff5252;
-            --border-color: #2a2a2a;
-            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-        
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-        
-        /* SIDEBAR - EXACT vCard Style */
-        .sidebar {
-            width: 320px;
-            background-color: var(--bg-secondary);
-            padding: 40px 30px;
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            border-right: 1px solid var(--border-color);
-            z-index: 1000;
-        }
-        
-        .profile-img-container {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--accent), #ff8e8e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: white;
-            font-weight: bold;
-            margin: 0 auto 20px;
-            border: 5px solid var(--border-color);
-        }
-        
-        .profile-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--text-primary);
-        }
-        
-        .profile-title {
-            color: var(--accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
-        
-        .sidebar-info {
-            margin: 25px 0;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        .info-item i {
-            color: var(--accent);
-            margin-right: 12px;
-            font-size: 1rem;
-            width: 20px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 25px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: var(--bg-tertiary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            border: 1px solid var(--border-color);
-        }
-        
-        .social-link:hover {
-            background-color: var(--accent);
-            color: var(--text-primary);
-            transform: translateY(-3px);
-        }
-        
-        /* MAIN CONTENT - EXACT vCard Layout */
-        .main-content {
-            flex: 1;
-            margin-left: 320px;
-            padding: 50px;
-            background-color: var(--bg-primary);
-        }
-        
-        section {
-            margin-bottom: 70px;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 35px;
-            color: var(--text-primary);
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
         .section-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 40px;
+            width: 50px;
             height: 3px;
             background-color: var(--accent);
         }
-        
+
         /* About Section */
         .about-text {
             color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.8;
+            font-size: 1.05rem;
             max-width: 800px;
+            margin-bottom: 30px;
         }
-        
-        .about-text p {
-            margin-bottom: 20px;
-        }
-        
-        /* What I Do Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .service-card {
-            background-color: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            box-shadow: var(--card-shadow);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-        
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(255, 107, 107, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .highlight {
             color: var(--accent);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-weight: 600;
         }
-        
-        .service-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-        }
-        
-        .service-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        /* Skills Section - Compact */
-        .skills-list {
+
+        /* Skills Section */
+        .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
-        
-        .skill-item {
-            margin-bottom: 15px;
-        }
-        
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .skill-name {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-        
-        .skill-percentage {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-        
-        .skill-bar {
-            height: 6px;
-            background-color: var(--bg-tertiary);
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: var(--accent);
-            border-radius: 3px;
-            transition: width 1.5s ease;
-        }
-        
-        /* Resume Section */
-        .resume-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .resume-card {
+
+        .skill-category {
             background-color: var(--bg-secondary);
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 25px;
             border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
-        }
-        
-        .resume-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: var(--text-primary);
-        }
-        
-        .timeline {
-            position: relative;
-        }
-        
-        .timeline-item {
-            margin-bottom: 25px;
-            padding-left: 20px;
-            border-left: 2px solid var(--accent);
-            position: relative;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -7px;
-            top: 0;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--accent);
-        }
-        
-        .timeline-period {
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .timeline-role {
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-        
-        .timeline-desc {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-        
-        /* Portfolio Section */
-        .portfolio-filter {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 30px;
-        }
-        
-        .filter-btn {
-            background-color: var(--bg-tertiary);
-            color: var(--text-secondary);
-            padding: 8px 20px;
-            border-radius: 30px;
-            border: 1px solid var(--border-color);
-            font-weight: 500;
-            cursor: pointer;
             transition: var(--transition);
-            font-size: 0.9rem;
         }
-        
-        .filter-btn.active,
-        .filter-btn:hover {
-            background-color: var(--accent);
-            color: var(--text-primary);
-            border-color: var(--accent);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .portfolio-item {
-            background-color: var(--bg-secondary);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: var(--transition);
-            box-shadow: var(--card-shadow);
-        }
-        
-        .portfolio-item:hover {
+
+        .skill-category:hover {
             transform: translateY(-5px);
             border-color: var(--accent);
+            box-shadow: var(--card-shadow);
         }
-        
-        .portfolio-img {
-            height: 200px;
-            background-color: var(--bg-tertiary);
-            position: relative;
-            overflow: hidden;
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
         }
-        
-        .portfolio-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+
+        .skill-header i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 15px;
         }
-        
-        .portfolio-item:hover .portfolio-img img {
-            transform: scale(1.05);
-        }
-        
-        .portfolio-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+
+        .skill-header h3 {
+            font-size: 1.2rem;
             font-weight: 600;
         }
-        
-        .portfolio-content {
-            padding: 20px;
+
+        .skill-list {
+            list-style-type: none;
         }
-        
-        .portfolio-title {
-            font-size: 1.1rem;
-            font-weight: 700;
+
+        .skill-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+
+        .skill-list li::before {
+            content: '▸';
+            color: var(--accent);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: var(--card-shadow);
+        }
+
+        .project-img {
+            height: 180px;
+            background-color: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
             margin-bottom: 10px;
             color: var(--text-primary);
         }
-        
-        .portfolio-tags {
+
+        .project-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
+            margin-bottom: 20px;
         }
-        
-        .portfolio-tag {
-            background-color: rgba(255, 107, 107, 0.1);
-            color: var(--accent);
-            padding: 4px 10px;
-            border-radius: 15px;
-            font-size: 0.75rem;
+
+        .project-tag {
+            background-color: var(--bg-tertiary);
+            color: var(--text-tertiary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 500;
         }
-        
-        /* Contact Section - Minimal */
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .contact-card {
-            background-color: var(--bg-secondary);
-            border-radius: 8px;
-            padding: 25px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: var(--transition);
-            box-shadow: var(--card-shadow);
-        }
-        
-        .contact-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 107, 107, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        .project-link {
+            display: inline-block;
             color: var(--accent);
-            font-size: 1.3rem;
-        }
-        
-        .contact-text h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: var(--text-primary);
-        }
-        
-        .contact-text p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 28px;
-            background-color: var(--accent);
-            color: var(--text-primary);
-            border: none;
-            border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--accent-hover);
+        }
+
+        /* Contact Section */
+        .contact-form {
+            max-width: 700px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
             transition: var(--transition);
-            text-decoration: none;
-            font-size: 0.95rem;
         }
-        
-        .btn:hover {
+
+        .submit-btn:hover {
             background-color: var(--accent-hover);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 280px;
-            }
-            
-            .main-content {
-                margin-left: 280px;
-                padding: 40px;
-            }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
         }
-        
-        @media (max-width: 768px) {
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 1024px) {
             .container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
             }
-            
+
             .sidebar {
-                position: relative;
+                position: static;
                 width: 100%;
                 height: auto;
-                padding: 30px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
             }
-            
+
             .main-content {
                 margin-left: 0;
-                padding: 30px;
+                padding: 40px 30px;
             }
-            
-            .services-grid,
-            .portfolio-grid {
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .skills-container,
+            .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
-        
-        /* Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+
+        /* Animation for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        .section-content {
+            animation: fadeInUp 0.5s ease forwards;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- SIDEBAR - Fixed position like vCard -->
+        <!-- Sidebar -->
         <aside class="sidebar">
             <div class="profile-img-container">
                 <div class="profile-img">Z</div>
                 <h1 class="profile-name">Zhar1f09</h1>
-                <p class="profile-title">Roblox Multi-Creator</p>
+                <div class="profile-title">Roblox Developer</div>
             </div>
-            
-            <div class="sidebar-info">
+
+            <div class="contact-info">
                 <div class="info-item">
                     <i class="fas fa-user"></i>
-                    <span>3+ Years Experience</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-briefcase"></i>
-                    <span>25+ Commissions Completed</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-smile"></i>
-                    <span>2 Happy Clients</span>
+                    <span>Zharif Fahmi</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Roblox Platform</span>
+                    <span>Malaysia</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>zhar1f09@example.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fab fa-roblox"></i>
+                    <span>Roblox: Zhar1f09</span>
                 </div>
             </div>
-            
+
             <div class="social-links">
+                <a href="#" class="social-link">
+                    <i class="fab fa-roblox"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
                 <a href="#" class="social-link">
                     <i class="fab fa-discord"></i>
                 </a>
                 <a href="#" class="social-link">
-                    <i class="fas fa-gamepad"></i>
-                </a>
-                <a href="#" class="social-link">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fab fa-twitter"></i>
                 </a>
             </div>
         </aside>
-        
-        <!-- MAIN CONTENT -->
+
+        <!-- Main Content -->
         <main class="main-content">
             <!-- About Section -->
             <section id="about">
                 <h2 class="section-title">About Me</h2>
-                <div class="about-text">
-                    <p>Hello! I'm Zhar1f09, a passionate Roblox creator with 3+ years of experience. I have been on Discord for 4 years with 3 years of experience in developing. I enjoy contributing to projects or commissions that I can do to contribute, learn and improve more about every skill.</p>
-                    <p>My journey in Roblox creation started as a hobby and has grown into a passion for creating immersive experiences. I love taking on new challenges and expanding my skill set with every project.</p>
+                <div class="section-content">
+                    <p class="about-text">
+                        Hello! I'm <span class="highlight">Zhar1f09</span>, a passionate Roblox developer with expertise in creating immersive gaming experiences. With a focus on clean code, engaging gameplay mechanics, and visually appealing environments, I specialize in bringing creative ideas to life on the Roblox platform.
+                    </p>
+                    <p class="about-text">
+                        My journey in Roblox development began several years ago, and since then I've contributed to numerous successful projects ranging from <span class="highlight">obby games</span> to <span class="highlight">complex RPG systems</span>. I'm proficient in Lua scripting, game design, UI/UX implementation, and optimization for the best player experience.
+                    </p>
+                    <p class="about-text">
+                        When I'm not coding, I enjoy testing new games, analyzing game mechanics, and collaborating with other developers to push the boundaries of what's possible on Roblox.
+                    </p>
                 </div>
             </section>
-            
-            <!-- What I Do Section -->
-            <section id="services">
-                <h2 class="section-title">What I'm Doing</h2>
-                <div class="services-grid">
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-cube"></i>
-                        </div>
-                        <h3 class="service-title">3D Modeling</h3>
-                        <p class="service-desc">Creating custom 3D models, characters, and assets for Roblox games using Blender and Roblox Studio with professional quality.</p>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3 class="service-title">World Building</h3>
-                        <p class="service-desc">Designing and constructing immersive environments and game worlds with attention to detail, optimization, and gameplay flow.</p>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-tshirt"></i>
-                        </div>
-                        <h3 class="service-title">Clothing Design</h3>
-                        <p class="service-desc">Creating custom clothing items, accessories, and avatar customization options with trend-aware designs for the Roblox community.</p>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <h3 class="service-title">Graphics Creation</h3>
-                        <p class="service-desc">Designing game icons, thumbnails, promotional graphics, and UI elements that enhance player experience and engagement.</p>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                        <h3 class="service-title">Discord Services</h3>
-                        <p class="service-desc">Complete Discord server setup, custom bot development, moderation systems, and community management for Roblox games.</p>
-                    </div>
-                    
-                    <div class="service-card fade-in">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="service-title">Lua Scripting</h3>
-                        <p class="service-desc">Developing custom game mechanics, systems, and interactive elements using Lua scripting for enhanced gameplay experiences.</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Skills Section - Compact -->
+
+            <!-- Skills Section -->
             <section id="skills">
-                <h2 class="section-title">My Skills</h2>
-                <div class="skills-list">
-                    <div class="skill-item fade-in">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-container section-content">
+                    <div class="skill-category">
                         <div class="skill-header">
-                            <span class="skill-name">3D Modeling (Blender)</span>
-                            <span class="skill-percentage">95%</span>
+                            <i class="fas fa-code"></i>
+                            <h3>Programming</h3>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
+                        <ul class="skill-list">
+                            <li>Lua Scripting (Advanced)</li>
+                            <li>Roblox Studio API</li>
+                            <li>Game Systems Architecture</li>
+                            <li>Data Stores & Persistence</li>
+                            <li>Remote Events & Functions</li>
+                            <li>Optimization & Performance</li>
+                        </ul>
                     </div>
-                    
-                    <div class="skill-item fade-in">
+
+                    <div class="skill-category">
                         <div class="skill-header">
-                            <span class="skill-name">Roblox Building</span>
-                            <span class="skill-percentage">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item fade-in">
-                        <div class="skill-header">
-                            <span class="skill-name">Clothing Design</span>
-                            <span class="skill-percentage">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item fade-in">
-                        <div class="skill-header">
-                            <span class="skill-name">Graphics & UI Design</span>
-                            <span class="skill-percentage">88%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 88%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item fade-in">
-                        <div class="skill-header">
-                            <span class="skill-name">Discord Community Management</span>
-                            <span class="skill-percentage">92%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 92%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-item fade-in">
-                        <div class="skill-header">
-                            <span class="skill-name">Lua Scripting</span>
-                            <span class="skill-percentage">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Resume Section -->
-            <section id="resume">
-                <h2 class="section-title">Resume</h2>
-                <div class="resume-grid">
-                    <div class="resume-card">
-                        <h3 class="resume-title">Experience</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-period">2021 - Present</div>
-                                <h4 class="timeline-role">Freelance Roblox Creator</h4>
-                                <p class="timeline-desc">Creating custom 3D models, environments, clothing items, and graphics for various Roblox games and developers. Providing Discord community setup and management services.</p>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-period">2020 - Present</div>
-                                <h4 class="timeline-role">Discord Community Manager</h4>
-                                <p class="timeline-desc">Setting up and managing Discord servers for Roblox game communities, implementing moderation systems, custom bots, and engagement strategies.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="resume-card">
-                        <h3 class="resume-title">Stats & Achievements</h3>
-                        <div class="timeline">
-                            <div class="timeline-item">
-                                <div class="timeline-period">3+ Years</div>
-                                <h4 class="timeline-role">Development Experience</h4>
-                                <p class="timeline-desc">Extensive experience across multiple Roblox development disciplines with continuous skill improvement and learning.</p>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-period">25+ Projects</div>
-                                <h4 class="timeline-role">Completed Commissions</h4>
-                                <p class="timeline-desc">Successfully delivered various projects including modeling, building, clothing design, graphics, and Discord services for satisfied clients.</p>
-                            </div>
-                            
-                            <div class="timeline-item">
-                                <div class="timeline-period">2 Happy Clients</div>
-                                <h4 class="timeline-role">Client Satisfaction</h4>
-                                <p class="timeline-desc">Received positive feedback and repeat business from satisfied clients for quality work, professionalism, and timely delivery.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Portfolio Section -->
-            <section id="portfolio">
-                <h2 class="section-title">Portfolio</h2>
-                
-                <div class="portfolio-filter">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="modeling">3D Modeling</button>
-                    <button class="filter-btn" data-filter="building">Building</button>
-                    <button class="filter-btn" data-filter="clothing">Clothing</button>
-                    <button class="filter-btn" data-filter="graphics">Graphics</button>
-                    <button class="filter-btn" data-filter="discord">Discord</button>
-                </div>
-                
-                <div class="portfolio-grid">
-                    <div class="portfolio-item fade-in" data-category="modeling">
-                        <div class="portfolio-img">
-                            <div class="portfolio-badge">Modeling</div>
-                            <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fantasy Character Models">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Fantasy Character Set</h3>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Blender</span>
-                                <span class="portfolio-tag">3D Modeling</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item fade-in" data-category="building">
-                        <div class="portfolio-img">
-                            <div class="portfolio-badge">Building</div>
-                            <img src="https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cyberpunk City">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Cyberpunk Cityscape</h3>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Roblox Studio</span>
-                                <span class="portfolio-tag">Building</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="portfolio-item fade-in" data-category="clothing">
-                        <div class="portfolio-img">
-                            <div class="portfolio-badge">Clothing</div>
-                            <img src="https://images.unsplash.com/photo-1558769132-cb1c458e4222?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Clothing Collection">
-                        </div>
-                        <div class="portfolio-content">
-                            <h3 class="portfolio-title">Urban Streetwear Collection</h3>
-                            <div class="portfolio-tags">
-                                <span class="portfolio-tag">Photoshop</span>
-                                <span class="portfolio-tag">Clothing Design</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Contact Section - Minimal -->
-            <section id="contact">
-                <h2 class="section-title">Contact</h2>
-                
-                <div class="contact-info">
-                    <div class="contact-card fade-in">
-                        <div class="contact-icon">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h3>Discord</h3>
-                            <p>Zhar1f09#0000</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-card fade-in">
-                        <div class="contact-icon">
                             <i class="fas fa-gamepad"></i>
+                            <h3>Game Development</h3>
                         </div>
-                        <div class="contact-text">
-                            <h3>Roblox</h3>
-                            <p>@Zhar1f09</p>
+                        <ul class="skill-list">
+                            <li>Game Design & Mechanics</li>
+                            <li>UI/UX Implementation</li>
+                            <li>Animation & Rigging</li>
+                            <li>Tool & Weapon Systems</li>
+                            <li>Monetization Systems</li>
+                            <li>Multiplayer Networking</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Tools & Technologies</h3>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Roblox Studio</li>
+                            <li>Git & Version Control</li>
+                            <li>Blender (Basic)</li>
+                            <li>Adobe Creative Suite</li>
+                            <li>Trello/Project Management</li>
+                            <li>Testing & Debugging</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid section-content">
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Skyward Obby</h3>
+                            <p class="project-description">
+                                A challenging obstacle course game with 50+ unique levels, power-ups, and a leaderboard system. Features custom checkpoint systems and visual effects.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Obby</span>
+                                <span class="project-tag">Leaderboards</span>
+                                <span class="project-tag">Visual Effects</span>
+                            </div>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    
-                    <div class="contact-card fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-dragon"></i>
                         </div>
-                        <div class="contact-text">
-                            <h3>Email</h3>
-                            <p>zhar1f09@email.com</p>
+                        <div class="project-content">
+                            <h3 class="project-title">Dragon's Legacy RPG</h3>
+                            <p class="project-description">
+                                An RPG game with a complete quest system, character progression, custom combat mechanics, and pet system. Includes a custom GUI and inventory management.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">RPG</span>
+                                <span class="project-tag">Quest System</span>
+                                <span class="project-tag">Combat</span>
+                            </div>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-img">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Modern Housing System</h3>
+                            <p class="project-description">
+                                A complete housing system with furniture placement, customization options, and property purchasing. Features a build mode and item catalog.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Housing</span>
+                                <span class="project-tag">Customization</span>
+                                <span class="project-tag">Build Mode</span>
+                            </div>
+                            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <!-- Contact Section -->
+            <section id="contact">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="section-content">
+                    <p class="about-text" style="margin-bottom: 40px;">
+                        Interested in collaborating on a Roblox project? Looking for a developer for your game? Feel free to reach out!
+                    </p>
+                    
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2023 Zhar1f09 | Roblox Developer Portfolio</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">This portfolio is regularly updated with new projects and skills</p>
+            </footer>
         </main>
     </div>
 
     <script>
-        // Portfolio filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                const filterValue = button.getAttribute('data-filter');
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
                 
-                // Show/hide portfolio items based on filter
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
-        
-        // Fade-in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = () => {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
+
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For now, we'll just show an alert
+            alert(`Thank you ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
         };
-        
-        // Check on load and scroll
-        window.addEventListener('load', fadeInOnScroll);
-        window.addEventListener('scroll', fadeInOnScroll);
-        
-        // Animate skill bars on scroll
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        const animateSkillBars = () => {
-            skillBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 300);
-            });
-        };
-        
-        // Trigger animation when skills section is in view
-        const skillsSection = document.getElementById('skills');
-        
-        const skillsObserver = new IntersectionObserver((entries) => {
+
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateSkillBars();
-                    skillsObserver.unobserve(entry.target);
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, { threshold: 0.3 });
-        
-        if (skillsSection) {
-            skillsObserver.observe(skillsSection);
-        }
+        }, observerOptions);
+
+        // Observe all section contents
+        document.querySelectorAll('.section-content').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
