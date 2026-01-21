@@ -145,91 +145,8 @@
                 </div>
             </section>
 
-            <!-- Development Skills Section -->
-            <section id="skills" class="section" style="animation-delay: 0.2s">
-                <h2 class="section-title">Development Skills</h2>
-                
-                <div class="skills-container">
-                    <!-- Modeling Skills -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <i class="fas fa-cube"></i>
-                            <h3>3D Modeling</h3>
-                        </div>
-                        <div class="skill-description">
-                            <p>Creating custom 3D models for characters, weapons, vehicles, and props using Roblox Studio and external modeling tools.</p>
-                        </div>
-                        <ul class="skill-list">
-                            <li>Character Modeling & Rigging</li>
-                            <li>Weapon & Prop Design</li>
-                            <li>Vehicle Modeling</li>
-                            <li>Texture Creation</li>
-                            <li>Animation Setup</li>
-                            <li>Optimization for Games</li>
-                        </ul>
-                    </div>
-
-                    <!-- Building Skills -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <i class="fas fa-building"></i>
-                            <h3>Environment Building</h3>
-                        </div>
-                        <div class="skill-description">
-                            <p>Designing and building immersive game environments including landscapes, structures, and interactive spaces.</p>
-                        </div>
-                        <ul class="skill-list">
-                            <li>World & Map Design</li>
-                            <li>Architectural Building</li>
-                            <li>Lighting & Atmosphere</li>
-                            <li>Terrain Generation</li>
-                            <li>Optimization Techniques</li>
-                            <li>Interactive Elements</li>
-                        </ul>
-                    </div>
-
-                    <!-- UI/UX Skills -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <i class="fas fa-desktop"></i>
-                            <h3>UI/UX Design</h3>
-                        </div>
-                        <div class="skill-description">
-                            <p>Creating intuitive and visually appealing user interfaces that enhance player experience and engagement.</p>
-                        </div>
-                        <ul class="skill-list">
-                            <li>Interface Design</li>
-                            <li>User Experience Flow</li>
-                            <li>Animation & Transitions</li>
-                            <li>Responsive Design</li>
-                            <li>Icon & Graphic Design</li>
-                            <li>Usability Testing</li>
-                        </ul>
-                    </div>
-
-                    <!-- Scripting Skills -->
-                    <div class="skill-category">
-                        <div class="skill-header">
-                            <i class="fas fa-code"></i>
-                            <h3>Scripting & Programming</h3>
-                        </div>
-                        <div class="skill-description">
-                            <p>Developing game mechanics, systems, and functionality using Lua scripting and Roblox Studio API.</p>
-                        </div>
-                        <ul class="skill-list">
-                            <li>Lua Scripting (Advanced)</li>
-                            <li>Game Mechanics</li>
-                            <li>Data Management</li>
-                            <li>Multiplayer Systems</li>
-                            <li>Performance Optimization</li>
-                            <li>Debugging & Testing</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Portfolio Section with Tabs -->
-            <section id="portfolio" class="section" style="animation-delay: 0.3s">
+            <!-- Portfolio Section with Tabs - UPDATED 3×2 GRID -->
+            <section id="portfolio" class="section" style="animation-delay: 0.2s">
                 <h2 class="section-title">My Portfolio</h2>
                 
                 <!-- Portfolio Tabs -->
@@ -239,6 +156,7 @@
                     <button class="tab-btn" data-tab="building">Environment Building</button>
                     <button class="tab-btn" data-tab="ui-ux">UI/UX Design</button>
                     <button class="tab-btn" data-tab="scripting">Scripting</button>
+                    <button class="tab-btn" data-tab="clothing">Clothing</button>
                 </div>
 
                 <!-- Portfolio Content -->
@@ -246,7 +164,7 @@
                     <!-- All Work -->
                     <div class="tab-content active" id="all">
                         <div class="portfolio-grid">
-                            <!-- All items will be shown here -->
+                            <!-- 3D Modeling -->
                             <div class="portfolio-item" data-category="modeling">
                                 <div class="portfolio-image">
                                     <img src="images/modeling/model1.jpg" alt="Character Model" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Character+Model'">
@@ -269,6 +187,7 @@
                                 </div>
                             </div>
                             
+                            <!-- Environment Building -->
                             <div class="portfolio-item" data-category="building">
                                 <div class="portfolio-image">
                                     <img src="images/building/build1.jpg" alt="Fantasy Castle" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Fantasy+Castle'">
@@ -291,6 +210,7 @@
                                 </div>
                             </div>
                             
+                            <!-- UI/UX Design -->
                             <div class="portfolio-item" data-category="ui-ux">
                                 <div class="portfolio-image">
                                     <img src="images/ui-ux/ui1.jpg" alt="Game UI" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Game+UI+Design'">
@@ -302,6 +222,7 @@
                                 </div>
                             </div>
                             
+                            <!-- Scripting -->
                             <div class="portfolio-item" data-category="scripting">
                                 <div class="portfolio-image">
                                     <img src="images/scripting/script1.jpg" alt="Script Example" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Scripting+System'">
@@ -474,24 +395,165 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Clothing Tab -->
+                    <div class="tab-content" id="clothing">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <div class="portfolio-image">
+                                    <img src="images/clothing/clothing1.jpg" alt="Roblox Clothing" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Roblox+Clothing'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Custom T-Shirt</h4>
+                                        <p>Premium Roblox clothing design</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Custom T-Shirt</h4>
+                                    <p>High-quality Roblox T-shirt with custom graphics and textures.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="portfolio-item">
+                                <div class="portfolio-image">
+                                    <img src="images/clothing/clothing2.jpg" alt="Character Outfit" onerror="this.src='https://via.placeholder.com/400x300/2a2a2a/666666?text=Character+Outfit'">
+                                    <div class="portfolio-overlay">
+                                        <h4>Character Outfit</h4>
+                                        <p>Complete avatar clothing set</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio-info">
+                                    <h4>Character Outfit</h4>
+                                    <p>Complete Roblox avatar outfit with matching shirt, pants, and accessories.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Projects Section (W.I.P) -->
-            <section id="projects" class="section" style="animation-delay: 0.4s">
-                <h2 class="section-title">Featured Projects <span class="wip-badge">W.I.P</span></h2>
-                <div class="wip-container">
-                    <div class="wip-content">
-                        <i class="fas fa-tools"></i>
-                        <h3>Projects Section Under Development</h3>
-                        <p>This section is currently being updated with new projects and case studies.</p>
-                        <p>Check back soon to see detailed breakdowns of my major game projects!</p>
+            <!-- Development Skills Section - UPDATED CATEGORIES -->
+            <section id="skills" class="section" style="animation-delay: 0.3s">
+                <h2 class="section-title">Development Services</h2>
+                
+                <div class="skills-container">
+                    <!-- 3D Modeling Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-cube"></i>
+                            <h3>3D Modeling</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Creating custom 3D models for characters, weapons, vehicles, and props using Roblox Studio and external modeling tools.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Character Modeling & Rigging</li>
+                            <li>Weapon & Prop Design</li>
+                            <li>Vehicle Modeling</li>
+                            <li>Texture Creation</li>
+                            <li>Animation Setup</li>
+                            <li>Optimization for Games</li>
+                        </ul>
+                    </div>
+
+                    <!-- Environment Building Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-building"></i>
+                            <h3>Environment Building</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Designing and building immersive game environments including landscapes, structures, and interactive spaces.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>World & Map Design</li>
+                            <li>Architectural Building</li>
+                            <li>Lighting & Atmosphere</li>
+                            <li>Terrain Generation</li>
+                            <li>Optimization Techniques</li>
+                            <li>Interactive Elements</li>
+                        </ul>
+                    </div>
+
+                    <!-- Discord Service Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fab fa-discord"></i>
+                            <h3>Discord Service</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Setting up and managing Discord servers for Roblox games, including bots, channels, and community management.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Discord Server Setup</li>
+                            <li>Bot Integration</li>
+                            <li>Channel Management</li>
+                            <li>Role Systems</li>
+                            <li>Community Management</li>
+                            <li>Automation Systems</li>
+                        </ul>
+                    </div>
+
+                    <!-- Graphics Design Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-paint-brush"></i>
+                            <h3>Graphics Design</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Creating visual assets including logos, banners, thumbnails, and promotional materials for Roblox games.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Logo & Brand Design</li>
+                            <li>Banner Creation</li>
+                            <li>Thumbnail Design</li>
+                            <li>Promotional Graphics</li>
+                            <li>UI/UX Graphics</li>
+                            <li>Icon Design</li>
+                        </ul>
+                    </div>
+
+                    <!-- Clothing Design Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-tshirt"></i>
+                            <h3>Clothing Design</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Designing custom clothing and accessories for Roblox avatars with attention to detail and style.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>T-Shirt Design</li>
+                            <li>Shirt & Pants Sets</li>
+                            <li>Accessory Creation</li>
+                            <li>Texture Design</li>
+                            <li>Avatar Bundles</li>
+                            <li>Marketplace Ready</li>
+                        </ul>
+                    </div>
+
+                    <!-- Scripting & Programming Skills -->
+                    <div class="skill-category">
+                        <div class="skill-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Scripting & Programming</h3>
+                        </div>
+                        <div class="skill-description">
+                            <p>Developing game mechanics, systems, and functionality using Lua scripting and Roblox Studio API.</p>
+                        </div>
+                        <ul class="skill-list">
+                            <li>Lua Scripting (Advanced)</li>
+                            <li>Game Mechanics</li>
+                            <li>Data Management</li>
+                            <li>Multiplayer Systems</li>
+                            <li>Performance Optimization</li>
+                            <li>Debugging & Testing</li>
+                        </ul>
                     </div>
                 </div>
             </section>
 
             <!-- Contact Form Section -->
-            <section id="contact-form" class="section" style="animation-delay: 0.5s">
+            <section id="contact-form" class="section" style="animation-delay: 0.4s">
                 <h2 class="section-title">Send a Message</h2>
                 <p class="about-text" style="margin-bottom: 30px;">
                     Interested in collaborating on a Roblox project? Need a skilled developer for your game? Fill out the form below and I'll get back to you within 24 hours.
@@ -516,10 +578,11 @@
                             <option value="">Select a project type</option>
                             <option value="modeling">3D Modeling</option>
                             <option value="building">Environment Building</option>
-                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="discord">Discord Service</option>
+                            <option value="graphics">Graphics Design</option>
+                            <option value="clothing">Clothing Design</option>
                             <option value="scripting">Scripting/Programming</option>
                             <option value="full-game">Full Game Development</option>
-                            <option value="consultation">Consultation</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
