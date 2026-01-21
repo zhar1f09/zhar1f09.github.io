@@ -4,6 +4,8 @@ const currentYearElement = document.getElementById('currentYear');
 const sections = document.querySelectorAll('.section');
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
+const discordCopyBtn = document.getElementById('discord-copy');
+const footerDiscordBtn = document.getElementById('footer-discord');
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -176,10 +178,43 @@ function setupEventListeners() {
         });
     });
     
+    // Discord copy functionality
+    if (discordCopyBtn) {
+        discordCopyBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            copyToClipboard('zhar1f09');
+            showNotification('Discord username copied to clipboard!', 'success');
+        });
+    }
+    
+    if (footerDiscordBtn) {
+        footerDiscordBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            copyToClipboard('zhar1f09');
+            showNotification('Discord username copied to clipboard!', 'success');
+        });
+    }
+    
     // Initialize all items as visible
     setTimeout(() => {
         showAllPortfolioItems();
     }, 500);
+}
+
+// Copy text to clipboard
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        console.log('Text copied to clipboard');
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    });
 }
 
 // Handle form submission
@@ -190,11 +225,12 @@ function handleFormSubmit(e) {
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
     const projectType = document.getElementById('project-type').value;
+    const budget = document.getElementById('budget').value;
     const message = document.getElementById('message').value.trim();
     
     // Simple validation
     if (!name || !email || !projectType || !message) {
-        showNotification('Please fill in all fields.', 'error');
+        showNotification('Please fill in all required fields (*).', 'error');
         return;
     }
     
@@ -212,20 +248,21 @@ function handleFormSubmit(e) {
     // Simulate API call delay
     setTimeout(() => {
         // Show success message
-        showNotification(`Thank you ${name}! Your message has been sent successfully. I'll get back to you soon at ${email}.`, 'success');
+        showNotification(`Thank you ${name}! Your message has been sent successfully. I'll get back to you within 24 hours at ${email}.`, 'success');
         
         // Reset form
         contactForm.reset();
         
         // Reset button
-        submitBtn.innerHTML = originalText;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         submitBtn.disabled = false;
         
         // Log to console (for testing)
         console.log('Form submitted:', { 
             name, 
             email, 
-            projectType, 
+            projectType,
+            budget,
             message 
         });
     }, 2000);
