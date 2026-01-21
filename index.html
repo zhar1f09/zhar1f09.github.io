@@ -1,3 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhar1f09 | Roblox Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Exact vCard Color Scheme */
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #242424;
+            --bg-tertiary: #2a2a2a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --text-tertiary: #888888;
+            --accent: #ff6b6b;
+            --accent-hover: #ff5252;
+            --border-color: #333333;
+            --card-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            min-height: 100vh;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            background-color: var(--bg-secondary);
+            padding: 40px;
+            position: fixed;
+            width: 320px;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .profile-img-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), #ff8e8e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: bold;
+            margin: 0 auto 25px;
+            border: 6px solid var(--border-color);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .profile-title {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            margin: 35px 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .info-item i {
+            color: var(--accent);
+            margin-right: 15px;
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            background-color: var(--bg-tertiary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--text-primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            padding: 60px;
+            margin-left: 320px;
+            background-color: var(--bg-primary);
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text-primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -296,10 +458,10 @@
             </div>
 
             <div class="social-links">
-                <a href="#" class="social-link">
+                <a href="https://www.roblox.com/users/your-id-here" class="social-link">
                     <i class="fab fa-roblox"></i>
                 </a>
-                <a href="#" class="social-link">
+                <a href="https://github.com/zhar1f09" class="social-link">
                     <i class="fab fa-github"></i>
                 </a>
                 <a href="#" class="social-link">
@@ -448,7 +610,7 @@
                         Interested in collaborating on a Roblox project? Looking for a developer for your game? Feel free to reach out!
                     </p>
                     
-                    <form class="contact-form">
+                    <form class="contact-form" id="contactForm">
                         <div class="form-group">
                             <label for="name">Your Name</label>
                             <input type="text" id="name" required>
@@ -476,13 +638,32 @@
 
             <!-- Footer -->
             <footer class="footer">
-                <p>© 2023 Zhar1f09 | Roblox Developer Portfolio</p>
-                <p style="margin-top: 10px; font-size: 0.8rem;">This portfolio is regularly updated with new projects and skills</p>
+                <p>© 2024 Zhar1f09 | Roblox Developer Portfolio</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Hosted on GitHub Pages</p>
             </footer>
         </main>
     </div>
 
     <script>
+        // Form submission handling
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For GitHub Pages, we can't do backend processing
+            // You would need to use a service like Formspree or Netlify Forms
+            
+            alert(`Thank you ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+
         // Smooth scrolling for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -499,25 +680,6 @@
                     });
                 }
             });
-        });
-
-        // Form submission handling
-        const contactForm = document.querySelector('.contact-form');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real implementation, you would send this data to a server
-            // For now, we'll just show an alert
-            alert(`Thank you ${name}! Your message has been received. I'll get back to you soon at ${email}.`);
-            
-            // Reset form
-            contactForm.reset();
         });
 
         // Animation on scroll
@@ -541,6 +703,14 @@
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(el);
+        });
+
+        // Update year in footer automatically
+        document.addEventListener('DOMContentLoaded', function() {
+            const yearSpan = document.querySelector('.footer p');
+            if (yearSpan) {
+                yearSpan.innerHTML = yearSpan.innerHTML.replace('2024', new Date().getFullYear());
+            }
         });
     </script>
 </body>
