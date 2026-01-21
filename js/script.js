@@ -2,6 +2,9 @@
 const contactForm = document.getElementById('contactForm');
 const currentYearElement = document.getElementById('currentYear');
 const sections = document.querySelectorAll('.section');
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+const portfolioItems = document.querySelectorAll('.portfolio-item');
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,8 +17,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize scroll animations
     initScrollAnimations();
     
+    // Initialize portfolio tabs
+    initPortfolioTabs();
+    
     // Add event listeners
     setupEventListeners();
+    
+    // Initialize image error handlers
+    initImageHandlers();
     
     // Trigger initial animations
     setTimeout(() => {
@@ -42,7 +51,7 @@ function initCounters() {
         stat.textContent = '0+';
         
         let current = 0;
-        const increment = target / 50; // 50 steps for smooth animation
+        const increment = target / 50;
         
         const counter = setInterval(() => {
             current += increment;
@@ -52,6 +61,38 @@ function initCounters() {
             }
             stat.textContent = Math.floor(current) + '+';
         }, 30);
+    });
+}
+
+// Initialize portfolio tabs
+function initPortfolioTabs() {
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Hide all tab contents
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Show selected tab content
+            const tabId = button.getAttribute('data-tab');
+            document.getElementById(tabId).classList.add('active');
+            
+            // Special handling for "All" tab
+            if (tabId === 'all') {
+                showAllPortfolioItems();
+            }
+        });
+    });
+}
+
+// Show all portfolio items
+function showAllPortfolioItems() {
+    portfolioItems.forEach(item => {
+        item.style.display = 'block';
     });
 }
 
@@ -100,6 +141,14 @@ function setupEventListeners() {
             scrollToSection(targetId);
         });
     });
+    
+    // Portfolio item click events
+    portfolioItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // You can add modal functionality here
+            console.log('Portfolio item clicked');
+        });
+    });
 }
 
 // Handle form submission
@@ -109,11 +158,11 @@ function handleFormSubmit(e) {
     // Get form values
     const name = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
+    const projectType = document.getElementById('project-type').value;
     const message = document.getElementById('message').value.trim();
     
     // Simple validation
-    if (!name || !email || !subject || !message) {
+    if (!name || !email || !projectType || !message) {
         showNotification('Please fill in all fields.', 'error');
         return;
     }
@@ -125,7 +174,7 @@ function handleFormSubmit(e) {
     
     // Show loading state
     const submitBtn = contactForm.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
+    const originalText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
@@ -138,11 +187,16 @@ function handleFormSubmit(e) {
         contactForm.reset();
         
         // Reset button
-        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
         
         // Log to console (for testing)
-        console.log('Form submitted:', { name, email, subject, message });
+        console.log('Form submitted:', { 
+            name, 
+            email, 
+            projectType, 
+            message 
+        });
     }, 2000);
 }
 
@@ -230,12 +284,35 @@ function isValidEmail(email) {
     return emailRegex.test(email);
 }
 
-// Portfolio image error handler
-function initPortfolioImages() {
-    const portfolioImages = document.querySelectorAll('.portfolio-item img');
-    portfolioImages.forEach(img => {
+// Initialize image error handlers
+function initImageHandlers() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
         img.addEventListener('error', function() {
-            this.src = 'https://via.placeholder.com/300x200/2a2a2a/666666?text=Portfolio+Image';
+            // Extract category from src
+            const src = this.src;
+            if (src.includes('modeling')) {
+                this.src = 'https://via.placeholder.com/400x300/2a2a2a/666666?text=3D+Model';
+            } else if (src.includes('building')) {
+                this.src = 'https://via.placeholder.com/400x300/2a2a2a/666666?text=Environment+Build';
+            } else if (src.includes('ui-ux')) {
+                this.src = 'https://via.placeholder.com/400x300/2a2a2a/666666?text=UI+Design';
+            } else if (src.includes('scripting')) {
+                this.src = 'https://via.placeholder.com/400x300/2a2a2a/666666?text=Scripting+System';
+            } else {
+                this.src = 'https://via.placeholder.com/400x300/2a2a2a/666666?text=Portfolio+Image';
+            }
         });
     });
 }
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+    // Tab navigation for portfolio
+    if (e.key === 'Tab' && e.ctrlKey) {
+        e.preventDefault();
+        const currentIndex = Array.from(tabButtons).findIndex(btn => btn.classList.contains('active'));
+        const nextIndex = (currentIndex + 1) % tabButtons.length;
+        tabButtons[nextIndex].click();
+    }
+});
