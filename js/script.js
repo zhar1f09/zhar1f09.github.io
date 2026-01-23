@@ -1,4 +1,4 @@
-// Professional Portfolio Script
+// Professional Portfolio - Modern Design
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -9,9 +9,37 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactItems();
     initContactForm();
     initMobileMenu();
+    initScrollSpy();
 });
 
-// ===== NAVIGATION =====
+// ===== SCROLL SPY NAVIGATION =====
+function initScrollSpy() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Highlight active section on scroll
+    window.addEventListener('scroll', function() {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (window.scrollY >= (sectionTop - 100)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// ===== SMOOTH SCROLL =====
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -40,6 +68,12 @@ function initNavigation() {
                     const menuBtn = document.querySelector('.mobile-menu-btn');
                     menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    const sidebar = document.querySelector('.sidebar');
+                    sidebar.classList.remove('active');
+                }
             }
         });
     });
@@ -47,7 +81,7 @@ function initNavigation() {
 
 // ===== CONTACT ITEMS =====
 function initContactItems() {
-    const contactIcons = document.querySelectorAll('.contact-icon, .social-link');
+    const contactIcons = document.querySelectorAll('.contact-icon');
     
     contactIcons.forEach(icon => {
         icon.addEventListener('click', function(e) {
@@ -57,6 +91,12 @@ function initContactItems() {
                 e.preventDefault();
                 const text = this.getAttribute('data-copy-text');
                 copyToClipboard(text);
+            }
+            
+            // Close sidebar on mobile after click
+            if (window.innerWidth <= 768) {
+                const sidebar = document.querySelector('.sidebar');
+                sidebar.classList.remove('active');
             }
         });
     });
@@ -157,6 +197,7 @@ function initContactForm() {
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navContent = document.querySelector('.nav-content');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
     const sidebar = document.querySelector('.sidebar');
     
     // Mobile navigation menu
@@ -183,54 +224,30 @@ function initMobileMenu() {
         });
     }
     
-    // Create sidebar toggle for mobile
-    const sidebarToggle = document.createElement('button');
-    sidebarToggle.className = 'sidebar-toggle';
-    sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    sidebarToggle.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        z-index: 1001;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        cursor: pointer;
-        box-shadow: var(--shadow-lg);
-        display: none;
-        align-items: center;
-        justify-content: center;
-    `;
-    
-    document.body.appendChild(sidebarToggle);
-    
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-        sidebarToggle.classList.toggle('active');
-        
-        if (sidebar.classList.contains('active')) {
-            sidebarToggle.innerHTML = '<i class="fas fa-times"></i>';
-        } else {
-            sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-    
-    // Show/hide sidebar toggle based on screen size
-    function updateSidebarToggle() {
-        if (window.innerWidth <= 768) {
-            sidebarToggle.style.display = 'flex';
-        } else {
-            sidebarToggle.style.display = 'none';
-            sidebar.classList.remove('active');
-        }
+    // Sidebar toggle
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            sidebarToggle.classList.toggle('active');
+            
+            if (sidebar.classList.contains('active')) {
+                sidebarToggle.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
     }
     
-    updateSidebarToggle();
-    window.addEventListener('resize', updateSidebarToggle);
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target) && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                sidebarToggle.classList.remove('active');
+                sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        }
+    });
 }
 
 // ===== NOTIFICATION SYSTEM =====
@@ -254,27 +271,52 @@ function showNotification(message, duration = 3000) {
         </button>
     `;
     
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-left: 4px solid var(--primary-color);
+        border-radius: 8px;
+        padding: 15px 20px;
+        max-width: 350px;
+        box-shadow: var(--shadow-lg);
+        z-index: 10000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    `;
+    
     document.body.appendChild(notification);
     
-    // Show with animation
+    // Show animation
     setTimeout(() => {
-        notification.classList.add('show');
+        notification.style.transform = 'translateY(0)';
+        notification.style.opacity = '1';
     }, 10);
     
-    // Close button functionality
+    // Close button
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
-        notification.classList.remove('show');
+        notification.style.transform = 'translateY(100px)';
+        notification.style.opacity = '0';
         setTimeout(() => {
             notification.remove();
         }, 300);
     });
     
-    // Auto-remove after duration
+    // Auto-remove
     if (duration > 0) {
         setTimeout(() => {
             if (notification.parentNode) {
-                notification.classList.remove('show');
+                notification.style.transform = 'translateY(100px)';
+                notification.style.opacity = '0';
                 setTimeout(() => {
                     if (notification.parentNode) {
                         notification.remove();
