@@ -1,4 +1,4 @@
-// Professional Portfolio - Single Page Scroll
+// Professional Portfolio - Black & Red Theme
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -8,11 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initContactItems();
     initPortfolioFilter();
-    initPortfolioCarousel();
     initContactForm();
     initMobileMenu();
     initScrollSpy();
-    initImageErrorHandling();
 });
 
 // ===== SCROLL SPY NAVIGATION =====
@@ -28,7 +26,7 @@ function initScrollSpy() {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
             
-            if (window.scrollY >= (sectionTop - 200)) {
+            if (window.scrollY >= (sectionTop - 100)) {
                 current = section.getAttribute('id');
             }
         });
@@ -74,30 +72,16 @@ function initNavigation() {
 
 // ===== CONTACT ITEMS =====
 function initContactItems() {
-    const contactItems = document.querySelectorAll('.contact-item, .social-link, .social-btn');
+    const contactItems = document.querySelectorAll('.contact-icon, button[data-action="copy"]');
     
     contactItems.forEach(item => {
         item.addEventListener('click', function(e) {
             const action = this.getAttribute('data-action');
             
-            switch(action) {
-                case 'copy':
-                    e.preventDefault();
-                    const text = this.getAttribute('data-copy-text');
-                    copyToClipboard(text);
-                    break;
-                    
-                case 'availability':
-                    e.preventDefault();
-                    showNotification("I'm currently available for new projects! Please contact me via email or Discord.");
-                    break;
-                    
-                default:
-                    // For buttons, prevent default
-                    if (this.tagName.toLowerCase() === 'button') {
-                        e.preventDefault();
-                    }
-                    break;
+            if (action === 'copy') {
+                e.preventDefault();
+                const text = this.getAttribute('data-copy-text');
+                copyToClipboard(text);
             }
         });
     });
@@ -108,7 +92,7 @@ function copyToClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
             .then(() => {
-                showNotification(`Copied to clipboard: ${text}`);
+                showNotification(`Discord copied: ${text}`);
             })
             .catch(err => {
                 console.error('Failed to copy: ', err);
@@ -131,7 +115,7 @@ function fallbackCopyToClipboard(text) {
     
     try {
         document.execCommand('copy');
-        showNotification(`Copied to clipboard: ${text}`);
+        showNotification(`Discord copied: ${text}`);
     } catch (err) {
         console.error('Fallback copy failed: ', err);
         showNotification('Failed to copy to clipboard');
@@ -175,41 +159,6 @@ function initPortfolioFilter() {
     });
 }
 
-// ===== PORTFOLIO CAROUSEL =====
-function initPortfolioCarousel() {
-    const swiper = new Swiper('.additional-projects', {
-        slidesPerView: 3,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 15,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-            },
-        },
-    });
-}
-
 // ===== CONTACT FORM =====
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
@@ -228,8 +177,14 @@ function initContactForm() {
             };
             
             // Validate required fields
-            if (!formData.name || !formData.email || !formData.projectType || !formData.message) {
+            if (!formData.name || !formData.email || !formData.projectType || !formData.budget || !formData.message) {
                 showNotification('Please fill in all required fields');
+                return;
+            }
+            
+            // Validate budget is a positive number
+            if (formData.budget < 0) {
+                showNotification('Budget must be a positive number');
                 return;
             }
             
@@ -298,7 +253,7 @@ function initMobileMenu() {
         left: 20px;
         z-index: 1001;
         background: var(--primary-color);
-        color: white;
+        color: var(--bg-primary);
         border: none;
         width: 50px;
         height: 50px;
@@ -403,7 +358,7 @@ function showNotification(message, duration = 3000) {
 }
 
 // ===== IMAGE ERROR HANDLING =====
-function initImageErrorHandling() {
+window.addEventListener('load', function() {
     const images = document.querySelectorAll('img');
     
     images.forEach(img => {
@@ -414,32 +369,32 @@ function initImageErrorHandling() {
                 let category = 'Project Image';
                 const src = this.getAttribute('src') || '';
                 
-                if (src.includes('modeling')) category = '3D Model';
+                if (src.includes('clothing')) category = 'Clothing Design';
+                else if (src.includes('graphics')) category = 'Graphics Design';
+                else if (src.includes('modeling')) category = '3D Modeling';
                 else if (src.includes('building')) category = 'Building';
-                else if (src.includes('ui')) category = 'UI Design';
-                else if (src.includes('scripting')) category = 'Scripting';
-                else if (src.includes('character')) category = 'Character';
                 
                 // Create fallback
                 const parent = this.parentElement;
-                if (parent && (parent.classList.contains('project-image') || parent.classList.contains('carousel-item'))) {
+                if (parent && parent.classList.contains('project-image')) {
                     const fallback = document.createElement('div');
                     fallback.className = 'image-fallback';
                     fallback.style.cssText = `
                         width: 100%;
                         height: 100%;
-                        background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+                        background: linear-gradient(135deg, #1a1a1a, #111111);
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        color: #9ca3af;
+                        color: #666;
                         font-weight: 600;
                         text-align: center;
                         padding: 20px;
                         font-size: 1.2rem;
+                        border: 2px dashed #333;
                     `;
-                    fallback.innerHTML = `<i class="fas fa-image" style="font-size: 2rem; margin-bottom: 10px;"></i><span>${category}</span>`;
+                    fallback.innerHTML = `<i class="fas fa-image" style="font-size: 2rem; margin-bottom: 10px; color: #ff4444;"></i><span>${category}</span>`;
                     
                     parent.appendChild(fallback);
                     this.style.display = 'none';
@@ -447,16 +402,4 @@ function initImageErrorHandling() {
             }
         });
     });
-}
-
-// ===== HANDLE RESIZE =====
-let resizeTimer;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-        // Update Swiper on resize
-        if (window.swiperInstance) {
-            window.swiperInstance.update();
-        }
-    }, 250);
 });
