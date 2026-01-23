@@ -194,45 +194,29 @@
                     <h2 class="section-title">My Portfolio</h2>
                     <p class="section-subtitle">Featured Work & Projects</p>
                     
+                    <!-- Filter Buttons -->
+                    <div class="portfolio-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="modeling">Modeling</button>
+                        <button class="filter-btn" data-filter="building">Building</button>
+                        <button class="filter-btn" data-filter="clothing">Clothing</button>
+                        <button class="filter-btn" data-filter="graphics">Graphics</button>
+                        <button class="filter-btn" data-filter="discord">Discord</button>
+                    </div>
+                    
+                    <!-- Portfolio Grid (Always shows exactly 2×2 = 4 items) -->
                     <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/1a1a1a/444444?text=Clothing+Design" alt="Clothing Design">
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Premium Clothing Set</h3>
-                                <p>Custom Roblox avatar outfit with detailed textures</p>
-                            </div>
+                        <!-- Items will be inserted here by JavaScript -->
+                    </div>
+                    
+                    <!-- GIF/Carousel Container (Hidden by default) -->
+                    <div class="portfolio-gif-container" style="display: none;">
+                        <h3 class="gif-title">More Projects</h3>
+                        <div class="gif-carousel">
+                            <!-- Additional items will be inserted here -->
                         </div>
-                        
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/1a1a1a/444444?text=Graphics+Design" alt="Graphics Design">
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Game Thumbnail</h3>
-                                <p>Promotional artwork for game launch</p>
-                            </div>
-                        </div>
-                        
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/1a1a1a/444444?text=3D+Model" alt="3D Model">
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Fantasy Character</h3>
-                                <p>Character model with animations</p>
-                            </div>
-                        </div>
-                        
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/1a1a1a/444444?text=Environment" alt="Environment Build">
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Medieval Castle</h3>
-                                <p>Large-scale environment build</p>
-                            </div>
+                        <div class="gif-controls">
+                            <span class="gif-status">Auto-rotating: <span class="gif-timer">3s</span></span>
                         </div>
                     </div>
                 </div>
