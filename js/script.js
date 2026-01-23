@@ -1,4 +1,4 @@
-// Main JavaScript for Roblox Developer Portfolio
+// Main JavaScript for Professional Portfolio
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initNavigation();
     initContactTabs();
-    initPortfolioTabs();
+    initPortfolioFilter();
     initPortfolioCarousel();
     initContactForm();
     initMobileMenu();
@@ -17,12 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.content-section');
-    
-    // Set first section as active
-    if (sections.length > 0) {
-        sections[0].classList.add('active');
-        navLinks[0].classList.add('active');
-    }
     
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -41,7 +35,7 @@ function initNavigation() {
                 targetSection.classList.add('active');
                 
                 // Close mobile menu if open
-                const mobileMenu = document.querySelector('.nav-menu');
+                const mobileMenu = document.querySelector('.nav-links');
                 if (mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                 }
@@ -52,7 +46,7 @@ function initNavigation() {
 
 // ===== CONTACT TABS =====
 function initContactTabs() {
-    const contactTabs = document.querySelectorAll('.contact-tab, .social-icon, .social-btn');
+    const contactTabs = document.querySelectorAll('.contact-tab, .social-icon');
     
     contactTabs.forEach(tab => {
         tab.addEventListener('click', function(e) {
@@ -67,7 +61,7 @@ function initContactTabs() {
                     
                 case 'availability':
                     e.preventDefault();
-                    showAvailabilityMessage();
+                    showNotification('I\'m currently available for new projects! Please contact me via email or Discord.');
                     break;
                     
                 // For email and external links, let default behavior handle it
@@ -82,12 +76,12 @@ function initContactTabs() {
     });
 }
 
-// Copy to clipboard function
+// Copy to clipboard
 function copyToClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
             .then(() => {
-                showNotification('Copied to clipboard: ' + text);
+                showNotification(`Copied to clipboard: ${text}`);
             })
             .catch(err => {
                 console.error('Failed to copy: ', err);
@@ -98,7 +92,6 @@ function copyToClipboard(text) {
     }
 }
 
-// Fallback copy method
 function fallbackCopyToClipboard(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
@@ -111,19 +104,13 @@ function fallbackCopyToClipboard(text) {
     
     try {
         document.execCommand('copy');
-        showNotification('Copied to clipboard: ' + text);
+        showNotification(`Copied to clipboard: ${text}`);
     } catch (err) {
         console.error('Fallback copy failed: ', err);
         showNotification('Failed to copy to clipboard');
     }
     
     document.body.removeChild(textArea);
-}
-
-// Show availability message
-function showAvailabilityMessage() {
-    const message = "I'm currently available for new projects! I can typically respond within 24 hours. Please use the contact form or email me directly to discuss your project.";
-    showNotification(message, 5000);
 }
 
 // Show notification
@@ -147,27 +134,52 @@ function showNotification(message, duration = 3000) {
         </button>
     `;
     
+    // Add styles
+    notification.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-left: 4px solid #2563eb;
+        border-radius: 8px;
+        padding: 15px 20px;
+        max-width: 350px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 10000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    `;
+    
     document.body.appendChild(notification);
     
-    // Show with animation
+    // Show animation
     setTimeout(() => {
-        notification.classList.add('show');
+        notification.style.transform = 'translateY(0)';
+        notification.style.opacity = '1';
     }, 10);
     
-    // Close button functionality
+    // Close button
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
-        notification.classList.remove('show');
+        notification.style.transform = 'translateY(100px)';
+        notification.style.opacity = '0';
         setTimeout(() => {
             notification.remove();
         }, 300);
     });
     
-    // Auto-remove after duration
+    // Auto-remove
     if (duration > 0) {
         setTimeout(() => {
             if (notification.parentNode) {
-                notification.classList.remove('show');
+                notification.style.transform = 'translateY(100px)';
+                notification.style.opacity = '0';
                 setTimeout(() => {
                     if (notification.parentNode) {
                         notification.remove();
@@ -178,52 +190,44 @@ function showNotification(message, duration = 3000) {
     }
 }
 
-// ===== PORTFOLIO TABS =====
-function initPortfolioTabs() {
-    const portfolioTabs = document.querySelectorAll('.port-tab');
-    const portfolioItems = document.querySelectorAll('.portfolio-item, .carousel-item');
+// ===== PORTFOLIO FILTER =====
+function initPortfolioFilter() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
     
-    portfolioTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Remove active class from all tabs
-            portfolioTabs.forEach(t => t.classList.remove('active'));
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
             
-            // Add active class to clicked tab
+            // Add active class to clicked button
             this.classList.add('active');
             
-            const category = this.getAttribute('data-category');
+            const filterValue = this.getAttribute('data-filter');
             
-            // Show/hide portfolio items based on category
-            portfolioItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
+            // Filter projects
+            projectCards.forEach(card => {
+                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                    card.style.display = 'block';
                     setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'scale(1)';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
                     }, 10);
                 } else {
-                    item.style.opacity = '0';
-                    item.style.transform = 'scale(0.8)';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
                     setTimeout(() => {
-                        item.style.display = 'none';
+                        card.style.display = 'none';
                     }, 300);
                 }
             });
-            
-            // Update carousel if needed
-            if (window.swiperInstance) {
-                setTimeout(() => {
-                    window.swiperInstance.update();
-                }, 350);
-            }
         });
     });
 }
 
 // ===== PORTFOLIO CAROUSEL =====
 function initPortfolioCarousel() {
-    // Initialize Swiper carousel
-    window.swiperInstance = new Swiper('.portfolio-carousel', {
+    const swiper = new Swiper('.additional-projects', {
         slidesPerView: 3,
         spaceBetween: 20,
         loop: true,
@@ -244,7 +248,7 @@ function initPortfolioCarousel() {
                 slidesPerView: 1,
                 spaceBetween: 10,
             },
-            768: {
+            640: {
                 slidesPerView: 2,
                 spaceBetween: 15,
             },
@@ -254,6 +258,8 @@ function initPortfolioCarousel() {
             },
         },
     });
+    
+    window.portfolioSwiper = swiper;
 }
 
 // ===== CONTACT FORM =====
@@ -273,9 +279,9 @@ function initContactForm() {
                 message: document.getElementById('message').value
             };
             
-            // Validate form
+            // Validate required fields
             if (!formData.name || !formData.email || !formData.projectType || !formData.message) {
-                showNotification('Please fill in all required fields', 3000);
+                showNotification('Please fill in all required fields');
                 return;
             }
             
@@ -285,7 +291,7 @@ function initContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // Simulate API call
+            // Simulate form submission
             setTimeout(() => {
                 // Success message
                 showNotification('Message sent successfully! I\'ll get back to you within 24 hours.', 5000);
@@ -299,7 +305,6 @@ function initContactForm() {
                 
                 // Log for development
                 console.log('Form submitted:', formData);
-                
             }, 1500);
         });
     }
@@ -308,97 +313,34 @@ function initContactForm() {
 // ===== MOBILE MENU =====
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    const sidebar = document.querySelector('.sidebar');
+    const navLinks = document.querySelector('.nav-links');
     
-    if (mobileMenuBtn && navMenu) {
+    if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            navLinks.classList.toggle('active');
             this.classList.toggle('active');
             
             // Update icon
-            if (navMenu.classList.contains('active')) {
+            if (navLinks.classList.contains('active')) {
                 this.innerHTML = '<i class="fas fa-times"></i>';
             } else {
                 this.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
         
-        // Close menu when clicking outside on mobile
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && navMenu.classList.contains('active')) {
-                    navMenu.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                }
+            if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             }
         });
-        
-        // Close menu when clicking a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            });
-        });
     }
-    
-    // Toggle sidebar on mobile
-    const sidebarToggle = document.createElement('button');
-    sidebarToggle.className = 'sidebar-toggle';
-    sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    sidebarToggle.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        z-index: 1001;
-        background: var(--accent);
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        font-size: 1.2rem;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        box-shadow: var(--shadow);
-    `;
-    
-    document.body.appendChild(sidebarToggle);
-    
-    sidebarToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-        sidebarToggle.classList.toggle('active');
-        
-        if (sidebar.classList.contains('active')) {
-            sidebarToggle.innerHTML = '<i class="fas fa-times"></i>';
-        } else {
-            sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-    
-    // Show/hide sidebar toggle based on screen size
-    function updateSidebarToggle() {
-        if (window.innerWidth <= 768) {
-            sidebarToggle.style.display = 'flex';
-        } else {
-            sidebarToggle.style.display = 'none';
-            sidebar.classList.remove('active');
-        }
-    }
-    
-    updateSidebarToggle();
-    window.addEventListener('resize', updateSidebarToggle);
 }
 
 // ===== IMAGE ERROR HANDLING =====
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('load', function() {
     const images = document.querySelectorAll('img');
     
     images.forEach(img => {
@@ -406,7 +348,6 @@ window.addEventListener('DOMContentLoaded', function() {
             if (!this.hasAttribute('data-error-handled')) {
                 this.setAttribute('data-error-handled', 'true');
                 
-                // Get category from data attribute or parent
                 let category = 'Project Image';
                 const src = this.getAttribute('src') || '';
                 
@@ -414,7 +355,6 @@ window.addEventListener('DOMContentLoaded', function() {
                 else if (src.includes('building')) category = 'Building';
                 else if (src.includes('ui')) category = 'UI Design';
                 else if (src.includes('scripting')) category = 'Scripting';
-                else if (src.includes('clothing')) category = 'Clothing';
                 
                 // Create fallback
                 const parent = this.parentElement;
@@ -424,18 +364,17 @@ window.addEventListener('DOMContentLoaded', function() {
                     fallback.style.cssText = `
                         width: 100%;
                         height: 100%;
-                        background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+                        background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
                         display: flex;
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                        color: #666;
+                        color: #9ca3af;
                         font-weight: 600;
                         text-align: center;
                         padding: 20px;
-                        font-size: 1.2rem;
                     `;
-                    fallback.innerHTML = `<i class="fas fa-image"></i><span>${category}</span>`;
+                    fallback.innerHTML = `<i class="fas fa-image" style="font-size: 2rem; margin-bottom: 10px;"></i><span>${category}</span>`;
                     
                     parent.appendChild(fallback);
                     this.style.display = 'none';
