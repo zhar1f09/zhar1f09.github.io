@@ -17,89 +17,87 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- SIDEBAR - FIXED ON LEFT -->
+    <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
         <div class="sidebar-content">
             <!-- Profile -->
             <div class="profile-section">
                 <div class="profile-avatar">
-                    <div class="avatar-initial">Z</div>
+                    <div class="avatar-circle">Z</div>
                 </div>
+                <h1 class="profile-name">Zhar1f09</h1>
+                <p class="profile-title">Roblox Developer</p>
                 <div class="profile-status">
                     <span class="status-dot"></span>
-                    <span class="status-text">Available for work</span>
+                    <span>Available for work</span>
                 </div>
             </div>
 
-            <!-- Contact Icons Only -->
+            <!-- Contact Icons -->
             <div class="contact-icons">
-                <!-- Email -->
                 <a href="mailto:zhar1f09@example.com" class="contact-icon" title="Email">
                     <i class="fas fa-envelope"></i>
+                    <span class="icon-tooltip">Email</span>
                 </a>
                 
-                <!-- Discord -->
-                <button class="contact-icon" data-action="copy" data-copy-text="zhar1f09" title="Discord - zhar1f09">
+                <button class="contact-icon" data-action="copy" data-copy-text="zhar1f09" title="Discord">
                     <i class="fab fa-discord"></i>
+                    <span class="icon-tooltip">Discord: zhar1f09</span>
                 </button>
                 
-                <!-- Roblox Profile -->
                 <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="contact-icon" title="Roblox Profile">
                     <i class="fab fa-roblox"></i>
+                    <span class="icon-tooltip">Roblox Profile</span>
                 </a>
                 
-                <!-- Roblox Group -->
                 <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="contact-icon" title="Roblox Group">
                     <i class="fas fa-users"></i>
+                    <span class="icon-tooltip">Roblox Group</span>
                 </a>
                 
-                <!-- Discord Server -->
                 <a href="https://discord.gg/YOUR_SERVER_INVITE" target="_blank" class="contact-icon" title="Discord Server">
                     <i class="fab fa-discord"></i>
+                    <span class="icon-tooltip">Discord Server</span>
                 </a>
             </div>
 
             <!-- Location -->
-            <div class="location">
+            <div class="location-info">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Singapore</span>
             </div>
         </div>
     </aside>
 
-    <!-- MAIN CONTENT - SCROLLABLE -->
+    <!-- MAIN CONTENT -->
     <main class="main-content">
-        <!-- TOP NAVIGATION - FIXED -->
+        <!-- TOP NAVIGATION -->
         <nav class="top-nav">
-            <div class="nav-container">
-                <div class="nav-logo">
-                    <span class="logo-text">Zhar1f09</span>
-                    <span class="logo-badge">Developer</span>
-                </div>
-                <div class="nav-menu">
-                    <a href="#about" class="nav-link active">About</a>
-                    <a href="#stats" class="nav-link">Stats</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#portfolio" class="nav-link">Portfolio</a>
-                    <a href="#contact" class="nav-link">Message</a>
-                </div>
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
+            <div class="nav-content">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#stats" class="nav-link">Stats</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
 
         <!-- CONTENT SECTIONS -->
         <div class="sections-container">
             <!-- 1. ABOUT SECTION -->
-            <section id="about" class="section active">
-                <div class="section-content">
-                    <h1 class="section-title">Professional <span class="highlight">Roblox</span> Developer</h1>
-                    <p class="section-subtitle">Creating immersive gaming experiences since 2020</p>
-                    
+            <section id="about" class="section">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Professional Roblox Developer</p>
+                </div>
+                
+                <div class="about-content">
                     <div class="about-text">
                         <p>Hello! I'm <span class="highlight">Zhar1f09</span>, a professional Roblox developer based in Singapore with over 3 years of experience creating immersive gaming experiences. I specialize in bringing creative visions to life on the Roblox platform.</p>
                         
@@ -114,28 +112,28 @@
             <section id="stats" class="section">
                 <div class="section-header">
                     <h2 class="section-title">My Statistics</h2>
-                    <p class="section-subtitle">Experience & Achievements</p>
+                    <p class="section-subtitle">Years of Experience & Success</p>
                 </div>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-number">3+</div>
-                        <div class="stat-title">Years Experience</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
                     
                     <div class="stat-card">
                         <div class="stat-number">25+</div>
-                        <div class="stat-title">Projects Completed</div>
+                        <div class="stat-label">Projects Completed</div>
                     </div>
                     
                     <div class="stat-card">
                         <div class="stat-number">15+</div>
-                        <div class="stat-title">Happy Clients</div>
+                        <div class="stat-label">Happy Clients</div>
                     </div>
                     
                     <div class="stat-card">
                         <div class="stat-number">100%</div>
-                        <div class="stat-title">Success Rate</div>
+                        <div class="stat-label">Success Rate</div>
                     </div>
                 </div>
             </section>
@@ -148,94 +146,52 @@
                 </div>
                 
                 <div class="skills-grid">
-                    <!-- Clothing Design -->
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fas fa-tshirt"></i>
                         </div>
                         <h3>Clothing Design</h3>
-                        <p>Custom Roblox clothing and avatar accessories</p>
-                        <ul class="skill-tags">
-                            <li>T-Shirts</li>
-                            <li>Shirts & Pants</li>
-                            <li>Accessories</li>
-                            <li>Avatar Bundles</li>
-                        </ul>
+                        <p>Creating custom Roblox clothing and avatar accessories with attention to detail and style.</p>
                     </div>
                     
-                    <!-- Graphics Design -->
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fas fa-paint-brush"></i>
                         </div>
                         <h3>Graphics Design</h3>
-                        <p>Visual assets and promotional materials</p>
-                        <ul class="skill-tags">
-                            <li>Game Thumbnails</li>
-                            <li>Logos & Banners</li>
-                            <li>Promo Graphics</li>
-                            <li>UI Assets</li>
-                        </ul>
+                        <p>Designing visual assets including logos, banners, thumbnails, and promotional materials.</p>
                     </div>
                     
-                    <!-- Discord Service -->
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fab fa-discord"></i>
                         </div>
                         <h3>Discord Service</h3>
-                        <p>Discord server setup and management</p>
-                        <ul class="skill-tags">
-                            <li>Server Setup</li>
-                            <li>Bot Integration</li>
-                            <li>Channel Design</li>
-                            <li>Community Management</li>
-                        </ul>
+                        <p>Setting up and managing Discord servers with bot integration and community management.</p>
                     </div>
                     
-                    <!-- 3D Modeling -->
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fas fa-cube"></i>
                         </div>
                         <h3>3D Modeling</h3>
-                        <p>Custom models and assets for games</p>
-                        <ul class="skill-tags">
-                            <li>Character Models</li>
-                            <li>Weapons & Props</li>
-                            <li>Vehicles</li>
-                            <li>Environment Props</li>
-                        </ul>
+                        <p>Creating custom 3D models for characters, weapons, vehicles, and environment props.</p>
                     </div>
                     
-                    <!-- Environment Building -->
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fas fa-building"></i>
                         </div>
                         <h3>Environment Building</h3>
-                        <p>Immersive game worlds and structures</p>
-                        <ul class="skill-tags">
-                            <li>Map Design</li>
-                            <li>Architecture</li>
-                            <li>Lighting</li>
-                            <li>Terrain</li>
-                        </ul>
+                        <p>Designing immersive game worlds, structures, and landscapes for Roblox games.</p>
                     </div>
                     
-                    <!-- Photography -->
                     <div class="skill-card">
                         <div class="skill-icon">
                             <i class="fas fa-camera"></i>
                         </div>
                         <h3>Photography</h3>
-                        <p>In-game photography and scene composition</p>
-                        <ul class="skill-tags">
-                            <li>Scene Setup</li>
-                            <li>Lighting</li>
-                            <li>Composition</li>
-                            <li>Post-Processing</li>
-                        </ul>
+                        <p>In-game photography and scene composition for promotional and artistic purposes.</p>
                     </div>
                 </div>
             </section>
@@ -244,65 +200,47 @@
             <section id="portfolio" class="section">
                 <div class="section-header">
                     <h2 class="section-title">My Portfolio</h2>
-                    <p class="section-subtitle">Featured Projects & Work Samples</p>
+                    <p class="section-subtitle">Featured Work & Projects</p>
                 </div>
                 
-                <!-- Filter Tabs -->
-                <div class="portfolio-filter">
-                    <button class="filter-btn active" data-filter="all">All Work</button>
-                    <button class="filter-btn" data-filter="clothing">Clothing</button>
-                    <button class="filter-btn" data-filter="graphics">Graphics</button>
-                    <button class="filter-btn" data-filter="modeling">Modeling</button>
-                    <button class="filter-btn" data-filter="building">Building</button>
-                </div>
-                
-                <!-- Portfolio Grid (2x2) -->
                 <div class="portfolio-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card" data-category="clothing">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Clothing+Design" alt="Clothing Design">
-                            <div class="project-overlay">
-                                <span class="project-category">Clothing</span>
-                                <h4>Premium Clothing Set</h4>
-                                <p>Custom Roblox avatar outfit</p>
-                            </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Clothing+Design" alt="Clothing Design">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Premium Clothing Set</h3>
+                            <p>Custom Roblox avatar outfit with detailed textures and accessories.</p>
                         </div>
                     </div>
                     
-                    <!-- Project 2 -->
-                    <div class="project-card" data-category="graphics">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Game+Thumbnail" alt="Game Thumbnail">
-                            <div class="project-overlay">
-                                <span class="project-category">Graphics</span>
-                                <h4>Game Thumbnail Design</h4>
-                                <p>Promotional artwork for Roblox game</p>
-                            </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Graphics+Design" alt="Graphics Design">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Game Thumbnail</h3>
+                            <p>Promotional artwork for a popular Roblox game launch.</p>
                         </div>
                     </div>
                     
-                    <!-- Project 3 -->
-                    <div class="project-card" data-category="modeling">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Character+Model" alt="Character Model">
-                            <div class="project-overlay">
-                                <span class="project-category">Modeling</span>
-                                <h4>Fantasy Character</h4>
-                                <p>Custom character model with animations</p>
-                            </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/ff4444?text=3D+Model" alt="3D Model">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Fantasy Character</h3>
+                            <p>Complete character model with custom animations and rigging.</p>
                         </div>
                     </div>
                     
-                    <!-- Project 4 -->
-                    <div class="project-card" data-category="building">
-                        <div class="project-image">
-                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Environment+Build" alt="Environment Build">
-                            <div class="project-overlay">
-                                <span class="project-category">Building</span>
-                                <h4>Medieval Castle</h4>
-                                <p>Complete environment build</p>
-                            </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <img src="https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Environment" alt="Environment Build">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3>Medieval Castle</h3>
+                            <p>Large-scale environment build with detailed interiors.</p>
                         </div>
                     </div>
                 </div>
@@ -311,69 +249,58 @@
             <!-- 5. CONTACT SECTION -->
             <section id="contact" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Send Message</h2>
+                    <h2 class="section-title">Contact Me</h2>
                     <p class="section-subtitle">Get in touch for your next project</p>
                 </div>
                 
                 <form class="contact-form" id="contactForm">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Your Name *</label>
-                            <input type="text" id="name" placeholder="Enter your full name" required>
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" placeholder="Enter your email address" required>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="project-type">Project Type *</label>
+                        <label for="project-type">Project Type</label>
                         <select id="project-type" required>
-                            <option value="">Select a project type</option>
+                            <option value="">Select project type</option>
                             <option value="clothing">Clothing Design</option>
                             <option value="graphics">Graphics Design</option>
                             <option value="discord">Discord Service</option>
                             <option value="modeling">3D Modeling</option>
                             <option value="building">Environment Building</option>
                             <option value="photography">Photography</option>
-                            <option value="other">Other</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="budget">Estimated Budget ($) *</label>
-                        <input type="number" id="budget" placeholder="Enter your budget amount" required min="0">
+                        <label for="budget">Estimated Budget ($)</label>
+                        <input type="number" id="budget" placeholder="Enter your budget" required min="0">
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Project Details *</label>
-                        <textarea id="message" rows="5" placeholder="Please describe your project in detail..." required></textarea>
+                        <label for="message">Project Details</label>
+                        <textarea id="message" rows="5" placeholder="Describe your project..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="submit-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Send Message
-                    </button>
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </form>
                 
-                <!-- Social Icons Below Form -->
                 <div class="contact-social">
-                    <a href="mailto:zhar1f09@example.com" class="social-icon" title="Email">
+                    <a href="mailto:zhar1f09@example.com" class="social-link">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <button class="social-icon" data-action="copy" data-copy-text="zhar1f09" title="Discord">
+                    <button class="social-link" data-action="copy" data-copy-text="zhar1f09">
                         <i class="fab fa-discord"></i>
                     </button>
-                    <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-icon" title="Roblox">
+                    <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-link">
                         <i class="fab fa-roblox"></i>
-                    </a>
-                    <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="social-icon" title="Group">
-                        <i class="fas fa-users"></i>
-                    </a>
-                    <a href="https://discord.gg/YOUR_SERVER_INVITE" target="_blank" class="social-icon" title="Discord Server">
-                        <i class="fab fa-discord"></i>
                     </a>
                 </div>
             </section>
@@ -381,8 +308,8 @@
             <!-- FOOTER -->
             <footer class="main-footer">
                 <div class="footer-content">
-                    <p>&copy; <span id="currentYear"></span> Zhar1f09. Professional Roblox Developer.</p>
-                    <p>Based in Singapore • Available for projects worldwide</p>
+                    <p>&copy; <span id="currentYear"></span> Zhar1f09. All rights reserved.</p>
+                    <p>Professional Roblox Developer based in Singapore</p>
                 </div>
             </footer>
         </div>
