@@ -479,28 +479,7 @@ body {
 .rotation-controls {
     margin-top: 40px;
     text-align: center;
-    padding: 25px;
-    background: var(--bg-secondary);
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-}
-
-.rotation-indicator {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 20px;
-    display: block;
-    font-weight: 500;
-}
-
-.rotation-indicator.hidden {
-    display: none;
-}
-
-.rotation-timer {
-    color: var(--primary-color);
-    font-weight: 700;
-    font-size: 1.1rem;
+    padding: 20px;
 }
 
 .rotation-buttons {
