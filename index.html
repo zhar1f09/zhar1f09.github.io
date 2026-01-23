@@ -17,10 +17,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- SIDEBAR - FIXED ON LEFT -->
@@ -31,93 +28,44 @@
                 <div class="profile-avatar">
                     <div class="avatar-initial">Z</div>
                 </div>
-                <h1 class="profile-name">Zhar1f09</h1>
-                <p class="profile-title">Roblox Developer</p>
-                <p class="profile-location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Singapore
-                </p>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="contact-section">
-                <h3>Contact</h3>
-                
-                <!-- Email -->
-                <a href="mailto:zhar1f09@example.com" class="contact-item" data-action="email">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <span class="contact-label">Email</span>
-                        <span class="contact-value">zhar1f09@example.com</span>
-                    </div>
-                </a>
-                
-                <!-- Discord -->
-                <button class="contact-item" data-action="copy" data-copy-text="zhar1f09">
-                    <div class="contact-icon">
-                        <i class="fab fa-discord"></i>
-                    </div>
-                    <div class="contact-details">
-                        <span class="contact-label">Discord</span>
-                        <span class="contact-value">zhar1f09</span>
-                    </div>
-                </button>
-                
-                <!-- Roblox Profile -->
-                <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="contact-item" data-action="roblox">
-                    <div class="contact-icon">
-                        <i class="fab fa-roblox"></i>
-                    </div>
-                    <div class="contact-details">
-                        <span class="contact-label">Roblox</span>
-                        <span class="contact-value">Zhar1f09</span>
-                    </div>
-                </a>
-                
-                <!-- Availability -->
-                <button class="contact-item" data-action="availability">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="contact-details">
-                        <span class="contact-label">Status</span>
-                        <span class="contact-value">Available</span>
-                    </div>
-                </button>
-            </div>
-
-            <!-- Quick Stats -->
-            <div class="quick-stats">
-                <h3>Quick Stats</h3>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">3+</div>
-                        <div class="stat-label">Years</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">Projects</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">15+</div>
-                        <div class="stat-label">Clients</div>
-                    </div>
+                <div class="profile-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Available for work</span>
                 </div>
             </div>
 
-            <!-- Social Links -->
-            <div class="social-links">
-                <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-link" title="Roblox">
-                    <i class="fab fa-roblox"></i>
-                </a>
-                <button class="social-link" data-action="copy" data-copy-text="zhar1f09" title="Discord">
-                    <i class="fab fa-discord"></i>
-                </button>
-                <a href="mailto:zhar1f09@example.com" class="social-link" title="Email">
+            <!-- Contact Icons Only -->
+            <div class="contact-icons">
+                <!-- Email -->
+                <a href="mailto:zhar1f09@example.com" class="contact-icon" title="Email">
                     <i class="fas fa-envelope"></i>
                 </a>
+                
+                <!-- Discord -->
+                <button class="contact-icon" data-action="copy" data-copy-text="zhar1f09" title="Discord - zhar1f09">
+                    <i class="fab fa-discord"></i>
+                </button>
+                
+                <!-- Roblox Profile -->
+                <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="contact-icon" title="Roblox Profile">
+                    <i class="fab fa-roblox"></i>
+                </a>
+                
+                <!-- Roblox Group -->
+                <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="contact-icon" title="Roblox Group">
+                    <i class="fas fa-users"></i>
+                </a>
+                
+                <!-- Discord Server -->
+                <a href="https://discord.gg/YOUR_SERVER_INVITE" target="_blank" class="contact-icon" title="Discord Server">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+
+            <!-- Location -->
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Singapore</span>
             </div>
         </div>
     </aside>
@@ -128,14 +76,15 @@
         <nav class="top-nav">
             <div class="nav-container">
                 <div class="nav-logo">
-                    <span class="logo-text">ZHAR1F09</span>
+                    <span class="logo-text">Zhar1f09</span>
+                    <span class="logo-badge">Developer</span>
                 </div>
                 <div class="nav-menu">
                     <a href="#about" class="nav-link active">About</a>
                     <a href="#stats" class="nav-link">Stats</a>
                     <a href="#skills" class="nav-link">Skills</a>
                     <a href="#portfolio" class="nav-link">Portfolio</a>
-                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#contact" class="nav-link">Message</a>
                 </div>
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -147,36 +96,16 @@
         <div class="sections-container">
             <!-- 1. ABOUT SECTION -->
             <section id="about" class="section active">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Professional Roblox Developer</p>
-                </div>
-                
-                <div class="about-content">
+                <div class="section-content">
+                    <h1 class="section-title">Professional <span class="highlight">Roblox</span> Developer</h1>
+                    <p class="section-subtitle">Creating immersive gaming experiences since 2020</p>
+                    
                     <div class="about-text">
                         <p>Hello! I'm <span class="highlight">Zhar1f09</span>, a professional Roblox developer based in Singapore with over 3 years of experience creating immersive gaming experiences. I specialize in bringing creative visions to life on the Roblox platform.</p>
                         
                         <p>My expertise includes <span class="highlight">complex game mechanics</span>, <span class="highlight">optimized performance</span>, and <span class="highlight">engaging user interfaces</span>. I've contributed to projects ranging from simple obby games to fully-featured RPG systems with thousands of active players.</p>
                         
                         <p>I believe in clean, efficient development and always prioritize player experience in everything I create.</p>
-                        
-                        <div class="features-grid">
-                            <div class="feature">
-                                <i class="fas fa-code"></i>
-                                <h4>Expert Scripting</h4>
-                                <p>Advanced Lua scripting for complex game systems</p>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-paint-brush"></i>
-                                <h4>Creative Design</h4>
-                                <p>Beautiful 3D models and immersive environments</p>
-                            </div>
-                            <div class="feature">
-                                <i class="fas fa-rocket"></i>
-                                <h4>Performance</h4>
-                                <p>Optimized games for smooth player experience</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -184,71 +113,29 @@
             <!-- 2. STATS SECTION -->
             <section id="stats" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">My Stats</h2>
+                    <h2 class="section-title">My Statistics</h2>
                     <p class="section-subtitle">Experience & Achievements</p>
                 </div>
                 
-                <div class="stats-container">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-calendar-alt"></i>
-                            </div>
-                            <div class="stat-number">3+</div>
-                            <div class="stat-title">Years Experience</div>
-                            <p class="stat-desc">Developing on Roblox platform</p>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-project-diagram"></i>
-                            </div>
-                            <div class="stat-number">25+</div>
-                            <div class="stat-title">Projects Completed</div>
-                            <p class="stat-desc">Games, models, and systems</p>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-users"></i>
-                            </div>
-                            <div class="stat-number">15+</div>
-                            <div class="stat-title">Happy Clients</div>
-                            <p class="stat-desc">Satisfied with my work</p>
-                        </div>
-                        
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="stat-number">100%</div>
-                            <div class="stat-title">Success Rate</div>
-                            <p class="stat-desc">Projects delivered on time</p>
-                        </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-title">Years Experience</div>
                     </div>
                     
-                    <div class="additional-info">
-                        <div class="info-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Response Time</h4>
-                                <p>Within 24 hours</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-code-branch"></i>
-                            <div>
-                                <h4>Expertise Areas</h4>
-                                <p>6 different services</p>
-                            </div>
-                        </div>
-                        <div class="info-item">
-                            <i class="fas fa-globe"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Based in Singapore</p>
-                            </div>
-                        </div>
+                    <div class="stat-card">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-title">Projects Completed</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-title">Happy Clients</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-title">Success Rate</div>
                     </div>
                 </div>
             </section>
@@ -256,72 +143,98 @@
             <!-- 3. SKILLS SECTION -->
             <section id="skills" class="section">
                 <div class="section-header">
-                    <h2 class="section-title">Development Services</h2>
-                    <p class="section-subtitle">Professional Skills & Expertise</p>
+                    <h2 class="section-title">My Skills</h2>
+                    <p class="section-subtitle">Development Services & Expertise</p>
                 </div>
                 
                 <div class="skills-grid">
+                    <!-- Clothing Design -->
                     <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon">
-                                <i class="fas fa-cube"></i>
-                            </div>
-                            <h3>3D Modeling</h3>
+                        <div class="skill-icon">
+                            <i class="fas fa-tshirt"></i>
                         </div>
-                        <p class="skill-desc">Creating custom 3D models for characters, weapons, vehicles, and props</p>
-                        <ul class="skill-list">
-                            <li>Character Modeling & Rigging</li>
-                            <li>Weapon & Prop Design</li>
-                            <li>Vehicle Modeling</li>
-                            <li>Texture Creation</li>
+                        <h3>Clothing Design</h3>
+                        <p>Custom Roblox clothing and avatar accessories</p>
+                        <ul class="skill-tags">
+                            <li>T-Shirts</li>
+                            <li>Shirts & Pants</li>
+                            <li>Accessories</li>
+                            <li>Avatar Bundles</li>
                         </ul>
                     </div>
                     
+                    <!-- Graphics Design -->
                     <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <h3>Environment Building</h3>
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
                         </div>
-                        <p class="skill-desc">Designing immersive game environments including landscapes and structures</p>
-                        <ul class="skill-list">
-                            <li>World & Map Design</li>
-                            <li>Architectural Building</li>
-                            <li>Lighting & Atmosphere</li>
-                            <li>Terrain Generation</li>
+                        <h3>Graphics Design</h3>
+                        <p>Visual assets and promotional materials</p>
+                        <ul class="skill-tags">
+                            <li>Game Thumbnails</li>
+                            <li>Logos & Banners</li>
+                            <li>Promo Graphics</li>
+                            <li>UI Assets</li>
                         </ul>
                     </div>
                     
+                    <!-- Discord Service -->
                     <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>Scripting & Programming</h3>
+                        <div class="skill-icon">
+                            <i class="fab fa-discord"></i>
                         </div>
-                        <p class="skill-desc">Developing game mechanics and systems using Lua scripting</p>
-                        <ul class="skill-list">
-                            <li>Lua Scripting (Advanced)</li>
-                            <li>Game Mechanics</li>
-                            <li>Data Management</li>
-                            <li>Multiplayer Systems</li>
+                        <h3>Discord Service</h3>
+                        <p>Discord server setup and management</p>
+                        <ul class="skill-tags">
+                            <li>Server Setup</li>
+                            <li>Bot Integration</li>
+                            <li>Channel Design</li>
+                            <li>Community Management</li>
                         </ul>
                     </div>
                     
+                    <!-- 3D Modeling -->
                     <div class="skill-card">
-                        <div class="skill-header">
-                            <div class="skill-icon">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <h3>UI/UX Design</h3>
+                        <div class="skill-icon">
+                            <i class="fas fa-cube"></i>
                         </div>
-                        <p class="skill-desc">Creating intuitive user interfaces and experiences</p>
-                        <ul class="skill-list">
-                            <li>Menu Systems</li>
-                            <li>Inventory UI</li>
-                            <li>HUD Design</li>
-                            <li>Animation Effects</li>
+                        <h3>3D Modeling</h3>
+                        <p>Custom models and assets for games</p>
+                        <ul class="skill-tags">
+                            <li>Character Models</li>
+                            <li>Weapons & Props</li>
+                            <li>Vehicles</li>
+                            <li>Environment Props</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Environment Building -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Environment Building</h3>
+                        <p>Immersive game worlds and structures</p>
+                        <ul class="skill-tags">
+                            <li>Map Design</li>
+                            <li>Architecture</li>
+                            <li>Lighting</li>
+                            <li>Terrain</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Photography -->
+                    <div class="skill-card">
+                        <div class="skill-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Photography</h3>
+                        <p>In-game photography and scene composition</p>
+                        <ul class="skill-tags">
+                            <li>Scene Setup</li>
+                            <li>Lighting</li>
+                            <li>Composition</li>
+                            <li>Post-Processing</li>
                         </ul>
                     </div>
                 </div>
@@ -337,125 +250,60 @@
                 <!-- Filter Tabs -->
                 <div class="portfolio-filter">
                     <button class="filter-btn active" data-filter="all">All Work</button>
-                    <button class="filter-btn" data-filter="modeling">3D Modeling</button>
+                    <button class="filter-btn" data-filter="clothing">Clothing</button>
+                    <button class="filter-btn" data-filter="graphics">Graphics</button>
+                    <button class="filter-btn" data-filter="modeling">Modeling</button>
                     <button class="filter-btn" data-filter="building">Building</button>
-                    <button class="filter-btn" data-filter="scripting">Scripting</button>
                 </div>
                 
                 <!-- Portfolio Grid (2x2) -->
                 <div class="portfolio-grid">
                     <!-- Project 1 -->
-                    <div class="project-card" data-category="modeling">
+                    <div class="project-card" data-category="clothing">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x250/1a1a1a/666666?text=Character+Model" alt="Character Model">
+                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Clothing+Design" alt="Clothing Design">
                             <div class="project-overlay">
-                                <span class="project-category">Modeling</span>
-                                <h4>Fantasy Character</h4>
-                                <p>High-poly character with custom animations</p>
+                                <span class="project-category">Clothing</span>
+                                <h4>Premium Clothing Set</h4>
+                                <p>Custom Roblox avatar outfit</p>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Fantasy Character Model</h3>
-                            <p>Complete character model with custom animations, textures, and rigging for RPG games.</p>
                         </div>
                     </div>
                     
                     <!-- Project 2 -->
-                    <div class="project-card" data-category="building">
+                    <div class="project-card" data-category="graphics">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x250/1a1a1a/666666?text=Fantasy+Castle" alt="Fantasy Castle">
+                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Game+Thumbnail" alt="Game Thumbnail">
                             <div class="project-overlay">
-                                <span class="project-category">Building</span>
-                                <h4>Medieval Castle</h4>
-                                <p>Complete castle with interiors</p>
+                                <span class="project-category">Graphics</span>
+                                <h4>Game Thumbnail Design</h4>
+                                <p>Promotional artwork for Roblox game</p>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Medieval Castle Environment</h3>
-                            <p>Large-scale castle environment with detailed interiors, custom lighting, and optimized performance.</p>
                         </div>
                     </div>
                     
                     <!-- Project 3 -->
-                    <div class="project-card" data-category="scripting">
+                    <div class="project-card" data-category="modeling">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x250/1a1a1a/666666?text=Combat+System" alt="Combat System">
+                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Character+Model" alt="Character Model">
                             <div class="project-overlay">
-                                <span class="project-category">Scripting</span>
-                                <h4>Combat System</h4>
-                                <p>Advanced combat mechanics</p>
+                                <span class="project-category">Modeling</span>
+                                <h4>Fantasy Character</h4>
+                                <p>Custom character model with animations</p>
                             </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Combat System</h3>
-                            <p>Complete combat system with different attack types, combos, special moves, and hit detection.</p>
                         </div>
                     </div>
                     
                     <!-- Project 4 -->
-                    <div class="project-card" data-category="modeling">
+                    <div class="project-card" data-category="building">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/400x250/1a1a1a/666666?text=Weapon+Design" alt="Weapon Design">
+                            <img src="https://via.placeholder.com/400x300/111111/ff4444?text=Environment+Build" alt="Environment Build">
                             <div class="project-overlay">
-                                <span class="project-category">Modeling</span>
-                                <h4>Magical Sword</h4>
-                                <p>Weapon with particle effects</p>
+                                <span class="project-category">Building</span>
+                                <h4>Medieval Castle</h4>
+                                <p>Complete environment build</p>
                             </div>
                         </div>
-                        <div class="project-info">
-                            <h3>Magical Sword</h3>
-                            <p>Weapon model with custom particle effects, glow effects, and animation sequences.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Additional Projects Carousel -->
-                <div class="portfolio-carousel">
-                    <h3 class="carousel-title">More Projects</h3>
-                    <div class="swiper additional-projects">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/350x200/1a1a1a/666666?text=Modern+City" alt="Modern City">
-                                    <div class="carousel-content">
-                                        <h4>Cyberpunk City</h4>
-                                        <p>Futuristic city environment</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/350x200/1a1a1a/666666?text=Data+System" alt="Data System">
-                                    <div class="carousel-content">
-                                        <h4>Data System</h4>
-                                        <p>Player data management</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/350x200/1a1a1a/666666?text=Inventory+UI" alt="Inventory UI">
-                                    <div class="carousel-content">
-                                        <h4>Inventory System</h4>
-                                        <p>Drag-and-drop inventory</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="carousel-item">
-                                    <img src="https://via.placeholder.com/350x200/1a1a1a/666666?text=Space+Station" alt="Space Station">
-                                    <div class="carousel-content">
-                                        <h4>Space Station</h4>
-                                        <p>Sci-fi environment</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Navigation buttons -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                        <!-- Pagination -->
-                        <div class="swiper-pagination"></div>
                     </div>
                 </div>
             </section>
@@ -467,140 +315,80 @@
                     <p class="section-subtitle">Get in touch for your next project</p>
                 </div>
                 
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <h3>Contact Information</h3>
-                        <div class="info-cards">
-                            <div class="info-card">
-                                <i class="fas fa-envelope"></i>
-                                <div>
-                                    <h4>Email</h4>
-                                    <p>zhar1f09@example.com</p>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <i class="fab fa-discord"></i>
-                                <div>
-                                    <h4>Discord</h4>
-                                    <p>zhar1f09</p>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <i class="fab fa-roblox"></i>
-                                <div>
-                                    <h4>Roblox</h4>
-                                    <p>Zhar1f09</p>
-                                </div>
-                            </div>
-                            <div class="info-card">
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <h4>Availability</h4>
-                                    <p>Available for projects</p>
-                                </div>
-                            </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
                         </div>
                         
-                        <div class="availability-note">
-                            <i class="fas fa-info-circle"></i>
-                            <p>Typically respond within 24 hours. For urgent inquiries, please mention "URGENT" in your message.</p>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" placeholder="Enter your email address" required>
                         </div>
                     </div>
                     
-                    <form class="contact-form" id="contactForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Your Name *</label>
-                                <input type="text" id="name" placeholder="Enter your full name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" placeholder="Enter your email address" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="project-type">Project Type *</label>
-                            <select id="project-type" required>
-                                <option value="">Select a project type</option>
-                                <option value="modeling">3D Modeling</option>
-                                <option value="building">Environment Building</option>
-                                <option value="scripting">Scripting/Programming</option>
-                                <option value="ui">UI/UX Design</option>
-                                <option value="full-game">Full Game Development</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="budget">Estimated Budget (Optional)</label>
-                            <select id="budget">
-                                <option value="">Select budget range</option>
-                                <option value="under-100">Under $100</option>
-                                <option value="100-500">$100 - $500</option>
-                                <option value="500-1000">$500 - $1,000</option>
-                                <option value="1000-plus">$1,000+</option>
-                                <option value="not-sure">Not sure yet</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Project Details *</label>
-                            <textarea id="message" rows="5" placeholder="Please describe your project in detail..." required></textarea>
-                        </div>
-                        
-                        <div class="form-footer">
-                            <button type="submit" class="submit-btn">
-                                <i class="fas fa-paper-plane"></i>
-                                Send Message
-                            </button>
-                            <p class="form-note">
-                                <i class="fas fa-info-circle"></i>
-                                All fields marked with * are required
-                            </p>
-                        </div>
-                    </form>
+                    <div class="form-group">
+                        <label for="project-type">Project Type *</label>
+                        <select id="project-type" required>
+                            <option value="">Select a project type</option>
+                            <option value="clothing">Clothing Design</option>
+                            <option value="graphics">Graphics Design</option>
+                            <option value="discord">Discord Service</option>
+                            <option value="modeling">3D Modeling</option>
+                            <option value="building">Environment Building</option>
+                            <option value="photography">Photography</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Estimated Budget ($) *</label>
+                        <input type="number" id="budget" placeholder="Enter your budget amount" required min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Project Details *</label>
+                        <textarea id="message" rows="5" placeholder="Please describe your project in detail..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        Send Message
+                    </button>
+                </form>
+                
+                <!-- Social Icons Below Form -->
+                <div class="contact-social">
+                    <a href="mailto:zhar1f09@example.com" class="social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <button class="social-icon" data-action="copy" data-copy-text="zhar1f09" title="Discord">
+                        <i class="fab fa-discord"></i>
+                    </button>
+                    <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-icon" title="Roblox">
+                        <i class="fab fa-roblox"></i>
+                    </a>
+                    <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="social-icon" title="Group">
+                        <i class="fas fa-users"></i>
+                    </a>
+                    <a href="https://discord.gg/YOUR_SERVER_INVITE" target="_blank" class="social-icon" title="Discord Server">
+                        <i class="fab fa-discord"></i>
+                    </a>
                 </div>
             </section>
-
+            
             <!-- FOOTER -->
             <footer class="main-footer">
                 <div class="footer-content">
-                    <div class="footer-logo">
-                        <span class="logo-text">Zhar1f09</span>
-                        <span class="logo-tagline">Professional Roblox Developer</span>
-                    </div>
-                    
-                    <div class="footer-links">
-                        <a href="#about">About</a>
-                        <a href="#portfolio">Portfolio</a>
-                        <a href="#skills">Skills</a>
-                        <a href="#contact">Contact</a>
-                    </div>
-                    
-                    <div class="footer-social">
-                        <button class="social-btn" data-action="copy" data-copy-text="zhar1f09" title="Discord">
-                            <i class="fab fa-discord"></i>
-                        </button>
-                        <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="social-btn" title="Roblox">
-                            <i class="fab fa-roblox"></i>
-                        </a>
-                        <a href="mailto:zhar1f09@example.com" class="social-btn" title="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="footer-copyright">
-                        <p>© <span id="currentYear"></span> Zhar1f09. Professional Roblox Developer based in Singapore.</p>
-                    </div>
+                    <p>&copy; <span id="currentYear"></span> Zhar1f09. Professional Roblox Developer.</p>
+                    <p>Based in Singapore • Available for projects worldwide</p>
                 </div>
             </footer>
         </div>
     </main>
 
     <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
