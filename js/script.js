@@ -1,4 +1,4 @@
-// Professional Portfolio - Modern Design with Simplified Rotation System
+// Professional Portfolio - Modern Design with Rotation System
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -180,14 +180,22 @@ function renderPortfolioGrid() {
         return;
     }
     
-    // Calculate which 4 items to show
+    // Calculate which 4 items to show (handle fewer than 4 items)
     const itemsToShow = [];
-    for (let i = 0; i < 4; i++) {
-        const index = (currentRotationIndex + i) % filteredItems.length;
-        itemsToShow.push(filteredItems[index]);
+    const totalItems = filteredItems.length;
+    
+    // If we have 4 or fewer items, show them all
+    if (totalItems <= 4) {
+        itemsToShow.push(...filteredItems);
+    } else {
+        // Get 4 items starting from currentRotationIndex
+        for (let i = 0; i < 4; i++) {
+            const index = (currentRotationIndex + i) % totalItems;
+            itemsToShow.push(filteredItems[index]);
+        }
     }
     
-    // Render the 4 items
+    // Render the items
     itemsToShow.forEach(item => {
         const portfolioItem = createPortfolioItem(item);
         gridContainer.appendChild(portfolioItem);
@@ -231,9 +239,18 @@ function initPortfolioFilter() {
             // Re-render grid with new filter
             renderPortfolioGrid();
             
-            // Restart rotation
+            // Restart rotation only if category has more than 4 items
             stopRotation();
-            startRotation();
+            
+            // Check if filtered category has more than 4 items
+            let filteredItems = portfolioItems;
+            if (currentFilter !== 'all') {
+                filteredItems = portfolioItems.filter(item => item.category === currentFilter);
+            }
+            
+            if (filteredItems.length > 4) {
+                startRotation();
+            }
         });
     });
 }
@@ -272,51 +289,212 @@ function rotatePortfolio() {
     }
 }
 
-// Manual rotation controls
-function initRotationControls() {
-    const portfolioSection = document.querySelector('#portfolio .section-content');
+// ===== NAVIGATION =====
+function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    // Create rotation controls
-    const controlsHTML = `
-        <div class="rotation-controls">
-            <div class="rotation-buttons">
-                <button class="rotation-btn prev-btn">
-                    <i class="fas fa-chevron-left"></i> Previous
-                </button>
-                <button class="rotation-btn next-btn">
-                    Next <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-        </div>
-    `;
-    
-    // Insert after portfolio grid
-    const portfolioGrid = document.querySelector('.portfolio-grid');
-    portfolioGrid.insertAdjacentHTML('afterend', controlsHTML);
-    
-    // Add event listeners
-    document.querySelector('.prev-btn').addEventListener('click', () => {
-        let filteredItems = portfolioItems;
-        if (currentFilter !== 'all') {
-            filteredItems = portfolioItems.filter(item => item.category === currentFilter);
-        }
-        
-        if (filteredItems.length > 4) {
-            currentRotationIndex = (currentRotationIndex - 4 + filteredItems.length) % filteredItems.length;
-            renderPortfolioGrid();
-        }
-    });
-    
-    document.querySelector('.next-btn').addEventListener('click', () => {
-        rotatePortfolio();
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all links
+            navLinks.forEach(l => l.classList.remove('active'));
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
+            // Scroll to section
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 70;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 }
 
-// ===== REST OF THE JAVASCRIPT (Keep all other functions from previous version) =====
-// [Keep all other functions: initNavigation, initContactItems, initContactForm, 
-//  initMobileMenu, initScrollSpy, and helper functions]
+// ===== CONTACT ITEMS =====
+function initContactItems() {
+    const contactIcons = document.querySelectorAll('.contact-icon[data-action="copy"]');
+    
+    contactIcons.forEach(icon => {
+        icon.addEventListener('click', function() {
+            const textToCopy = this.dataset.copyText;
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        showNotification('Copied to clipboard!');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                        fallbackCopy(textToCopy);
+                    });
+            } else {
+                fallbackCopy(textToCopy);
+            }
+        });
+    });
+}
 
-// Initialize rotation controls after portfolio is ready
-setTimeout(() => {
-    initRotationControls();
-}, 100);
+function fallbackCopy(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showNotification('Copied to clipboard!');
+    } catch (err) {
+        console.error('Fallback copy failed: ', err);
+        showNotification('Failed to copy text');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: #00ff00;
+        color: #000;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        z-index: 10000;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}
+
+// ===== CONTACT FORM =====
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            projectType: document.getElementById('project-type').value,
+            budget: document.getElementById('budget').value,
+            message: document.getElementById('message').value
+        };
+        
+        showNotification('Message sent successfully! I\'ll get back to you soon.');
+        form.reset();
+        console.log('Contact form submitted:', formData);
+    });
+}
+
+// ===== MOBILE MENU =====
+function initMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navContent = document.querySelector('.nav-content');
+    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navContent.classList.toggle('active');
+        });
+    }
+    
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+        });
+    }
+    
+    document.addEventListener('click', function(e) {
+        if (navContent && navContent.classList.contains('active')) {
+            if (!e.target.closest('.nav-content') && !e.target.closest('.mobile-menu-btn')) {
+                navContent.classList.remove('active');
+            }
+        }
+        
+        if (sidebar && sidebar.classList.contains('active')) {
+            if (!e.target.closest('.sidebar') && !e.target.closest('.sidebar-toggle')) {
+                sidebar.classList.remove('active');
+            }
+        }
+    });
+}
+
+// ===== SCROLL SPY =====
+function initScrollSpy() {
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    function updateActiveLink() {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink();
+}
+
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
