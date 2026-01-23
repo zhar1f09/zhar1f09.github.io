@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initPortfolioFiltering();
     initSmoothScrolling();
+    initResponsiveMenu();
+    initImageErrorHandling();
 });
 
 // ===== PORTFOLIO TABS FUNCTIONALITY =====
@@ -63,7 +65,6 @@ function initPortfolioFiltering() {
 
 function filterPortfolioItems(category) {
     const items = document.querySelectorAll('.portfolio-item');
-    const grid = document.querySelector('.portfolio-grid');
     
     items.forEach(item => {
         if (category === 'all') {
@@ -109,32 +110,25 @@ function initClickableContacts() {
     
     clickableElements.forEach(element => {
         element.addEventListener('click', function(e) {
-            e.preventDefault();
             const action = this.getAttribute('data-action');
             
             switch(action) {
                 case 'copy':
+                    e.preventDefault();
                     copyToClipboard(this.getAttribute('data-copy-text'));
                     break;
                     
-                case 'email':
-                    // Email links are handled by the href attribute
-                    // This ensures they still work if JavaScript is disabled
-                    if (this.tagName.toLowerCase() === 'a') {
-                        window.location.href = this.getAttribute('href');
-                    }
-                    break;
-                    
                 case 'availability':
+                    e.preventDefault();
                     showAvailabilityMessage();
                     break;
                     
-                case 'roblox-profile':
-                case 'roblox-group':
-                case 'discord-server':
-                    // These open in new tab via target="_blank"
-                    if (this.tagName.toLowerCase() === 'a') {
-                        window.open(this.getAttribute('href'), '_blank');
+                // For email and external links, let the default action handle it
+                // (they already have href and target attributes)
+                default:
+                    // For buttons, prevent default
+                    if (this.tagName.toLowerCase() === 'button') {
+                        e.preventDefault();
                     }
                     break;
             }
@@ -273,8 +267,7 @@ function initContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // In a real application, you would send this data to a server
-            // For now, simulate API call with timeout
+            // Simulate API call with timeout
             setTimeout(() => {
                 // Simulate successful submission
                 showNotification('Message sent successfully! I\'ll get back to you within 24 hours.', 5000);
@@ -320,8 +313,8 @@ function initSmoothScrolling() {
     });
 }
 
-// ===== IMAGE LOAD ERROR HANDLING =====
-document.addEventListener('DOMContentLoaded', function() {
+// ===== IMAGE ERROR HANDLING =====
+function initImageErrorHandling() {
     // Set up error handlers for images that fail to load
     const images = document.querySelectorAll('img');
     images.forEach(img => {
@@ -342,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Create a fallback div with text
                 const parent = this.parentElement;
-                if (parent) {
+                if (parent && parent.classList.contains('portfolio-image')) {
                     const fallback = document.createElement('div');
                     fallback.className = 'image-fallback';
                     fallback.style.cssText = `
@@ -356,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         font-weight: 600;
                         text-align: center;
                         padding: 20px;
-                        border-radius: 8px;
+                        font-size: 1.2rem;
                     `;
                     fallback.textContent = category;
                     
@@ -367,182 +360,86 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+}
 
 // ===== RESPONSIVE MENU FOR MOBILE =====
 function initResponsiveMenu() {
-    // Create mobile menu button
-    const menuButton = document.createElement('button');
-    menuButton.className = 'mobile-menu-button';
-    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-    menuButton.setAttribute('aria-label', 'Toggle menu');
-    
-    // Insert at the beginning of body
-    document.body.insertBefore(menuButton, document.body.firstChild);
-    
-    // Add toggle functionality
-    menuButton.addEventListener('click', function() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.classList.toggle('mobile-open');
-        menuButton.classList.toggle('active');
+    // Only create mobile menu if we're on a small screen
+    if (window.innerWidth <= 1200) {
+        // Create mobile menu button
+        const menuButton = document.createElement('button');
+        menuButton.className = 'mobile-menu-button';
+        menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+        menuButton.setAttribute('aria-label', 'Toggle menu');
         
-        // Update icon
-        if (sidebar.classList.contains('mobile-open')) {
-            menuButton.innerHTML = '<i class="fas fa-times"></i>';
-        } else {
-            menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-        }
-    });
-    
-    // Close menu when clicking outside on mobile
-    document.addEventListener('click', function(e) {
-        const sidebar = document.querySelector('.sidebar');
-        const menuButton = document.querySelector('.mobile-menu-button');
+        // Insert at the beginning of body
+        document.body.insertBefore(menuButton, document.body.firstChild);
         
-        if (window.innerWidth <= 768) {
-            if (!sidebar.contains(e.target) && !menuButton.contains(e.target) && sidebar.classList.contains('mobile-open')) {
-                sidebar.classList.remove('mobile-open');
-                menuButton.classList.remove('active');
+        // Add toggle functionality
+        menuButton.addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('mobile-open');
+            menuButton.classList.toggle('active');
+            
+            // Update icon
+            if (sidebar.classList.contains('mobile-open')) {
+                menuButton.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
                 menuButton.innerHTML = '<i class="fas fa-bars"></i>';
             }
-        }
-    });
+        });
+        
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            const sidebar = document.querySelector('.sidebar');
+            const menuButton = document.querySelector('.mobile-menu-button');
+            
+            if (window.innerWidth <= 1200) {
+                if (sidebar && menuButton && 
+                    !sidebar.contains(e.target) && 
+                    !menuButton.contains(e.target) && 
+                    sidebar.classList.contains('mobile-open')) {
+                    sidebar.classList.remove('mobile-open');
+                    menuButton.classList.remove('active');
+                    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+        
+        // Close sidebar when clicking a link on mobile
+        const sidebarLinks = document.querySelectorAll('.sidebar a, .sidebar button');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 1200) {
+                    const sidebar = document.querySelector('.sidebar');
+                    const menuButton = document.querySelector('.mobile-menu-button');
+                    
+                    if (sidebar && menuButton && sidebar.classList.contains('mobile-open')) {
+                        sidebar.classList.remove('mobile-open');
+                        menuButton.classList.remove('active');
+                        menuButton.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+    }
 }
 
-// Initialize responsive menu on mobile
-if (window.innerWidth <= 768) {
-    initResponsiveMenu();
-}
-
-// Reinitialize on resize
+// ===== WINDOW RESIZE HANDLER =====
 let resizeTimer;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
-        if (window.innerWidth <= 768) {
+        // Reinitialize mobile menu if needed
+        const existingButton = document.querySelector('.mobile-menu-button');
+        if (window.innerWidth <= 1200 && !existingButton) {
             initResponsiveMenu();
+        } else if (window.innerWidth > 1200 && existingButton) {
+            existingButton.remove();
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('mobile-open');
+            }
         }
     }, 250);
 });
-
-// ===== ADDITIONAL STYLES VIA JAVASCRIPT =====
-// Add notification styles
-const notificationStyles = `
-    .notification {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-left: 4px solid var(--accent);
-        border-radius: 8px;
-        padding: 15px 20px;
-        max-width: 350px;
-        box-shadow: var(--shadow);
-        z-index: 1000;
-        transform: translateY(100px);
-        opacity: 0;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-    }
-    
-    .notification.show {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    
-    .notification-content {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex: 1;
-    }
-    
-    .notification-content i {
-        color: var(--accent);
-        font-size: 1.2rem;
-    }
-    
-    .notification-content span {
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-        line-height: 1.4;
-    }
-    
-    .notification-close {
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        cursor: pointer;
-        font-size: 1rem;
-        transition: color 0.2s;
-        padding: 0;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-    }
-    
-    .notification-close:hover {
-        color: var(--accent);
-        background: rgba(255, 107, 107, 0.1);
-    }
-    
-    .mobile-menu-button {
-        display: none;
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 1001;
-        background: var(--accent);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        box-shadow: var(--shadow);
-    }
-    
-    @media (max-width: 768px) {
-        .mobile-menu-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .sidebar {
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .sidebar.mobile-open {
-            transform: translateX(0);
-        }
-        
-        .main-content {
-            margin-left: 0;
-        }
-    }
-    
-    .image-fallback {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
-        color: #666;
-        font-weight: 600;
-        border-radius: 8px;
-    }
-`;
-
-// Add styles to document
-const styleSheet = document.createElement('style');
-styleSheet.textContent = notificationStyles;
-document.head.appendChild(styleSheet);
