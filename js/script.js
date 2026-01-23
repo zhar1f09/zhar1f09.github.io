@@ -5,117 +5,64 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
     // Initialize all functionality
+    initNavigation();
+    initContactTabs();
     initPortfolioTabs();
-    initClickableContacts();
+    initPortfolioCarousel();
     initContactForm();
-    initPortfolioFiltering();
-    initSmoothScrolling();
-    initResponsiveMenu();
-    initImageErrorHandling();
+    initMobileMenu();
 });
 
-// ===== PORTFOLIO TABS FUNCTIONALITY =====
-function initPortfolioTabs() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
+// ===== NAVIGATION =====
+function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.content-section');
     
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons and contents
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
+    // Set first section as active
+    if (sections.length > 0) {
+        sections[0].classList.add('active');
+        navLinks[0].classList.add('active');
+    }
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
             
-            // Add active class to clicked button
-            button.classList.add('active');
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
             
-            // Show corresponding content
-            const tabId = button.getAttribute('data-tab');
-            const tabContent = document.getElementById(tabId);
-            if (tabContent) {
-                tabContent.classList.add('active');
-            }
-            
-            // For "All Work" tab, show all portfolio items
-            if (tabId === 'all') {
-                const allItems = document.querySelectorAll('.portfolio-item');
-                allItems.forEach(item => {
-                    item.style.display = 'block';
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                });
-            } else {
-                // For category tabs, filter items
-                filterPortfolioItems(tabId);
+            if (targetSection) {
+                // Remove active class from all links and sections
+                navLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked link and target section
+                this.classList.add('active');
+                targetSection.classList.add('active');
+                
+                // Close mobile menu if open
+                const mobileMenu = document.querySelector('.nav-menu');
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
             }
         });
     });
 }
 
-// ===== PORTFOLIO FILTERING =====
-function initPortfolioFiltering() {
-    const filterButtons = document.querySelectorAll('.tab-btn');
+// ===== CONTACT TABS =====
+function initContactTabs() {
+    const contactTabs = document.querySelectorAll('.contact-tab, .social-icon, .social-btn');
     
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const filterValue = this.getAttribute('data-tab');
-            filterPortfolioItems(filterValue);
-        });
-    });
-}
-
-function filterPortfolioItems(category) {
-    const items = document.querySelectorAll('.portfolio-item');
-    
-    items.forEach(item => {
-        if (category === 'all') {
-            // Show all items with animation
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.8)';
-            
-            setTimeout(() => {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                }, 50);
-            }, 300);
-        } else if (item.getAttribute('data-category') === category) {
-            // Show matching items
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.8)';
-            
-            setTimeout(() => {
-                item.style.display = 'block';
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'scale(1)';
-                }, 50);
-            }, 300);
-        } else {
-            // Hide non-matching items
-            item.style.opacity = '0';
-            item.style.transform = 'scale(0.8)';
-            
-            setTimeout(() => {
-                item.style.display = 'none';
-            }, 300);
-        }
-    });
-}
-
-// ===== CLICKABLE CONTACT LINKS =====
-function initClickableContacts() {
-    // All clickable contact elements
-    const clickableElements = document.querySelectorAll('.clickable');
-    
-    clickableElements.forEach(element => {
-        element.addEventListener('click', function(e) {
+    contactTabs.forEach(tab => {
+        tab.addEventListener('click', function(e) {
             const action = this.getAttribute('data-action');
             
             switch(action) {
                 case 'copy':
                     e.preventDefault();
-                    copyToClipboard(this.getAttribute('data-copy-text'));
+                    const text = this.getAttribute('data-copy-text');
+                    copyToClipboard(text);
                     break;
                     
                 case 'availability':
@@ -123,8 +70,7 @@ function initClickableContacts() {
                     showAvailabilityMessage();
                     break;
                     
-                // For email and external links, let the default action handle it
-                // (they already have href and target attributes)
+                // For email and external links, let default behavior handle it
                 default:
                     // For buttons, prevent default
                     if (this.tagName.toLowerCase() === 'button') {
@@ -136,9 +82,8 @@ function initClickableContacts() {
     });
 }
 
-// Copy text to clipboard
+// Copy to clipboard function
 function copyToClipboard(text) {
-    // Try using the modern Clipboard API first
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
             .then(() => {
@@ -149,17 +94,14 @@ function copyToClipboard(text) {
                 fallbackCopyToClipboard(text);
             });
     } else {
-        // Fallback for older browsers
         fallbackCopyToClipboard(text);
     }
 }
 
-// Fallback copy method for older browsers
+// Fallback copy method
 function fallbackCopyToClipboard(text) {
     const textArea = document.createElement('textarea');
     textArea.value = text;
-    
-    // Make the textarea out of viewport
     textArea.style.position = 'fixed';
     textArea.style.left = '-999999px';
     textArea.style.top = '-999999px';
@@ -181,7 +123,6 @@ function fallbackCopyToClipboard(text) {
 // Show availability message
 function showAvailabilityMessage() {
     const message = "I'm currently available for new projects! I can typically respond within 24 hours. Please use the contact form or email me directly to discuss your project.";
-    
     showNotification(message, 5000);
 }
 
@@ -206,7 +147,6 @@ function showNotification(message, duration = 3000) {
         </button>
     `;
     
-    // Add to page
     document.body.appendChild(notification);
     
     // Show with animation
@@ -238,7 +178,85 @@ function showNotification(message, duration = 3000) {
     }
 }
 
-// ===== CONTACT FORM HANDLING =====
+// ===== PORTFOLIO TABS =====
+function initPortfolioTabs() {
+    const portfolioTabs = document.querySelectorAll('.port-tab');
+    const portfolioItems = document.querySelectorAll('.portfolio-item, .carousel-item');
+    
+    portfolioTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            portfolioTabs.forEach(t => t.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            const category = this.getAttribute('data-category');
+            
+            // Show/hide portfolio items based on category
+            portfolioItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            // Update carousel if needed
+            if (window.swiperInstance) {
+                setTimeout(() => {
+                    window.swiperInstance.update();
+                }, 350);
+            }
+        });
+    });
+}
+
+// ===== PORTFOLIO CAROUSEL =====
+function initPortfolioCarousel() {
+    // Initialize Swiper carousel
+    window.swiperInstance = new Swiper('.portfolio-carousel', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 15,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+            },
+        },
+    });
+}
+
+// ===== CONTACT FORM =====
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
@@ -267,9 +285,9 @@ function initContactForm() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            // Simulate API call with timeout
+            // Simulate API call
             setTimeout(() => {
-                // Simulate successful submission
+                // Success message
                 showNotification('Message sent successfully! I\'ll get back to you within 24 hours.', 5000);
                 
                 // Reset form
@@ -279,7 +297,7 @@ function initContactForm() {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
                 
-                // Log to console (for development)
+                // Log for development
                 console.log('Form submitted:', formData);
                 
             }, 1500);
@@ -287,55 +305,120 @@ function initContactForm() {
     }
 }
 
-// ===== SMOOTH SCROLLING =====
-function initSmoothScrolling() {
-    // Add smooth scroll to anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
+// ===== MOBILE MENU =====
+function initMobileMenu() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const sidebar = document.querySelector('.sidebar');
+    
+    if (mobileMenuBtn && navMenu) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            this.classList.toggle('active');
             
-            // Skip if it's a hash link to same page
-            if (href === '#') return;
-            
-            // Check if it's an internal link
-            if (href.startsWith('#') && document.querySelector(href)) {
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+            // Update icon
+            if (navMenu.classList.contains('active')) {
+                this.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                this.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close menu when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             }
         });
+        
+        // Close menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+    }
+    
+    // Toggle sidebar on mobile
+    const sidebarToggle = document.createElement('button');
+    sidebarToggle.className = 'sidebar-toggle';
+    sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    sidebarToggle.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 1001;
+        background: var(--accent);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow);
+    `;
+    
+    document.body.appendChild(sidebarToggle);
+    
+    sidebarToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        sidebarToggle.classList.toggle('active');
+        
+        if (sidebar.classList.contains('active')) {
+            sidebarToggle.innerHTML = '<i class="fas fa-times"></i>';
+        } else {
+            sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     });
+    
+    // Show/hide sidebar toggle based on screen size
+    function updateSidebarToggle() {
+        if (window.innerWidth <= 768) {
+            sidebarToggle.style.display = 'flex';
+        } else {
+            sidebarToggle.style.display = 'none';
+            sidebar.classList.remove('active');
+        }
+    }
+    
+    updateSidebarToggle();
+    window.addEventListener('resize', updateSidebarToggle);
 }
 
 // ===== IMAGE ERROR HANDLING =====
-function initImageErrorHandling() {
-    // Set up error handlers for images that fail to load
+window.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('img');
+    
     images.forEach(img => {
         img.addEventListener('error', function() {
-            // If there's already a placeholder text, don't change it
             if (!this.hasAttribute('data-error-handled')) {
                 this.setAttribute('data-error-handled', 'true');
                 
-                // Try to extract category from src or parent
-                let category = 'Portfolio Item';
+                // Get category from data attribute or parent
+                let category = 'Project Image';
                 const src = this.getAttribute('src') || '';
                 
                 if (src.includes('modeling')) category = '3D Model';
                 else if (src.includes('building')) category = 'Building';
-                else if (src.includes('ui-ux')) category = 'UI/UX Design';
+                else if (src.includes('ui')) category = 'UI Design';
                 else if (src.includes('scripting')) category = 'Scripting';
                 else if (src.includes('clothing')) category = 'Clothing';
                 
-                // Create a fallback div with text
+                // Create fallback
                 const parent = this.parentElement;
-                if (parent && parent.classList.contains('portfolio-image')) {
+                if (parent) {
                     const fallback = document.createElement('div');
                     fallback.className = 'image-fallback';
                     fallback.style.cssText = `
@@ -343,6 +426,7 @@ function initImageErrorHandling() {
                         height: 100%;
                         background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
                         display: flex;
+                        flex-direction: column;
                         align-items: center;
                         justify-content: center;
                         color: #666;
@@ -351,95 +435,12 @@ function initImageErrorHandling() {
                         padding: 20px;
                         font-size: 1.2rem;
                     `;
-                    fallback.textContent = category;
+                    fallback.innerHTML = `<i class="fas fa-image"></i><span>${category}</span>`;
                     
-                    // Replace image with fallback
                     parent.appendChild(fallback);
                     this.style.display = 'none';
                 }
             }
         });
     });
-}
-
-// ===== RESPONSIVE MENU FOR MOBILE =====
-function initResponsiveMenu() {
-    // Only create mobile menu if we're on a small screen
-    if (window.innerWidth <= 1200) {
-        // Create mobile menu button
-        const menuButton = document.createElement('button');
-        menuButton.className = 'mobile-menu-button';
-        menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-        menuButton.setAttribute('aria-label', 'Toggle menu');
-        
-        // Insert at the beginning of body
-        document.body.insertBefore(menuButton, document.body.firstChild);
-        
-        // Add toggle functionality
-        menuButton.addEventListener('click', function() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('mobile-open');
-            menuButton.classList.toggle('active');
-            
-            // Update icon
-            if (sidebar.classList.contains('mobile-open')) {
-                menuButton.innerHTML = '<i class="fas fa-times"></i>';
-            } else {
-                menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-        
-        // Close menu when clicking outside on mobile
-        document.addEventListener('click', function(e) {
-            const sidebar = document.querySelector('.sidebar');
-            const menuButton = document.querySelector('.mobile-menu-button');
-            
-            if (window.innerWidth <= 1200) {
-                if (sidebar && menuButton && 
-                    !sidebar.contains(e.target) && 
-                    !menuButton.contains(e.target) && 
-                    sidebar.classList.contains('mobile-open')) {
-                    sidebar.classList.remove('mobile-open');
-                    menuButton.classList.remove('active');
-                    menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            }
-        });
-        
-        // Close sidebar when clicking a link on mobile
-        const sidebarLinks = document.querySelectorAll('.sidebar a, .sidebar button');
-        sidebarLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 1200) {
-                    const sidebar = document.querySelector('.sidebar');
-                    const menuButton = document.querySelector('.mobile-menu-button');
-                    
-                    if (sidebar && menuButton && sidebar.classList.contains('mobile-open')) {
-                        sidebar.classList.remove('mobile-open');
-                        menuButton.classList.remove('active');
-                        menuButton.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                }
-            });
-        });
-    }
-}
-
-// ===== WINDOW RESIZE HANDLER =====
-let resizeTimer;
-window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function() {
-        // Reinitialize mobile menu if needed
-        const existingButton = document.querySelector('.mobile-menu-button');
-        if (window.innerWidth <= 1200 && !existingButton) {
-            initResponsiveMenu();
-        } else if (window.innerWidth > 1200 && existingButton) {
-            existingButton.remove();
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.classList.remove('mobile-open');
-            }
-        }
-    }, 250);
 });
