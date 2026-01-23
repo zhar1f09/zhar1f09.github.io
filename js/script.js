@@ -1,4 +1,4 @@
-// Professional Portfolio - Modern Design
+// Professional Portfolio - Modern Design with Portfolio Filtering
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -10,7 +10,279 @@ document.addEventListener('DOMContentLoaded', function() {
     initContactForm();
     initMobileMenu();
     initScrollSpy();
+    initPortfolio();
 });
+
+// ===== PORTFOLIO DATA =====
+const portfolioItems = [
+    {
+        id: 1,
+        title: "Fantasy Character",
+        description: "Complete character model with custom animations and rigging",
+        category: "modeling",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Character+Model"
+    },
+    {
+        id: 2,
+        title: "Medieval Castle",
+        description: "Large-scale castle environment with detailed interiors",
+        category: "building",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Fantasy+Castle"
+    },
+    {
+        id: 3,
+        title: "Premium Clothing Set",
+        description: "Custom Roblox avatar outfit with detailed textures",
+        category: "clothing",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Clothing+Design"
+    },
+    {
+        id: 4,
+        title: "Game Thumbnail",
+        description: "Promotional artwork for popular Roblox game",
+        category: "graphics",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Game+Thumbnail"
+    },
+    {
+        id: 5,
+        title: "Discord Server Setup",
+        description: "Complete Discord server with custom bots and channels",
+        category: "discord",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Discord+Server"
+    },
+    {
+        id: 6,
+        title: "Magical Sword",
+        description: "Weapon model with particle effects and animations",
+        category: "modeling",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Weapon+Design"
+    },
+    {
+        id: 7,
+        title: "Cyberpunk City",
+        description: "Futuristic city environment with neon lighting",
+        category: "building",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Modern+City"
+    },
+    {
+        id: 8,
+        title: "Avatar Bundle",
+        description: "Complete Roblox avatar with matching accessories",
+        category: "clothing",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Avatar+Bundle"
+    },
+    {
+        id: 9,
+        title: "Logo Design",
+        description: "Brand identity for Roblox development group",
+        category: "graphics",
+        image: "https://via.placeholder.com/400x300/1a1a1a/ff4444?text=Logo+Design"
+    }
+];
+
+// ===== PORTFOLIO SYSTEM =====
+function initPortfolio() {
+    renderPortfolioGrid();
+    initPortfolioFilter();
+    initPortfolioGIF();
+}
+
+// Render the 2×2 portfolio grid
+function renderPortfolioGrid() {
+    const gridContainer = document.querySelector('.portfolio-grid');
+    const gifContainer = document.querySelector('.gif-carousel');
+    
+    // Clear existing content
+    gridContainer.innerHTML = '';
+    gifContainer.innerHTML = '';
+    
+    // Get first 4 items for the main grid
+    const gridItems = portfolioItems.slice(0, 4);
+    
+    // Render grid items (2×2)
+    gridItems.forEach(item => {
+        const portfolioItem = createPortfolioItem(item);
+        gridContainer.appendChild(portfolioItem);
+    });
+    
+    // If there are more than 4 items, create GIF carousel
+    if (portfolioItems.length > 4) {
+        const gifItems = portfolioItems.slice(4); // Get items after the first 4
+        const gifContainerElement = document.querySelector('.portfolio-gif-container');
+        
+        // Show GIF container
+        gifContainerElement.style.display = 'block';
+        
+        // Render GIF items
+        gifItems.forEach(item => {
+            const gifItem = createGIFItem(item);
+            gifContainer.appendChild(gifItem);
+        });
+    }
+}
+
+// Create portfolio item element
+function createPortfolioItem(item) {
+    const div = document.createElement('div');
+    div.className = 'portfolio-item';
+    div.setAttribute('data-category', item.category);
+    div.setAttribute('data-id', item.id);
+    
+    div.innerHTML = `
+        <div class="portfolio-image">
+            <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x300/1a1a1a/666666?text=${item.category}'">
+            <span class="portfolio-category">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+        </div>
+        <div class="portfolio-info">
+            <h3>${item.title}</h3>
+            <p>${item.description}</p>
+        </div>
+    `;
+    
+    return div;
+}
+
+// Create GIF item element
+function createGIFItem(item) {
+    const div = document.createElement('div');
+    div.className = 'gif-item';
+    div.setAttribute('data-category', item.category);
+    
+    div.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x250/1a1a1a/666666?text=${item.category}'">
+        <div class="gif-content">
+            <h4>${item.title}</h4>
+            <p>${item.description}</p>
+        </div>
+    `;
+    
+    return div;
+}
+
+// Initialize portfolio filter
+function initPortfolioFilter() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const gifItems = document.querySelectorAll('.gif-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Filter main grid items
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.classList.remove('hidden');
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 300);
+                }
+            });
+            
+            // Filter GIF items
+            gifItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    item.style.animation = 'slideIn 0.5s ease forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Restart GIF animation
+            initPortfolioGIF();
+        });
+    });
+}
+
+// Initialize portfolio GIF/carousel
+function initPortfolioGIF() {
+    const gifItems = document.querySelectorAll('.gif-item');
+    const gifTimer = document.querySelector('.gif-timer');
+    
+    if (gifItems.length === 0) return;
+    
+    let currentIndex = 0;
+    const intervalTime = 3000; // 3 seconds
+    
+    // Show all items initially
+    gifItems.forEach((item, index) => {
+        item.style.opacity = index === 0 ? '1' : '0';
+        item.style.transform = index === 0 ? 'translateY(0)' : 'translateY(20px)';
+    });
+    
+    // Start auto-rotation
+    const startRotation = () => {
+        const interval = setInterval(() => {
+            // Hide current item
+            gifItems[currentIndex].style.opacity = '0';
+            gifItems[currentIndex].style.transform = 'translateY(20px)';
+            
+            // Move to next item
+            currentIndex = (currentIndex + 1) % gifItems.length;
+            
+            // Show next item
+            setTimeout(() => {
+                gifItems[currentIndex].style.opacity = '1';
+                gifItems[currentIndex].style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Update timer display
+            if (gifTimer) {
+                gifTimer.textContent = '3s';
+            }
+            
+        }, intervalTime);
+        
+        // Update timer every second
+        const timerInterval = setInterval(() => {
+            if (gifTimer) {
+                const remaining = Math.ceil((intervalTime - (Date.now() % intervalTime)) / 1000);
+                gifTimer.textContent = `${remaining}s`;
+            }
+        }, 1000);
+        
+        // Store interval IDs for cleanup
+        window.portfolioInterval = interval;
+        window.timerInterval = timerInterval;
+    };
+    
+    // Start rotation
+    startRotation();
+    
+    // Pause on hover
+    const gifContainer = document.querySelector('.gif-carousel');
+    if (gifContainer) {
+        gifContainer.addEventListener('mouseenter', () => {
+            if (window.portfolioInterval) clearInterval(window.portfolioInterval);
+            if (window.timerInterval) clearInterval(window.timerInterval);
+            if (gifTimer) gifTimer.textContent = 'Paused';
+        });
+        
+        gifContainer.addEventListener('mouseleave', () => {
+            startRotation();
+        });
+    }
+}
+
+// Clean up intervals when switching filters
+function cleanupPortfolioIntervals() {
+    if (window.portfolioInterval) clearInterval(window.portfolioInterval);
+    if (window.timerInterval) clearInterval(window.timerInterval);
+}
 
 // ===== SCROLL SPY NAVIGATION =====
 function initScrollSpy() {
