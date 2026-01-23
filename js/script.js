@@ -1,4 +1,4 @@
-// Professional Portfolio - Black & Red Theme
+// Professional Portfolio Script
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -7,40 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
     initNavigation();
     initContactItems();
-    initPortfolioFilter();
     initContactForm();
     initMobileMenu();
-    initScrollSpy();
 });
 
-// ===== SCROLL SPY NAVIGATION =====
-function initScrollSpy() {
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Highlight active section on scroll
-    window.addEventListener('scroll', function() {
-        let current = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            
-            if (window.scrollY >= (sectionTop - 100)) {
-                current = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-// ===== SMOOTH SCROLL =====
+// ===== NAVIGATION =====
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -58,8 +29,12 @@ function initNavigation() {
                     behavior: 'smooth'
                 });
                 
+                // Update active link
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
                 // Close mobile menu if open
-                const mobileMenu = document.querySelector('.nav-menu');
+                const mobileMenu = document.querySelector('.nav-content');
                 if (mobileMenu.classList.contains('active')) {
                     mobileMenu.classList.remove('active');
                     const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -72,10 +47,10 @@ function initNavigation() {
 
 // ===== CONTACT ITEMS =====
 function initContactItems() {
-    const contactItems = document.querySelectorAll('.contact-icon, button[data-action="copy"]');
+    const contactIcons = document.querySelectorAll('.contact-icon, .social-link');
     
-    contactItems.forEach(item => {
-        item.addEventListener('click', function(e) {
+    contactIcons.forEach(icon => {
+        icon.addEventListener('click', function(e) {
             const action = this.getAttribute('data-action');
             
             if (action === 'copy') {
@@ -92,7 +67,7 @@ function copyToClipboard(text) {
     if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(text)
             .then(() => {
-                showNotification(`Discord copied: ${text}`);
+                showNotification(`Copied to clipboard: ${text}`);
             })
             .catch(err => {
                 console.error('Failed to copy: ', err);
@@ -115,48 +90,13 @@ function fallbackCopyToClipboard(text) {
     
     try {
         document.execCommand('copy');
-        showNotification(`Discord copied: ${text}`);
+        showNotification(`Copied to clipboard: ${text}`);
     } catch (err) {
         console.error('Fallback copy failed: ', err);
         showNotification('Failed to copy to clipboard');
     }
     
     document.body.removeChild(textArea);
-}
-
-// ===== PORTFOLIO FILTER =====
-function initPortfolioFilter() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Filter projects
-            projectCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.9)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
 }
 
 // ===== CONTACT FORM =====
@@ -182,16 +122,16 @@ function initContactForm() {
                 return;
             }
             
-            // Validate budget is a positive number
+            // Validate budget
             if (formData.budget < 0) {
-                showNotification('Budget must be a positive number');
+                showNotification('Please enter a valid budget amount');
                 return;
             }
             
             // Show loading state
             const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
             
             // Simulate form submission
@@ -203,7 +143,7 @@ function initContactForm() {
                 contactForm.reset();
                 
                 // Reset button
-                submitBtn.innerHTML = originalText;
+                submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
                 
                 // Log for development
@@ -216,17 +156,17 @@ function initContactForm() {
 // ===== MOBILE MENU =====
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
+    const navContent = document.querySelector('.nav-content');
     const sidebar = document.querySelector('.sidebar');
     
     // Mobile navigation menu
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+            navContent.classList.toggle('active');
             this.classList.toggle('active');
             
             // Update icon
-            if (navMenu.classList.contains('active')) {
+            if (navContent.classList.contains('active')) {
                 this.innerHTML = '<i class="fas fa-times"></i>';
             } else {
                 this.innerHTML = '<i class="fas fa-bars"></i>';
@@ -235,8 +175,8 @@ function initMobileMenu() {
         
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
+            if (!navContent.contains(e.target) && !mobileMenuBtn.contains(e.target) && navContent.classList.contains('active')) {
+                navContent.classList.remove('active');
                 mobileMenuBtn.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             }
@@ -253,7 +193,7 @@ function initMobileMenu() {
         left: 20px;
         z-index: 1001;
         background: var(--primary-color);
-        color: var(--bg-primary);
+        color: white;
         border: none;
         width: 50px;
         height: 50px;
@@ -291,18 +231,6 @@ function initMobileMenu() {
     
     updateSidebarToggle();
     window.addEventListener('resize', updateSidebarToggle);
-    
-    // Close sidebar when clicking a link on mobile
-    const sidebarLinks = document.querySelectorAll('.sidebar a, .sidebar button');
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                sidebar.classList.remove('active');
-                sidebarToggle.classList.remove('active');
-                sidebarToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
-    });
 }
 
 // ===== NOTIFICATION SYSTEM =====
@@ -356,50 +284,3 @@ function showNotification(message, duration = 3000) {
         }, duration);
     }
 }
-
-// ===== IMAGE ERROR HANDLING =====
-window.addEventListener('load', function() {
-    const images = document.querySelectorAll('img');
-    
-    images.forEach(img => {
-        img.addEventListener('error', function() {
-            if (!this.hasAttribute('data-error-handled')) {
-                this.setAttribute('data-error-handled', 'true');
-                
-                let category = 'Project Image';
-                const src = this.getAttribute('src') || '';
-                
-                if (src.includes('clothing')) category = 'Clothing Design';
-                else if (src.includes('graphics')) category = 'Graphics Design';
-                else if (src.includes('modeling')) category = '3D Modeling';
-                else if (src.includes('building')) category = 'Building';
-                
-                // Create fallback
-                const parent = this.parentElement;
-                if (parent && parent.classList.contains('project-image')) {
-                    const fallback = document.createElement('div');
-                    fallback.className = 'image-fallback';
-                    fallback.style.cssText = `
-                        width: 100%;
-                        height: 100%;
-                        background: linear-gradient(135deg, #1a1a1a, #111111);
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        color: #666;
-                        font-weight: 600;
-                        text-align: center;
-                        padding: 20px;
-                        font-size: 1.2rem;
-                        border: 2px dashed #333;
-                    `;
-                    fallback.innerHTML = `<i class="fas fa-image" style="font-size: 2rem; margin-bottom: 10px; color: #ff4444;"></i><span>${category}</span>`;
-                    
-                    parent.appendChild(fallback);
-                    this.style.display = 'none';
-                }
-            }
-        });
-    });
-});
