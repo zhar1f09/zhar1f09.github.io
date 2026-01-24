@@ -1,4 +1,4 @@
-// Professional Portfolio - Modern Design with Rotation System
+// Professional Portfolio - Modern Design with Rotation System + Lightbox
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initScrollSpy();
     initPortfolio();
+    initLightbox();
 });
 
 // ===== PORTFOLIO DATA =====
@@ -200,6 +201,9 @@ function renderPortfolioGrid() {
         const portfolioItem = createPortfolioItem(item);
         gridContainer.appendChild(portfolioItem);
     });
+    
+    // Re-attach lightbox click events after rendering
+    attachLightboxEvents();
 }
 
 // Create portfolio item element
@@ -207,11 +211,18 @@ function createPortfolioItem(item) {
     const div = document.createElement('div');
     div.className = 'portfolio-item';
     div.dataset.category = item.category;
+    div.dataset.itemId = item.id; // Add ID for lightbox
     
     div.innerHTML = `
         <div class="portfolio-image">
             <span class="portfolio-category">${item.category.toUpperCase()}</span>
             <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x300/1a1a1a/444444?text=Project+Image'">
+            <div class="image-overlay">
+                <div class="overlay-content">
+                    <i class="fas fa-expand"></i>
+                    <span>Click to view larger</span>
+                </div>
+            </div>
         </div>
         <div class="portfolio-info">
             <h3>${item.title}</h3>
@@ -289,7 +300,201 @@ function rotatePortfolio() {
     }
 }
 
-// ===== NAVIGATION =====
+// ===== LIGHTBOX SYSTEM =====
+function initLightbox() {
+    // Create lightbox HTML
+    const lightboxHTML = `
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <button class="lightbox-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="lightbox-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="lightbox-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="lightbox-image-container">
+                    <img class="lightbox-image" src="" alt="">
+                </div>
+                <div class="lightbox-info">
+                    <h3 class="lightbox-title"></h3>
+                    <p class="lightbox-description"></p>
+                    <div class="lightbox-meta">
+                        <span class="lightbox-category"></span>
+                        <span class="lightbox-counter"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Add lightbox to body
+    document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+    
+    // Initialize lightbox events
+    attachLightboxEvents();
+    initLightboxControls();
+}
+
+// Attach click events to portfolio images
+function attachLightboxEvents() {
+    const portfolioImages = document.querySelectorAll('.portfolio-image');
+    
+    portfolioImages.forEach((imageContainer, index) => {
+        imageContainer.addEventListener('click', function(e) {
+            // Don't trigger if clicking on category tag
+            if (e.target.classList.contains('portfolio-category')) return;
+            
+            const portfolioItem = this.closest('.portfolio-item');
+            const itemId = parseInt(portfolioItem.dataset.itemId);
+            
+            // Find the item in portfolio data
+            const item = portfolioItems.find(item => item.id === itemId);
+            
+            if (item) {
+                openLightbox(item);
+            }
+        });
+    });
+}
+
+// Open lightbox with item
+function openLightbox(item) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.querySelector('.lightbox-image');
+    const lightboxTitle = document.querySelector('.lightbox-title');
+    const lightboxDescription = document.querySelector('.lightbox-description');
+    const lightboxCategory = document.querySelector('.lightbox-category');
+    const lightboxCounter = document.querySelector('.lightbox-counter');
+    
+    // Set lightbox content
+    lightboxImage.src = item.image;
+    lightboxImage.alt = item.title;
+    lightboxTitle.textContent = item.title;
+    lightboxDescription.textContent = item.description;
+    lightboxCategory.textContent = item.category.toUpperCase();
+    
+    // Get current filtered items for navigation
+    let filteredItems = portfolioItems;
+    if (currentFilter !== 'all') {
+        filteredItems = portfolioItems.filter(i => i.category === currentFilter);
+    }
+    
+    // Find current item index
+    const currentIndex = filteredItems.findIndex(i => i.id === item.id);
+    const totalItems = filteredItems.length;
+    
+    // Set counter
+    lightboxCounter.textContent = `${currentIndex + 1} / ${totalItems}`;
+    
+    // Store current index for navigation
+    lightbox.dataset.currentIndex = currentIndex;
+    lightbox.dataset.filteredItems = JSON.stringify(filteredItems.map(i => i.id));
+    
+    // Show lightbox
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    
+    // Focus close button for accessibility
+    document.querySelector('.lightbox-close').focus();
+}
+
+// Close lightbox
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Navigate lightbox
+function navigateLightbox(direction) {
+    const lightbox = document.getElementById('lightbox');
+    const filteredItemsIds = JSON.parse(lightbox.dataset.filteredItems || '[]');
+    let currentIndex = parseInt(lightbox.dataset.currentIndex) || 0;
+    
+    if (filteredItemsIds.length === 0) return;
+    
+    // Calculate new index
+    if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % filteredItemsIds.length;
+    } else if (direction === 'prev') {
+        currentIndex = (currentIndex - 1 + filteredItemsIds.length) % filteredItemsIds.length;
+    }
+    
+    // Find item by ID
+    const itemId = filteredItemsIds[currentIndex];
+    const item = portfolioItems.find(item => item.id === itemId);
+    
+    if (item) {
+        lightbox.dataset.currentIndex = currentIndex;
+        
+        // Update lightbox content
+        const lightboxImage = document.querySelector('.lightbox-image');
+        const lightboxTitle = document.querySelector('.lightbox-title');
+        const lightboxDescription = document.querySelector('.lightbox-description');
+        const lightboxCategory = document.querySelector('.lightbox-category');
+        const lightboxCounter = document.querySelector('.lightbox-counter');
+        
+        // Fade out animation
+        lightboxImage.style.opacity = '0';
+        
+        setTimeout(() => {
+            lightboxImage.src = item.image;
+            lightboxImage.alt = item.title;
+            lightboxTitle.textContent = item.title;
+            lightboxDescription.textContent = item.description;
+            lightboxCategory.textContent = item.category.toUpperCase();
+            lightboxCounter.textContent = `${currentIndex + 1} / ${filteredItemsIds.length}`;
+            
+            // Fade in animation
+            lightboxImage.style.opacity = '1';
+        }, 300);
+    }
+}
+
+// Initialize lightbox controls
+function initLightboxControls() {
+    const lightbox = document.getElementById('lightbox');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+    
+    // Close button
+    closeBtn.addEventListener('click', closeLightbox);
+    
+    // Previous button
+    prevBtn.addEventListener('click', () => navigateLightbox('prev'));
+    
+    // Next button
+    nextBtn.addEventListener('click', () => navigateLightbox('next'));
+    
+    // Close on ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+        
+        // Arrow key navigation
+        if (lightbox.classList.contains('active')) {
+            if (e.key === 'ArrowLeft') {
+                navigateLightbox('prev');
+            } else if (e.key === 'ArrowRight') {
+                navigateLightbox('next');
+            }
+        }
+    });
+    
+    // Close on background click
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+}
+
+// ===== REST OF THE FUNCTIONS (Keep unchanged) =====
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -318,7 +523,6 @@ function initNavigation() {
     });
 }
 
-// ===== CONTACT ITEMS =====
 function initContactItems() {
     const contactIcons = document.querySelectorAll('.contact-icon[data-action="copy"]');
     
@@ -386,7 +590,6 @@ function showNotification(message) {
     }, 3000);
 }
 
-// ===== CONTACT FORM =====
 function initContactForm() {
     const form = document.getElementById('contactForm');
     
@@ -409,7 +612,6 @@ function initContactForm() {
     });
 }
 
-// ===== MOBILE MENU =====
 function initMobileMenu() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navContent = document.querySelector('.nav-content');
@@ -443,7 +645,6 @@ function initMobileMenu() {
     });
 }
 
-// ===== SCROLL SPY =====
 function initScrollSpy() {
     const sections = document.querySelectorAll('.section');
     const navLinks = document.querySelectorAll('.nav-link');
