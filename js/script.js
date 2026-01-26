@@ -116,7 +116,7 @@ const portfolioItems = [
     },
     {
         id: 14,
-        title: "Logo Design",
+        title: "Discord Banner",
         description: "Brand identity for Roblox development group",
         category: "graphics",
         image: "images/graphics/graphic2.png"
