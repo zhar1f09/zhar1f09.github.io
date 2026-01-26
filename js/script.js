@@ -109,8 +109,8 @@ const portfolioItems = [
     // Graphics Projects
     {
         id: 13,
-        title: "Game Thumbnail",
-        description: "Promotional artwork for popular Roblox game",
+        title: "Promotion Banner",
+        description: "Marketing Promotion artwork for Discord/Roblox Tech Server",
         category: "graphics",
         image: "images/graphics/graphic1.png"
     },
