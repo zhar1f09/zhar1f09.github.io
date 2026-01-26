@@ -63,8 +63,8 @@ const portfolioItems = [
     },
     {
         id: 7,
-        title: "Cyberpunk City",
-        description: "Futuristic city environment with neon lighting",
+        title: "Consert Stadium",
+        description: "A project that captures the energy of live performances through creative design and structured execution",
         category: "building",
         image: "images/building/build2.png"
     },
