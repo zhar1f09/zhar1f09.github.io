@@ -56,8 +56,8 @@ const portfolioItems = [
     // Building Projects
     {
         id: 6,
-        title: "Medieval Castle",
-        description: "Large-scale castle environment with detailed interiors",
+        title: "Medieval House",
+        description: "Small-scale house environment with detailed interiors",
         category: "building",
         image: "images/building/build1.png"
     },
@@ -70,8 +70,8 @@ const portfolioItems = [
     },
     {
         id: 8,
-        title: "Modern House",
-        description: "Contemporary residential building with interior design",
+        title: "Housing & Development Board",
+        description: "Contemporary residential building with no interior design",
         category: "building",
         image: "images/building/build3.png"
     },
