@@ -1,587 +1,550 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhar1f09 | Professional Roblox Developer</title>
-    
-    <!-- Fixed: Remove extra forward slash -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Add inline fallback styles in case CSS fails -->
-    <style>
-        /* Fallback styles - will show immediately */
-        body {
-            background: #0a0a0a;
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 15px;
-        }
-        
-        .sidebar {
-            background: #111111;
-            border: 1px solid #333333;
-            border-radius: 20px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .navbar {
-            background: rgba(17, 17, 17, 0.75);
-            border: 1px solid #333333;
-            border-radius: 12px 12px 0 0;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 5;
-        }
-        
-        .navbar-link.active {
-            color: #ffcc00;
-        }
-        
-        /* Hide all articles except about */
-        article:not(.about) {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professional Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <!-- MAIN -->
-    <main>
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="sidebar-info">
-                <figure class="avatar-box">
-                    <!-- Use a placeholder image if yours doesn't load -->
-                    <img src="assets/images/my-avatar.png" alt="Zhar1f09" width="80" 
-                         onerror="this.onerror=null; this.src='https://via.placeholder.com/80/333333/ffffff?text=Z'">
-                </figure>
+  <main>
 
-                <div class="info-content">
-                    <h1 class="name" title="Zhar1f09">Zhar1f09</h1>
-                    <p class="title">Roblox Developer</p>
-                </div>
-            </div>
+    <!-- Sidebar -->
+    <aside class="sidebar" data-sidebar>
 
-            <div class="sidebar-info_more">
-                <div class="separator"></div>
+      <div class="sidebar-info">
 
-                <ul class="contacts-list">
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Discord</p>
-                            <button class="contact-link copy-btn" data-copy="YOUR_DISCORD_USERNAME">Click to copy</button>
-                        </div>
-                    </li>
+        <figure class="avatar-box">
+          <img src="./assets/images/my-avatar.png" alt="Your Name" width="80">
+        </figure>
 
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <i class="fab fa-discord"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Discord Server</p>
-                            <a href="https://discord.gg/YOUR_SERVER_INVITE" target="_blank" class="contact-link">Join Server</a>
-                        </div>
-                    </li>
-
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <i class="fab fa-roblox"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Roblox Profile</p>
-                            <a href="https://www.roblox.com/users/YOUR_PROFILE_ID" target="_blank" class="contact-link">Visit Profile</a>
-                        </div>
-                    </li>
-
-                    <li class="contact-item">
-                        <div class="icon-box">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="contact-info">
-                            <p class="contact-title">Roblox Group</p>
-                            <a href="https://www.roblox.com/groups/YOUR_GROUP_ID" target="_blank" class="contact-link">Visit Group</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-
-        <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <!-- NAVBAR -->
-            <nav class="navbar">
-                <ul class="navbar-list">
-                    <li class="navbar-item">
-                        <button class="navbar-link active" data-nav-link>About</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Stats</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Skills</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Portfolio</button>
-                    </li>
-                    <li class="navbar-item">
-                        <button class="navbar-link" data-nav-link>Prices</button>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- ABOUT -->
-            <article class="about active">
-                <header>
-                    <h2 class="h2 article-title">About me</h2>
-                </header>
-
-                <section class="about-text">
-                    <p>
-                        I'm <strong>Zhar1f09</strong>, a professional Roblox developer specializing in creating immersive gaming experiences and custom content.
-                    </p>
-                    <p>
-                        With over 3 years of experience, I excel in 3D modeling, environment building, clothing design, and Discord server management. 
-                        I transform creative visions into high-quality Roblox content that enhances player experience.
-                    </p>
-                    <p>
-                        My focus is on delivering polished, optimized content that brings value to games and communities while maintaining clean, 
-                        efficient development practices.
-                    </p>
-                </section>
-
-                <!-- SERVICE -->
-                <section class="service">
-                    <h3 class="h3 service-title">What i'm doing</h3>
-                    <ul class="service-list">
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <!-- Use absolute URL for icons -->
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f5bc.svg" alt="design icon" width="40">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">3D Modeling</h4>
-                                <p class="service-item-text">
-                                    Custom character models, weapons, vehicles, and assets for Roblox games.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3d8.svg" alt="building icon" width="40">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Environment Building</h4>
-                                <p class="service-item-text">
-                                    Detailed game worlds, structures, and immersive environments.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg" alt="clothing icon" width="40">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Clothing Design</h4>
-                                <p class="service-item-text">
-                                    Custom Roblox clothing, accessories, and avatar customization.
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="service-item">
-                            <div class="service-icon-box">
-                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3a8.svg" alt="discord icon" width="40">
-                            </div>
-                            <div class="service-content-box">
-                                <h4 class="h4 service-item-title">Discord Service</h4>
-                                <p class="service-item-text">
-                                    Complete Discord server setup, bots, and community management.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- STATS -->
-            <article class="resume">
-                <header>
-                    <h2 class="h2 article-title">My Statistics</h2>
-                </header>
-
-                <section class="clients">
-                    <h3 class="h3 clients-title">Experience & Achievements</h3>
-                    <ul class="stats-grid">
-                        <li class="stats-item">
-                            <div class="stats-content">
-                                <div class="stats-number">3+</div>
-                                <div class="stats-label">Years Experience</div>
-                            </div>
-                        </li>
-                        <li class="stats-item">
-                            <div class="stats-content">
-                                <div class="stats-number">50+</div>
-                                <div class="stats-label">Projects Completed</div>
-                            </div>
-                        </li>
-                        <li class="stats-item">
-                            <div class="stats-content">
-                                <div class="stats-number">30+</div>
-                                <div class="stats-label">Happy Clients</div>
-                            </div>
-                        </li>
-                        <li class="stats-item">
-                            <div class="stats-content">
-                                <div class="stats-number">100%</div>
-                                <div class="stats-label">Satisfaction Rate</div>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- SKILLS -->
-            <article class="resume">
-                <header>
-                    <h2 class="h2 article-title">My Skills</h2>
-                </header>
-
-                <section class="skill">
-                    <h3 class="h3 skills-title">Development Services</h3>
-                    <ul class="skills-grid">
-                        <li class="skills-card">
-                            <div class="skills-icon-box">
-                                <i class="fas fa-cube"></i>
-                            </div>
-                            <div class="skills-content-box">
-                                <h4 class="h4 skills-item-title">3D Modeling</h4>
-                                <p class="skills-item-text">
-                                    Character models, weapons, vehicles with custom animations
-                                </p>
-                            </div>
-                        </li>
-                        <li class="skills-card">
-                            <div class="skills-icon-box">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="skills-content-box">
-                                <h4 class="h4 skills-item-title">Environment Building</h4>
-                                <p class="skills-item-text">
-                                    Game worlds, structures, interiors with detailed design
-                                </p>
-                            </div>
-                        </li>
-                        <li class="skills-card">
-                            <div class="skills-icon-box">
-                                <i class="fas fa-tshirt"></i>
-                            </div>
-                            <div class="skills-content-box">
-                                <h4 class="h4 skills-item-title">Clothing Design</h4>
-                                <p class="skills-item-text">
-                                    Custom outfits, accessories, avatar customization
-                                </p>
-                            </div>
-                        </li>
-                        <li class="skills-card">
-                            <div class="skills-icon-box">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <div class="skills-content-box">
-                                <h4 class="h4 skills-item-title">Graphics Design</h4>
-                                <p class="skills-item-text">
-                                    Thumbnails, logos, UI elements, promotional graphics
-                                </p>
-                            </div>
-                        </li>
-                        <li class="skills-card">
-                            <div class="skills-icon-box">
-                                <i class="fab fa-discord"></i>
-                            </div>
-                            <div class="skills-content-box">
-                                <h4 class="h4 skills-item-title">Discord Service</h4>
-                                <p class="skills-item-text">
-                                    Server setup, bots, channels, community management
-                                </p>
-                            </div>
-                        </li>
-                        <li class="skills-card">
-                            <div class="skills-icon-box">
-                                <i class="fas fa-gamepad"></i>
-                            </div>
-                            <div class="skills-content-box">
-                                <h4 class="h4 skills-item-title">Game Development</h4>
-                                <p class="skills-item-text">
-                                    Roblox game scripting, mechanics, system implementation
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                </section>
-            </article>
-
-            <!-- PORTFOLIO -->
-            <article class="portfolio">
-                <header>
-                    <h2 class="h2 article-title">Portfolio</h2>
-                </header>
-
-                <section class="projects">
-                    <ul class="filter-list">
-                        <li class="filter-item">
-                            <button class="active" data-filter-btn>All</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Modeling</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Building</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Clothing</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Graphics</button>
-                        </li>
-                        <li class="filter-item">
-                            <button data-filter-btn>Discord</button>
-                        </li>
-                    </ul>
-
-                    <div class="portfolio-grid">
-                        <!-- Simple placeholder portfolio items -->
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Modeling+Project" alt="Modeling Project">
-                                <span class="portfolio-category">Modeling</span>
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>Fantasy Character</h4>
-                                <p>Complete character model with custom animations</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Building+Project" alt="Building Project">
-                                <span class="portfolio-category">Building</span>
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>Medieval Castle</h4>
-                                <p>Large-scale castle environment</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Clothing+Project" alt="Clothing Project">
-                                <span class="portfolio-category">Clothing</span>
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>Premium Clothing Set</h4>
-                                <p>Custom Roblox avatar outfit</p>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Graphics+Project" alt="Graphics Project">
-                                <span class="portfolio-category">Graphics</span>
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>Game Thumbnail</h4>
-                                <p>Promotional artwork for Roblox game</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </article>
-
-            <!-- PRICES -->
-            <article class="blog">
-                <header>
-                    <h2 class="h2 article-title">Service Prices</h2>
-                </header>
-
-                <section class="prices-section">
-                    <h3 class="h3 prices-title">Commission Rates & Packages</h3>
-                    
-                    <div class="prices-grid">
-                        <div class="price-card">
-                            <div class="price-header">
-                                <div class="price-icon">
-                                    <i class="fas fa-cube"></i>
-                                </div>
-                                <h4 class="h4 price-item-title">3D Modeling</h4>
-                            </div>
-                            <ul class="price-features">
-                                <li><span class="price-feature">Character Models:</span> <span class="price-amount">$50-150</span></li>
-                                <li><span class="price-feature">Weapon Models:</span> <span class="price-amount">$30-80</span></li>
-                                <li><span class="price-feature">Vehicle Models:</span> <span class="price-amount">$80-200</span></li>
-                                <li><span class="price-feature">Custom Animations:</span> <span class="price-amount">+$20-50</span></li>
-                            </ul>
-                            <div class="price-note">Prices vary based on complexity</div>
-                        </div>
-
-                        <div class="price-card">
-                            <div class="price-header">
-                                <div class="price-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <h4 class="h4 price-item-title">Environment Building</h4>
-                            </div>
-                            <ul class="price-features">
-                                <li><span class="price-feature">Small Builds:</span> <span class="price-amount">$40-100</span></li>
-                                <li><span class="price-feature">Medium Builds:</span> <span class="price-amount">$100-300</span></li>
-                                <li><span class="price-feature">Large Builds:</span> <span class="price-amount">$300-800</span></li>
-                                <li><span class="price-feature">Interior Design:</span> <span class="price-amount">+$50-150</span></li>
-                            </ul>
-                            <div class="price-note">Based on size and detail level</div>
-                        </div>
-
-                        <div class="price-card">
-                            <div class="price-header">
-                                <div class="price-icon">
-                                    <i class="fas fa-tshirt"></i>
-                                </div>
-                                <h4 class="h4 price-item-title">Clothing Design</h4>
-                            </div>
-                            <ul class="price-features">
-                                <li><span class="price-feature">T-Shirt:</span> <span class="price-amount">$15-30</span></li>
-                                <li><span class="price-feature">Pants:</span> <span class="price-amount">$20-40</span></li>
-                                <li><span class="price-feature">Shirt:</span> <span class="price-amount">$25-50</span></li>
-                                <li><span class="price-feature">Full Outfit:</span> <span class="price-amount">$50-100</span></li>
-                            </ul>
-                            <div class="price-note">Bulk discounts available</div>
-                        </div>
-
-                        <div class="price-card">
-                            <div class="price-header">
-                                <div class="price-icon">
-                                    <i class="fas fa-paint-brush"></i>
-                                </div>
-                                <h4 class="h4 price-item-title">Graphics Design</h4>
-                            </div>
-                            <ul class="price-features">
-                                <li><span class="price-feature">Game Thumbnail:</span> <span class="price-amount">$30-80</span></li>
-                                <li><span class="price-feature">Logo Design:</span> <span class="price-amount">$40-100</span></li>
-                                <li><span class="price-feature">UI Design:</span> <span class="price-amount">$50-150</span></li>
-                                <li><span class="price-feature">Banner/Header:</span> <span class="price-amount">$40-90</span></li>
-                            </ul>
-                            <div class="price-note">Includes revisions</div>
-                        </div>
-
-                        <div class="price-card">
-                            <div class="price-header">
-                                <div class="price-icon">
-                                    <i class="fab fa-discord"></i>
-                                </div>
-                                <h4 class="h4 price-item-title">Discord Service</h4>
-                            </div>
-                            <ul class="price-features">
-                                <li><span class="price-feature">Basic Setup:</span> <span class="price-amount">$30-60</span></li>
-                                <li><span class="price-feature">Advanced Setup:</span> <span class="price-amount">$60-150</span></li>
-                                <li><span class="price-feature">Custom Bots:</span> <span class="price-amount">$50-200</span></li>
-                                <li><span class="price-feature">Monthly Management:</span> <span class="price-amount">$50/mo</span></li>
-                            </ul>
-                            <div class="price-note">One-time or recurring services</div>
-                        </div>
-
-                        <div class="price-card highlight">
-                            <div class="price-header">
-                                <div class="price-icon">
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <h4 class="h4 price-item-title">Custom Package</h4>
-                            </div>
-                            <div class="price-description">
-                                <p>Need a combination of services? Contact me for a custom quote tailored to your specific project needs.</p>
-                                <p>I offer package deals for multiple services and bulk projects.</p>
-                            </div>
-                            <div class="price-cta">
-                                <p>Contact me on Discord for a personalized quote!</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="payment-info">
-                        <h4 class="h4"><i class="fas fa-info-circle"></i> Payment Information</h4>
-                        <ul class="payment-list">
-                            <li>50% deposit required to start work</li>
-                            <li>Final payment upon completion</li>
-                            <li>PayPal and Robux payments accepted</li>
-                            <li>Revisions included (limited)</li>
-                            <li>Commercial use licenses available</li>
-                        </ul>
-                    </div>
-                </section>
-            </article>
+        <div class="info-content">
+          <h1 class="name" title="Your Name">Your Name</h1>
+          <p class="title">Professional Creator</p>
         </div>
-    </main>
 
-    <!-- Custom JS -->
-    <script src="assets/js/script.js"></script>
-    <!-- Ion Icons - Removed as not needed -->
-    
-    <script>
-    // Simple JavaScript to handle navigation without errors
-    document.addEventListener('DOMContentLoaded', function() {
-        // Navigation
-        const navLinks = document.querySelectorAll('.navbar-link');
-        const articles = document.querySelectorAll('article');
-        
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                // Remove active class from all links
-                navLinks.forEach(l => l.classList.remove('active'));
-                // Add active to clicked
-                this.classList.add('active');
-                
-                // Hide all articles
-                articles.forEach(article => article.classList.remove('active'));
-                
-                // Show corresponding article
-                const target = this.textContent.toLowerCase();
-                let targetArticle;
-                
-                if (target === 'about') targetArticle = document.querySelector('.about');
-                if (target === 'stats') targetArticle = document.querySelector('.resume');
-                if (target === 'skills') targetArticle = document.querySelector('.resume:nth-of-type(2)');
-                if (target === 'portfolio') targetArticle = document.querySelector('.portfolio');
-                if (target === 'prices') targetArticle = document.querySelector('.blog');
-                
-                if (targetArticle) {
-                    targetArticle.classList.add('active');
-                }
-            });
-        });
-        
-        // Copy button functionality
-        const copyBtn = document.querySelector('.copy-btn');
-        if (copyBtn) {
-            copyBtn.addEventListener('click', function() {
-                const text = this.getAttribute('data-copy') || 'zhar1f09';
-                navigator.clipboard.writeText(text).then(() => {
-                    alert('Discord username copied: ' + text);
-                });
-            });
-        }
-    });
-    </script>
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="discord-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Discord</p>
+              <a href="#" class="contact-link">username#1234</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="logo-roblox"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Roblox Profile</p>
+              <a href="#" class="contact-link">@YourProfile</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="people-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Roblox Group</p>
+              <a href="#" class="contact-link">Group Name</a>
+            </div>
+          </li>
+
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Direct Message</p>
+              <p class="contact-link">Open to DMs</p>
+            </div>
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-discord"></ion-icon>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+      <!-- Navbar -->
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <button class="navbar-link active" data-nav-link>About</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+          <li class="navbar-item">
+            <button class="navbar-link" data-nav-link>Price List</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- About Page -->
+      <article class="about active" data-page="about">
+        <header>
+          <h2 class="h2 article-title">About Me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a professional creator specializing in 3D modeling, building, graphics design, Discord services, and custom clothing. 
+            With years of experience in digital creation, I transform concepts into stunning visual realities.
+          </p>
+          <p>
+            My work focuses on delivering high-quality, detailed creations that exceed expectations. Whether it's game assets, 
+            server designs, or custom apparel, I ensure every project receives personal attention and professional execution.
+          </p>
+        </section>
+
+        <!-- Services -->
+        <section class="service">
+          <h3 class="h3 service-title">My Specializations</h3>
+          <ul class="service-list">
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="cube-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">3D Modeling</h4>
+                <p class="service-item-text">
+                  Professional 3D models for games, animations, and virtual environments.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="business-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Building</h4>
+                <p class="service-item-text">
+                  Custom structures, environments, and architectural designs.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="color-palette-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Graphics Design</h4>
+                <p class="service-item-text">
+                  Custom logos, banners, UI elements, and promotional materials.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="shirt-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Custom Clothing</h4>
+                <p class="service-item-text">
+                  Unique apparel designs and texture work for avatars.
+                </p>
+              </div>
+            </li>
+
+            <li class="service-item">
+              <div class="service-icon-box">
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+              </div>
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Discord Services</h4>
+                <p class="service-item-text">
+                  Server setup, bot configuration, and community management.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials">
+          <h3 class="h3 testimonials-title">Client Feedback</h3>
+          <ul class="testimonials-list has-scrollbar">
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Client 1" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Client Name</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Exceptional quality and attention to detail. The models were exactly what we needed and delivered on time. Highly recommended!
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-2.png" alt="Client 2" width="60" data-testimonials-avatar>
+                </figure>
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Client Name</h4>
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Professional service from start to finish. The Discord server setup was flawless and the community loves it.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Testimonials Modal -->
+        <div class="modal-container" data-modal-container>
+          <div class="overlay" data-overlay></div>
+          <section class="testimonials-modal">
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Client" width="80" data-modal-img>
+              </figure>
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+            <div class="modal-content">
+              <h4 class="h3 modal-title" data-modal-title>Client Name</h4>
+              <time datetime="2023-01-15">15 January, 2023</time>
+              <div data-modal-text>
+                <p>Client feedback text here...</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </article>
+
+      <!-- Portfolio Page -->
+      <article class="portfolio" data-page="portfolio">
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+
+        <section class="projects">
+          <ul class="filter-list">
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Modeling</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Building</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Graphics</button>
+            </li>
+            <li class="filter-item">
+              <button data-filter-btn>Clothing</button>
+            </li>
+          </ul>
+
+          <div class="filter-select-box">
+            <button class="filter-select" data-select>
+              <div class="select-value" data-selecct-value>Select category</div>
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+            </button>
+            <ul class="select-list">
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Modeling</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Building</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Graphics</button>
+              </li>
+              <li class="select-item">
+                <button data-select-item>Clothing</button>
+              </li>
+            </ul>
+          </div>
+
+          <ul class="project-list">
+            <!-- Modeling Projects -->
+            <li class="project-item active" data-filter-item data-category="modeling">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./image/modeling/model1.png" alt="3D Model 1" loading="lazy">
+                </figure>
+                <h3 class="project-title">Character Model</h3>
+                <p class="project-category">Modeling</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="modeling">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./image/modeling/model2.png" alt="3D Model 2" loading="lazy">
+                </figure>
+                <h3 class="project-title">Vehicle Design</h3>
+                <p class="project-category">Modeling</p>
+              </a>
+            </li>
+
+            <!-- Building Projects -->
+            <li class="project-item active" data-filter-item data-category="building">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./image/building/build1.png" alt="Building 1" loading="lazy">
+                </figure>
+                <h3 class="project-title">Modern House</h3>
+                <p class="project-category">Building</p>
+              </a>
+            </li>
+
+            <li class="project-item active" data-filter-item data-category="building">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./image/building/build2.png" alt="Building 2" loading="lazy">
+                </figure>
+                <h3 class="project-title">Fantasy Castle</h3>
+                <p class="project-category">Building</p>
+              </a>
+            </li>
+
+            <!-- Graphics Projects -->
+            <li class="project-item active" data-filter-item data-category="graphics">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./image/graphics/graphic1.png" alt="Graphic Design 1" loading="lazy">
+                </figure>
+                <h3 class="project-title">Logo Design</h3>
+                <p class="project-category">Graphics</p>
+              </a>
+            </li>
+
+            <!-- Clothing Projects -->
+            <li class="project-item active" data-filter-item data-category="clothing">
+              <a href="#">
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+                  <img src="./image/clothing/clothing1.png" alt="Clothing Design 1" loading="lazy">
+                </figure>
+                <h3 class="project-title">Custom Outfit</h3>
+                <p class="project-category">Clothing</p>
+              </a>
+            </li>
+
+            <!-- Add more projects as needed -->
+          </ul>
+        </section>
+      </article>
+
+      <!-- Price List Page -->
+      <article class="blog" data-page="blog">
+        <header>
+          <h2 class="h2 article-title">Price List</h2>
+        </header>
+
+        <section class="blog-posts">
+          <ul class="blog-posts-list">
+            <!-- Modeling Prices -->
+            <li class="blog-post-item">
+              <a href="#">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Modeling</p>
+                    <span class="dot"></span>
+                    <p>Starting from</p>
+                  </div>
+                  <h3 class="h3 blog-item-title">3D Modeling Services</h3>
+                  <p class="blog-text">
+                    • Simple Props: $25-50<br>
+                    • Character Models: $75-200<br>
+                    • Complex Scenes: $150-500<br>
+                    • Custom Requests: Quote Based
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <!-- Building Prices -->
+            <li class="blog-post-item">
+              <a href="#">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Building</p>
+                    <span class="dot"></span>
+                    <p>Starting from</p>
+                  </div>
+                  <h3 class="h3 blog-item-title">Building Services</h3>
+                  <p class="blog-text">
+                    • Small Structures: $30-60<br>
+                    • Medium Builds: $75-150<br>
+                    • Large Environments: $200-500<br>
+                    • Full Game Maps: $500+
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <!-- Graphics Prices -->
+            <li class="blog-post-item">
+              <a href="#">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Graphics</p>
+                    <span class="dot"></span>
+                    <p>Starting from</p>
+                  </div>
+                  <h3 class="h3 blog-item-title">Graphics Services</h3>
+                  <p class="blog-text">
+                    • Logos: $25-100<br>
+                    • Banners: $30-75<br>
+                    • UI Elements: $40-120<br>
+                    • Promotional Art: $50-200
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <!-- Discord Services -->
+            <li class="blog-post-item">
+              <a href="#">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Discord</p>
+                    <span class="dot"></span>
+                    <p>Starting from</p>
+                  </div>
+                  <h3 class="h3 blog-item-title">Discord Services</h3>
+                  <p class="blog-text">
+                    • Basic Setup: $20-50<br>
+                    • Bot Configuration: $30-80<br>
+                    • Full Server Setup: $75-150<br>
+                    • Monthly Management: $50/month
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <!-- Clothing Prices -->
+            <li class="blog-post-item">
+              <a href="#">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Clothing</p>
+                    <span class="dot"></span>
+                    <p>Starting from</p>
+                  </div>
+                  <h3 class="h3 blog-item-title">Clothing Services</h3>
+                  <p class="blog-text">
+                    • Simple T-Shirts: $15-30<br>
+                    • Detailed Outfits: $25-60<br>
+                    • Texture Work: $20-50<br>
+                    • Custom Packages: Quote Based
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <!-- Commission Info -->
+            <li class="blog-post-item">
+              <a href="#">
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Info</p>
+                    <span class="dot"></span>
+                    <p>Important</p>
+                  </div>
+                  <h3 class="h3 blog-item-title">Commission Information</h3>
+                  <p class="blog-text">
+                    • 50% deposit required<br>
+                    • Revisions included<br>
+                    • Commercial use available<br>
+                    • Rush delivery: +25%<br>
+                    • Contact for custom quotes
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Custom JS -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- Ionicon -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
