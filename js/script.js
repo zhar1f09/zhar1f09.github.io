@@ -1,264 +1,117 @@
-// Custom JavaScript for Zhar1f09 Portfolio
+'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initNavigation();
-    initPortfolio();
-    initCopyButtons();
+// element toggle function
+const elementToggleFunc = function (elem) { 
+  elem.classList.toggle("active"); 
+}
+
+// sidebar variables
+const sidebar = document.querySelector("[data-sidebar]");
+const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+
+// sidebar toggle functionality for mobile
+sidebarBtn.addEventListener("click", function () { 
+  elementToggleFunc(sidebar); 
 });
 
-// ===== PORTFOLIO DATA =====
-const portfolioItems = [
-    // Modeling Projects
-    {
-        id: 1,
-        title: "Fantasy Character",
-        description: "Complete character model with custom animations",
-        category: "modeling",
-        image: "./assets/images/project-1.jpg"
-    },
-    {
-        id: 2,
-        title: "Magical Sword",
-        description: "Weapon model with particle effects",
-        category: "modeling",
-        image: "./assets/images/project-2.png"
-    },
-    {
-        id: 3,
-        title: "Spaceship Model",
-        description: "Sci-fi spaceship with detailed interior",
-        category: "modeling",
-        image: "./assets/images/project-3.jpg"
-    },
-    {
-        id: 4,
-        title: "Medieval Castle",
-        description: "Large-scale castle environment",
-        category: "building",
-        image: "./assets/images/project-4.png"
-    },
-    {
-        id: 5,
-        title: "Cyberpunk City",
-        description: "Futuristic city with neon lighting",
-        category: "building",
-        image: "./assets/images/project-5.png"
-    },
-    {
-        id: 6,
-        title: "Premium Clothing Set",
-        description: "Custom Roblox avatar outfit",
-        category: "clothing",
-        image: "./assets/images/project-6.png"
-    },
-    {
-        id: 7,
-        title: "Game Thumbnail",
-        description: "Promotional artwork for Roblox game",
-        category: "graphics",
-        image: "./assets/images/project-7.png"
-    },
-    {
-        id: 8,
-        title: "Discord Server",
-        description: "Complete Discord server setup",
-        category: "discord",
-        image: "./assets/images/project-8.jpg"
+// testimonials variables
+const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
+const modalContainer = document.querySelector("[data-modal-container]");
+const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
+const overlay = document.querySelector("[data-overlay]");
+
+// modal variable
+const modalImg = document.querySelector("[data-modal-img]");
+const modalTitle = document.querySelector("[data-modal-title]");
+const modalText = document.querySelector("[data-modal-text]");
+
+// modal toggle function
+const testimonialsModalFunc = function () {
+  modalContainer.classList.toggle("active");
+  overlay.classList.toggle("active");
+}
+
+// add click event to all modal items
+for (let i = 0; i < testimonialsItem.length; i++) {
+  testimonialsItem[i].addEventListener("click", function () {
+    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
+    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
+    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
+    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
+    testimonialsModalFunc();
+  });
+}
+
+// add click event to modal close button
+modalCloseBtn.addEventListener("click", testimonialsModalFunc);
+overlay.addEventListener("click", testimonialsModalFunc);
+
+// custom select variables
+const select = document.querySelector("[data-select]");
+const selectItems = document.querySelectorAll("[data-select-item]");
+const selectValue = document.querySelector("[data-selecct-value]");
+const filterBtn = document.querySelectorAll("[data-filter-btn]");
+
+select.addEventListener("click", function () { 
+  elementToggleFunc(this); 
+});
+
+// add event in all select items
+for (let i = 0; i < selectItems.length; i++) {
+  selectItems[i].addEventListener("click", function () {
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    elementToggleFunc(select);
+    filterFunc(selectedValue);
+  });
+}
+
+// filter variables
+const filterItems = document.querySelectorAll("[data-filter-item]");
+
+const filterFunc = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "all") {
+      filterItems[i].classList.add("active");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("active");
+    } else {
+      filterItems[i].classList.remove("active");
     }
-];
-
-// ===== NAVIGATION =====
-function initNavigation() {
-    const navbarLinks = document.querySelectorAll('.navbar-link');
-    const articles = document.querySelectorAll('article[data-page]');
-    
-    navbarLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            // Remove active class from all links
-            navbarLinks.forEach(l => l.classList.remove('active'));
-            
-            // Add active class to clicked link
-            this.classList.add('active');
-            
-            // Get target page
-            const targetPage = this.getAttribute('data-nav-link');
-            
-            // Hide all articles
-            articles.forEach(article => article.classList.remove('active'));
-            
-            // Show target article
-            const targetArticle = document.querySelector(`article[data-page="${targetPage}"]`);
-            if (targetArticle) {
-                targetArticle.classList.add('active');
-            }
-        });
-    });
+  }
 }
 
-// ===== PORTFOLIO SYSTEM =====
-function initPortfolio() {
-    renderPortfolioGrid();
-    initPortfolioFilter();
+// add event in all filter button items for large screen
+let lastClickedBtn = filterBtn[0];
+
+for (let i = 0; i < filterBtn.length; i++) {
+  filterBtn[i].addEventListener("click", function () {
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    filterFunc(selectedValue);
+
+    lastClickedBtn.classList.remove("active");
+    this.classList.add("active");
+    lastClickedBtn = this;
+  });
 }
 
-function renderPortfolioGrid() {
-    const gridContainer = document.querySelector('.portfolio-grid');
-    if (!gridContainer) return;
-    
-    gridContainer.innerHTML = '';
-    
-    portfolioItems.forEach(item => {
-        const portfolioItem = createPortfolioItem(item);
-        gridContainer.appendChild(portfolioItem);
-    });
-}
+// page navigation variables
+const navigationLinks = document.querySelectorAll("[data-nav-link]");
+const pages = document.querySelectorAll("[data-page]");
 
-function createPortfolioItem(item) {
-    const li = document.createElement('li');
-    li.className = 'project-item active';
-    li.setAttribute('data-filter-item', '');
-    li.setAttribute('data-category', item.category);
-    
-    li.innerHTML = `
-        <a href="#" class="portfolio-link">
-            <figure class="project-img">
-                <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                </div>
-                <img src="${item.image}" alt="${item.title}" loading="lazy">
-                <span class="portfolio-category">${item.category}</span>
-            </figure>
-            <div class="portfolio-info">
-                <h4 class="project-title">${item.title}</h4>
-                <p class="project-category">${item.description}</p>
-            </div>
-        </a>
-    `;
-    
-    return li;
-}
-
-function initPortfolioFilter() {
-    const filterButtons = document.querySelectorAll('.filter-list button');
-    const portfolioItems = document.querySelectorAll('.project-item');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filter = this.textContent.toLowerCase();
-            
-            // Filter items
-            portfolioItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.style.display = 'block';
-                    setTimeout(() => item.classList.add('active'), 10);
-                } else {
-                    item.classList.remove('active');
-                    setTimeout(() => item.style.display = 'none', 250);
-                }
-            });
-        });
-    });
-}
-
-// ===== COPY BUTTONS =====
-function initCopyButtons() {
-    const copyButtons = document.querySelectorAll('.copy-btn');
-    
-    copyButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const textToCopy = this.dataset.copy;
-            
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(textToCopy)
-                    .then(() => {
-                        showNotification('Discord username copied!');
-                    })
-                    .catch(err => {
-                        console.error('Failed to copy: ', err);
-                        fallbackCopy(textToCopy);
-                    });
-            } else {
-                fallbackCopy(textToCopy);
-            }
-        });
-    });
-}
-
-function fallbackCopy(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    
-    try {
-        document.execCommand('copy');
-        showNotification('Discord username copied!');
-    } catch (err) {
-        console.error('Fallback copy failed: ', err);
-        showNotification('Failed to copy text');
+// add event to all nav link
+for (let i = 0; i < navigationLinks.length; i++) {
+  navigationLinks[i].addEventListener("click", function () {
+    for (let i = 0; i < pages.length; i++) {
+      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+        pages[i].classList.add("active");
+        navigationLinks[i].classList.add("active");
+        window.scrollTo(0, 0);
+      } else {
+        pages[i].classList.remove("active");
+        navigationLinks[i].classList.remove("active");
+      }
     }
-    
-    document.body.removeChild(textArea);
+  });
 }
-
-function showNotification(message) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--orange-yellow-crayola);
-        color: var(--smoky-black);
-        padding: 12px 24px;
-        border-radius: 8px;
-        font-weight: 600;
-        z-index: 10000;
-        animation: slideIn 0.3s ease;
-        box-shadow: var(--shadow-2);
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 3000);
-}
-
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
