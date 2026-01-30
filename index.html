@@ -4,19 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zhar1f09 | Professional Roblox Developer</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fixed: Remove extra forward slash -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Add inline fallback styles in case CSS fails -->
+    <style>
+        /* Fallback styles - will show immediately */
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 15px;
+        }
+        
+        .sidebar {
+            background: #111111;
+            border: 1px solid #333333;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .navbar {
+            background: rgba(17, 17, 17, 0.75);
+            border: 1px solid #333333;
+            border-radius: 12px 12px 0 0;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 5;
+        }
+        
+        .navbar-link.active {
+            color: #ffcc00;
+        }
+        
+        /* Hide all articles except about */
+        article:not(.about) {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
     <!-- MAIN -->
     <main>
         <!-- SIDEBAR -->
-        <aside class="sidebar" data-sidebar>
+        <aside class="sidebar">
             <div class="sidebar-info">
                 <figure class="avatar-box">
-                    <img src="./assets/images/my-avatar.png" alt="Zhar1f09" width="80">
+                    <!-- Use a placeholder image if yours doesn't load -->
+                    <img src="assets/images/my-avatar.png" alt="Zhar1f09" width="80" 
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/80/333333/ffffff?text=Z'">
                 </figure>
 
                 <div class="info-content">
@@ -96,7 +147,7 @@
             </nav>
 
             <!-- ABOUT -->
-            <article class="about active" data-page="about">
+            <article class="about active">
                 <header>
                     <h2 class="h2 article-title">About me</h2>
                 </header>
@@ -121,7 +172,8 @@
                     <ul class="service-list">
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <img src="./assets/images/icon-design.svg" alt="design icon" width="40">
+                                <!-- Use absolute URL for icons -->
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f5bc.svg" alt="design icon" width="40">
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">3D Modeling</h4>
@@ -133,7 +185,7 @@
 
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3d8.svg" alt="building icon" width="40">
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Environment Building</h4>
@@ -145,7 +197,7 @@
 
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f455.svg" alt="clothing icon" width="40">
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Clothing Design</h4>
@@ -157,7 +209,7 @@
 
                         <li class="service-item">
                             <div class="service-icon-box">
-                                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+                                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f3a8.svg" alt="discord icon" width="40">
                             </div>
                             <div class="service-content-box">
                                 <h4 class="h4 service-item-title">Discord Service</h4>
@@ -171,7 +223,7 @@
             </article>
 
             <!-- STATS -->
-            <article class="resume" data-page="stats">
+            <article class="resume">
                 <header>
                     <h2 class="h2 article-title">My Statistics</h2>
                 </header>
@@ -208,7 +260,7 @@
             </article>
 
             <!-- SKILLS -->
-            <article class="resume" data-page="skills">
+            <article class="resume">
                 <header>
                     <h2 class="h2 article-title">My Skills</h2>
                 </header>
@@ -287,7 +339,7 @@
             </article>
 
             <!-- PORTFOLIO -->
-            <article class="portfolio" data-page="portfolio">
+            <article class="portfolio">
                 <header>
                     <h2 class="h2 article-title">Portfolio</h2>
                 </header>
@@ -315,13 +367,53 @@
                     </ul>
 
                     <div class="portfolio-grid">
-                        <!-- Items will be inserted by JavaScript -->
+                        <!-- Simple placeholder portfolio items -->
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Modeling+Project" alt="Modeling Project">
+                                <span class="portfolio-category">Modeling</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Fantasy Character</h4>
+                                <p>Complete character model with custom animations</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Building+Project" alt="Building Project">
+                                <span class="portfolio-category">Building</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Medieval Castle</h4>
+                                <p>Large-scale castle environment</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Clothing+Project" alt="Clothing Project">
+                                <span class="portfolio-category">Clothing</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Premium Clothing Set</h4>
+                                <p>Custom Roblox avatar outfit</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <img src="https://via.placeholder.com/400x300/333333/ffffff?text=Graphics+Project" alt="Graphics Project">
+                                <span class="portfolio-category">Graphics</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Game Thumbnail</h4>
+                                <p>Promotional artwork for Roblox game</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </article>
 
             <!-- PRICES -->
-            <article class="blog" data-page="prices">
+            <article class="blog">
                 <header>
                     <h2 class="h2 article-title">Service Prices</h2>
                 </header>
@@ -443,9 +535,53 @@
     </main>
 
     <!-- Custom JS -->
-    <script src="./assets/js/script.js"></script>
-    <!-- Ion Icons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="assets/js/script.js"></script>
+    <!-- Ion Icons - Removed as not needed -->
+    
+    <script>
+    // Simple JavaScript to handle navigation without errors
+    document.addEventListener('DOMContentLoaded', function() {
+        // Navigation
+        const navLinks = document.querySelectorAll('.navbar-link');
+        const articles = document.querySelectorAll('article');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Remove active class from all links
+                navLinks.forEach(l => l.classList.remove('active'));
+                // Add active to clicked
+                this.classList.add('active');
+                
+                // Hide all articles
+                articles.forEach(article => article.classList.remove('active'));
+                
+                // Show corresponding article
+                const target = this.textContent.toLowerCase();
+                let targetArticle;
+                
+                if (target === 'about') targetArticle = document.querySelector('.about');
+                if (target === 'stats') targetArticle = document.querySelector('.resume');
+                if (target === 'skills') targetArticle = document.querySelector('.resume:nth-of-type(2)');
+                if (target === 'portfolio') targetArticle = document.querySelector('.portfolio');
+                if (target === 'prices') targetArticle = document.querySelector('.blog');
+                
+                if (targetArticle) {
+                    targetArticle.classList.add('active');
+                }
+            });
+        });
+        
+        // Copy button functionality
+        const copyBtn = document.querySelector('.copy-btn');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', function() {
+                const text = this.getAttribute('data-copy') || 'zhar1f09';
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Discord username copied: ' + text);
+                });
+            });
+        }
+    });
+    </script>
 </body>
 </html>
